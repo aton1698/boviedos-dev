@@ -1,15 +1,15 @@
 # boviedos.dev
 
-Personal professional site of Brandon Oviedo Sánchez. Bilingual (en/es) single-page CV.
+Personal professional site of Brandon Oviedo Sánchez. Bilingual (en/es): home (hero, CV experience tabs, blog cards, contact) plus a full CV page.
 Next.js 16 App Router, React 19, strict TypeScript, Tailwind 4. Yarn 4 only (never npm/pnpm).
 
 ## Commands
 `yarn dev` · `yarn typecheck` · `yarn lint` · `yarn build` (run build before typecheck if route types look stale).
 
 ## Paths
-- `app/[locale]/` layout + page (routes `/en`, `/es`; `/` redirects to `/en`)
+- `app/[locale]/` layout + home page; subpages `cv`, `blog/[category]`, `privacy`, `terms` (English is served without prefix via rewrites in `next.config.ts`, e.g. `/cv`; `/es/...` for Spanish)
 - `app/globals.css` design tokens, type scale, base components
-- `content/` typed content (`types.ts`, `profile.ts`), validation, `verifiedCredentials`, `visibleSections`, `formatMonth` (`index.ts`)
+- `content/` typed content (`types.ts`, `profile.ts`, `experience.json`, `credentials.json`, `blog.ts`, `legal.ts`), validation, `verifiedCredentials`, `visibleSections`, `formatMonth` (`index.ts`)
 - `lib/i18n.ts` locales; `lib/site.ts` canonical URL + production gate (`SITE_ENV=production` / `VERCEL_ENV`); `docs/spec.md` normalized spec; `docs/design/` renders 01–07
 - Rules: `.claude/rules/react.md` (React/Next/a11y/i18n best practices)
 
@@ -17,9 +17,9 @@ Next.js 16 App Router, React 19, strict TypeScript, Tailwind 4. Yarn 4 only (nev
 Visual identity is **Pulse Flow**: follow `docs/brand.md` (and `.claude/rules/brand.md`) for every UI change. It overrides the earlier dark/lime direction in the spec.
 
 ## Scope
-Public CV page only. No auth, CMS, backend, DB, blog, contact form or theme switcher.
+Public site only: home, full CV, blog landing pages (no posts yet), privacy and terms. No auth, CMS, backend, DB, contact form, analytics or theme switcher. The legal texts in `content/legal.ts` describe the site as it works today (no cookies/analytics/forms): update them if that changes.
 Spec v1.1 is English-only; EN/ES is an owner-approved extension — update DD/REQ entries before changing behavior (DD-12).
-Section order: Profile → Skills → Experience → Contributions → Education → Certifications & Courses → Contact. IDs: profile, skills, experience, contributions, education, credentials, contact.
+Home sections: Profile → CV → Blog → Contact (IDs profile, cv, blog, contact). `/cv` sections: Skills → Experience → Contributions → Education → Certifications & Courses (IDs skills, experience, contributions, education, credentials).
 Never invent credentials, metrics, testimonials or links. Credentials/research URLs stay empty until supplied; the credentials section and its nav item are hidden when no verified records exist. Spanish copy is draft pending owner review.
 
 ## Workflow

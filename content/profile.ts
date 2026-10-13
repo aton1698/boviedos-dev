@@ -8,6 +8,7 @@ import type {
   SkillGroup,
 } from "./types";
 
+import credentialsData from "./credentials.json";
 import experienceData from "./experience.json";
 
 // Spanish copy is a draft translation pending owner review.
@@ -177,5 +178,5 @@ export const publications: Publication[] = [
   },
 ];
 
-// Owner-verified records only. Empty until supplied (T11).
-export const credentials: Credential[] = [];
+// Owner-verified records only. Add entries to content/credentials.json (empty until supplied, T11).
+export const credentials: Credential[] = credentialsData as Credential[];

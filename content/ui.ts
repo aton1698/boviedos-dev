@@ -39,7 +39,17 @@ export interface UiStrings {
   linkedin: string;
   opensNewTab: string;
   caseStudy: string;
-  footer: { tagline: string; navigate: string; connect: string; navLabel: string; backToTop: string };
+  footer: {
+    tagline: string;
+    navigate: string;
+    connect: string;
+    navLabel: string;
+    backToTop: string;
+    privacy: string;
+    terms: string;
+    legalLabel: string;
+  };
+  lastUpdated: string;
   cta: string;
   meta: { title: string; description: string; ogAlt: string };
   credentialsCopy: string;
@@ -109,7 +119,11 @@ export const ui: Record<Locale, UiStrings> = {
       connect: "Connect",
       navLabel: "Footer navigation",
       backToTop: "Back to top",
+      privacy: "Privacy",
+      terms: "Terms",
+      legalLabel: "Legal",
     },
+    lastUpdated: "Last updated",
     cta: "Get in touch",
     meta: {
       title: "Brandon Oviedo Sánchez | Full Stack Software Engineer",
@@ -181,7 +195,11 @@ export const ui: Record<Locale, UiStrings> = {
       connect: "Contacto",
       navLabel: "Navegación del pie de página",
       backToTop: "Volver arriba",
+      privacy: "Privacidad",
+      terms: "Términos",
+      legalLabel: "Legal",
     },
+    lastUpdated: "Última actualización",
     cta: "Contáctame",
     meta: {
       title: "Brandon Oviedo Sánchez | Ingeniero de Software Full Stack",

@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { profile, type NavId } from "@/content";
 import { ui } from "@/content/ui";
 import type { Locale } from "@/lib/i18n";
+import { localePath } from "@/lib/site";
 import { CurrentYear } from "./CurrentYear";
 import { ExternalLink } from "./ExternalLink";
 import { Logo } from "./Logo";
@@ -71,6 +73,14 @@ export function SiteFooter({ locale, sections, anchorBase = "" }: SiteFooterProp
           <p>
             © <CurrentYear /> {profile.fullName}
           </p>
+          <nav aria-label={t.footer.legalLabel} className="flex gap-6 print:hidden">
+            <Link className="link-arrow" href={localePath(locale, "/privacy")}>
+              {t.footer.privacy}
+            </Link>
+            <Link className="link-arrow" href={localePath(locale, "/terms")}>
+              {t.footer.terms}
+            </Link>
+          </nav>
           <a href="#" className="link-arrow print:hidden">
             {t.footer.backToTop}
             <span className="ml-2 text-accent" aria-hidden="true">

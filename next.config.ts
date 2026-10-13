@@ -18,6 +18,8 @@ const nextConfig: NextConfig = {
     return [
       { source: "/", destination: "/en" },
       { source: "/cv", destination: "/en/cv" },
+      { source: "/privacy", destination: "/en/privacy" },
+      { source: "/terms", destination: "/en/terms" },
       { source: "/blog/:category", destination: "/en/blog/:category" },
     ];
   },
