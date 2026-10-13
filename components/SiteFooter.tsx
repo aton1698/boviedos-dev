@@ -1,20 +1,27 @@
-import { profile, visibleSections } from "@/content";
+import { profile, type NavId } from "@/content";
 import { ui } from "@/content/ui";
 import type { Locale } from "@/lib/i18n";
 import { CurrentYear } from "./CurrentYear";
 import { ExternalLink } from "./ExternalLink";
 import { Logo } from "./Logo";
 
-const linkClass = "link-arrow w-fit";
+const linkClass = "link-arrow w-fit max-w-full [overflow-wrap:anywhere]";
 
-export function SiteFooter({ locale }: { locale: Locale }) {
+interface SiteFooterProps {
+  locale: Locale;
+  sections: readonly NavId[];
+  /** Prefix for section anchors when they live on another page (e.g. the home route). */
+  anchorBase?: string;
+}
+
+export function SiteFooter({ locale, sections, anchorBase = "" }: SiteFooterProps) {
   const t = ui[locale];
 
   return (
     <footer className="border-t border-divider bg-[var(--nav-surface)] backdrop-blur-sm">
       <div className="container-page pt-16 pb-8 print:pt-4">
-        <div className="grid gap-12 print:hidden md:grid-cols-[1.4fr_1fr_1fr]">
-          <div>
+        <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] gap-x-6 gap-y-12 print:hidden md:grid-cols-[1.4fr_1fr_1fr] md:gap-x-12">
+          <div className="col-span-2 md:col-span-1">
             <Logo className="h-12 w-auto" />
             <p className="mt-6 text-lg font-semibold">{profile.fullName}</p>
             <p className="eyebrow mt-3">{profile.headline[locale]}</p>
@@ -25,9 +32,9 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <nav aria-label={t.footer.navLabel}>
             <h2 className="!text-sm !font-semibold !leading-normal !tracking-[0.2em] !text-text-muted uppercase">{t.footer.navigate}</h2>
             <ul className="mt-4 flex flex-col">
-              {visibleSections.map((id) => (
+              {sections.map((id) => (
                 <li key={id}>
-                  <a className={linkClass} href={`#${id}`}>
+                  <a className={linkClass} href={`${anchorBase}#${id}`}>
                     {t.nav[id]}
                   </a>
                 </li>
@@ -35,11 +42,14 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             </ul>
           </nav>
 
-          <div>
+          <div className="min-w-0">
             <h2 className="!text-sm !font-semibold !leading-normal !tracking-[0.2em] !text-text-muted uppercase">{t.footer.connect}</h2>
             <ul className="mt-4 flex flex-col">
               <li>
-                <a className={linkClass} href={`mailto:${profile.email}`}>
+                <a
+                  className="link-arrow w-fit whitespace-nowrap text-[clamp(11px,3.6vw,16px)] md:text-base"
+                  href={`mailto:${profile.email}`}
+                >
                   {profile.email}
                 </a>
               </li>
@@ -61,7 +71,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <p>
             © <CurrentYear /> {profile.fullName}
           </p>
-          <a href="#profile" className="link-arrow print:hidden">
+          <a href="#" className="link-arrow print:hidden">
             {t.footer.backToTop}
             <span className="ml-2 text-accent" aria-hidden="true">
               ↑

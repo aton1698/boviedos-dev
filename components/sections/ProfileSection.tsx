@@ -36,7 +36,7 @@ export function ProfileSection({ locale }: { locale: Locale }) {
 
         <div className="relative hidden lg:block print:hidden" aria-hidden="true">
           <div className="absolute inset-0 -z-10 rounded-full bg-[radial-gradient(closest-side,rgb(37_99_255/0.35),transparent)] blur-2xl" />
-          <Logo className="mx-auto h-auto w-full max-w-xs drop-shadow-[0_0_40px_rgb(37_99_255/0.5)]" />
+          <Logo priority className="mx-auto h-auto w-full max-w-xs drop-shadow-[0_0_40px_rgb(37_99_255/0.5)]" />
         </div>
 
         <dl className="grid gap-6 border-t border-divider pt-8 sm:grid-cols-2 lg:col-span-2">

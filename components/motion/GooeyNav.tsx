@@ -6,6 +6,7 @@ import {
   useRef,
   useState,
   type CSSProperties,
+  type KeyboardEvent,
   type MouseEvent,
   type ReactNode
 } from 'react';
@@ -22,6 +23,9 @@ export interface GooeyNavItem {
   label?: string;
   href?: string;
   icon?: ReactNode;
+  // Local additions (tabs mode): ids of the tab button and the panel it controls.
+  id?: string;
+  controls?: string;
 }
 
 interface GooeyNavProps {
@@ -46,6 +50,8 @@ interface GooeyNavProps {
   style?: CSSProperties;
   // Local additions to the vendored component (accessibility):
   'aria-label'?: string;
+  /** Render as a WAI-ARIA tablist (buttons with role=tab, arrow-key navigation) instead of a link list. */
+  tabs?: boolean;
 }
 
 interface Rect {
@@ -137,6 +143,11 @@ const DEFAULT_ITEMS: GooeyNavItem[] = [
   { label: 'About', href: '#' },
   { label: 'Contact', href: '#' }
 ];
+
+const FADE_PX = 40;
+
+const edgeMask = ({ start, end }: { start: boolean; end: boolean }) =>
+  `linear-gradient(to right, ${start ? 'transparent 0' : '#000 0'}, #000 ${FADE_PX}px, #000 calc(100% - ${FADE_PX}px), ${end ? 'transparent 100%' : '#000 100%'})`;
 
 const MAX_DROPS = 32;
 const MAX_PILLS = 4;
@@ -320,7 +331,8 @@ const GooeyNav = ({
   hoverEffect = true,
   className = '',
   style,
-  'aria-label': ariaLabel
+  'aria-label': ariaLabel,
+  tabs = false
 }: GooeyNavProps) => {
   const [innerIndex, setInnerIndex] = useState(initialActiveIndex);
   const current = Math.min(Math.max(0, activeIndex ?? innerIndex), Math.max(0, items.length - 1));
@@ -328,6 +340,8 @@ const GooeyNav = ({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const overlayRef = useRef<HTMLUListElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [fade, setFade] = useState({ start: false, end: false });
   const fallbackRef = useRef<HTMLSpanElement>(null);
   const engineRef = useRef<{ go: (index: number) => void; refresh: () => void } | null>(null);
   const indexRef = useRef(current);
@@ -809,6 +823,17 @@ const GooeyNav = ({
     resizeObserver.observe(stage);
     resizeObserver.observe(list);
 
+    // Tabs mode scrolls only the options: the pill (canvas) and the frame stay put, so re-measure on scroll
+    // and shift the active-ink overlay by the same offset (see .gooey-nav--tabs in GooeyNav.css).
+    const scroller = scrollRef.current;
+    const onScroll = () => {
+      stage.style.setProperty('--gn-scroll', `${scroller?.scrollLeft ?? 0}px`);
+      measure();
+      if (!drops.length) settle(target < 0 ? indexRef.current : target);
+      else render();
+    };
+    if (tabs) scroller?.addEventListener('scroll', onScroll, { passive: true });
+
     list.addEventListener('pointerover', onOver);
     list.addEventListener('pointerleave', onLeave);
 
@@ -832,6 +857,7 @@ const GooeyNav = ({
       disposed = true;
       cancelAnimationFrame(raf);
       resizeObserver.disconnect();
+      if (tabs) scroller?.removeEventListener('scroll', onScroll);
       list.removeEventListener('pointerover', onOver);
       list.removeEventListener('pointerleave', onLeave);
       if (gl && pipeline) {
@@ -840,7 +866,39 @@ const GooeyNav = ({
       }
       engineRef.current = null;
     };
-  }, [items.length]);
+  }, [items.length, tabs]);
+
+  // Tabs mode: hint hidden options with an edge fade, and keep the active tab centered in view.
+  useEffect(() => {
+    const scroller = scrollRef.current;
+    if (!tabs || !scroller) return undefined;
+    const update = () =>
+      setFade({
+        start: scroller.scrollLeft > 1,
+        end: scroller.scrollLeft + scroller.clientWidth < scroller.scrollWidth - 1
+      });
+    update();
+    scroller.addEventListener('scroll', update, { passive: true });
+    const observer = new ResizeObserver(update);
+    observer.observe(scroller);
+    return () => {
+      scroller.removeEventListener('scroll', update);
+      observer.disconnect();
+    };
+  }, [tabs, items.length]);
+
+  useEffect(() => {
+    const scroller = scrollRef.current;
+    const active = scroller?.querySelector<HTMLElement>('[data-active]');
+    if (!tabs || !scroller || !active || scroller.scrollWidth <= scroller.clientWidth) return;
+    const box = scroller.getBoundingClientRect();
+    const rect = active.getBoundingClientRect();
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    scroller.scrollTo({
+      left: scroller.scrollLeft + (rect.left + rect.width / 2) - (box.left + box.width / 2),
+      behavior: reduce ? 'auto' : 'smooth'
+    });
+  }, [tabs, current]);
 
   useEffect(() => {
     engineRef.current?.go(current);
@@ -870,16 +928,26 @@ const GooeyNav = ({
       const shared = {
         className: 'gooey-nav__link',
         // Local change: sections are in-page anchors, so "location" instead of "page".
-        'aria-current': index === current ? ('location' as const) : undefined,
+        'aria-current': !tabs && index === current ? ('location' as const) : undefined,
         onClick: (event: MouseEvent) => {
           if (!item.href || item.href === '#') event.preventDefault();
           select(index);
-        }
+        },
+        ...(tabs
+          ? {
+              role: 'tab' as const,
+              id: item.id,
+              'aria-selected': index === current,
+              'aria-controls': item.controls,
+              tabIndex: index === current ? 0 : -1
+            }
+          : {})
       };
       return (
         <li
           key={index}
           className="gooey-nav__item"
+          role={tabs ? 'presentation' : undefined}
           data-gooey-index={index}
           data-active={index === current ? '' : undefined}
         >
@@ -896,19 +964,46 @@ const GooeyNav = ({
       );
     });
 
+  const onTabKeyDown = (event: KeyboardEvent<HTMLUListElement>) => {
+    const last = items.length - 1;
+    const next =
+      event.key === 'ArrowRight' ? (current === last ? 0 : current + 1)
+      : event.key === 'ArrowLeft' ? (current === 0 ? last : current - 1)
+      : event.key === 'Home' ? 0
+      : event.key === 'End' ? last
+      : null;
+    if (next === null) return;
+    event.preventDefault();
+    select(next);
+    listRef.current?.querySelectorAll<HTMLElement>('[role="tab"]')[next]?.focus();
+  };
+
   return (
     <nav
-      aria-label={ariaLabel}
-      className={`gooey-nav ${SIZES[size] ?? SIZES.md}${frame ? ' gooey-nav--framed' : ''} ${className}`.trim()}
+      aria-label={tabs ? undefined : ariaLabel}
+      role={tabs ? 'presentation' : undefined}
+      className={`gooey-nav ${SIZES[size] ?? SIZES.md}${frame ? ' gooey-nav--framed' : ''}${tabs ? ' gooey-nav--tabs' : ''} ${className}`.trim()}
       style={{ ...THEMES[palette], '--gn-pill': pillColor, '--gn-active-ink': textColor, ...style } as CSSProperties}
     >
       {frame && <span className="gooey-nav__rim" />}
-      <div ref={stageRef} className="gooey-nav__stage">
+      <div
+        ref={stageRef}
+        className="gooey-nav__stage"
+        style={tabs && (fade.start || fade.end) ? { maskImage: edgeMask(fade), WebkitMaskImage: edgeMask(fade) } : undefined}
+      >
         <canvas ref={canvasRef} className="gooey-nav__canvas" aria-hidden="true" />
         <span ref={fallbackRef} className="gooey-nav__fallback" aria-hidden="true" />
-        <ul ref={listRef} className="gooey-nav__list">
+        <div ref={scrollRef} className="gooey-nav__scroll">
+        <ul
+          ref={listRef}
+          className="gooey-nav__list"
+          role={tabs ? 'tablist' : undefined}
+          aria-label={tabs ? ariaLabel : undefined}
+          onKeyDown={tabs ? onTabKeyDown : undefined}
+        >
           {labels(true)}
         </ul>
+        </div>
         <ul ref={overlayRef} className="gooey-nav__list gooey-nav__list--active" aria-hidden="true">
           {labels(false)}
         </ul>

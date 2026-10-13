@@ -1,8 +1,8 @@
 import type { Locale } from "@/lib/i18n";
-import type { SectionId } from "./index";
+import type { NavId } from "./index";
 
 export interface UiStrings {
-  nav: Record<SectionId, string>;
+  nav: Record<NavId, string>;
   skipLink: string;
   menu: string;
   mainNav: string;
@@ -19,7 +19,19 @@ export interface UiStrings {
     research: string;
     contact: string;
     credentials: string;
+    cv: string;
+    blog: string;
   };
+  viewFullCv: string;
+  backHome: string;
+  blog: {
+    intro: string;
+    comingSoon: string;
+    emptyTitle: string;
+    emptyCopy: string;
+    metaDescription: string;
+  };
+  cvMeta: { title: string; description: string };
   contributionsIntro: string;
   contactCopy: string;
   contactLabels: { email: string; phone: string; location: string };
@@ -47,6 +59,8 @@ export const ui: Record<Locale, UiStrings> = {
       education: "Education",
       credentials: "Certifications & Courses",
       contact: "Contact",
+      cv: "CV",
+      blog: "Blog",
     },
     skipLink: "Skip to main content",
     menu: "Menu",
@@ -64,6 +78,22 @@ export const ui: Record<Locale, UiStrings> = {
       contributions: "What I bring to a team.",
       contact: "Excited for the next opportunity. Let’s talk.",
       credentials: "Certifications & Courses",
+      cv: "Experience, in brief.",
+      blog: "Writing. Professional and personal.",
+    },
+    viewFullCv: "View full CV",
+    backHome: "Back to home",
+    blog: {
+      intro: "Two blogs: one about engineering and the craft, one about everything else.",
+      comingSoon: "Coming soon",
+      emptyTitle: "No posts yet",
+      emptyCopy: "The first posts are on their way. Check back soon.",
+      metaDescription: "Blog by Brandon Oviedo Sánchez.",
+    },
+    cvMeta: {
+      title: "Curriculum Vitae | Brandon Oviedo Sánchez",
+      description:
+        "Full CV of Brandon Oviedo Sánchez: skills, professional experience, contributions, education and research.",
     },
     contributionsIntro: "Selected contributions from my professional experience.",
     contactCopy: "If my experience matches what you’re looking for, I’d be glad to connect.",
@@ -100,6 +130,8 @@ export const ui: Record<Locale, UiStrings> = {
       education: "Educación",
       credentials: "Certificaciones y cursos",
       contact: "Contacto",
+      cv: "CV",
+      blog: "Blog",
     },
     skipLink: "Saltar al contenido principal",
     menu: "Menú",
@@ -117,6 +149,22 @@ export const ui: Record<Locale, UiStrings> = {
       contributions: "Lo que aporto a un equipo.",
       contact: "Entusiasmo por la próxima oportunidad. Hablemos.",
       credentials: "Certificaciones y cursos",
+      cv: "Experiencia, en breve.",
+      blog: "Escritura. Profesional y personal.",
+    },
+    viewFullCv: "Ver CV completo",
+    backHome: "Volver al inicio",
+    blog: {
+      intro: "Dos blogs: uno sobre ingeniería y el oficio, otro sobre todo lo demás.",
+      comingSoon: "Próximamente",
+      emptyTitle: "Aún no hay publicaciones",
+      emptyCopy: "Las primeras publicaciones están en camino. Vuelve pronto.",
+      metaDescription: "Blog de Brandon Oviedo Sánchez.",
+    },
+    cvMeta: {
+      title: "Currículum | Brandon Oviedo Sánchez",
+      description:
+        "CV completo de Brandon Oviedo Sánchez: habilidades, experiencia profesional, contribuciones, educación e investigación.",
     },
     contributionsIntro: "Contribuciones seleccionadas de mi experiencia profesional.",
     contactCopy: "Si mi experiencia coincide con lo que buscas, con gusto conversamos.",

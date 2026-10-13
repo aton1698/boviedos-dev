@@ -3,14 +3,17 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
+  BookOpen01Icon,
   Briefcase01Icon,
   Certificate01Icon,
   CodeIcon,
+  File01Icon,
   GraduationScrollIcon,
   Layers01Icon,
   Mail01Icon,
   UserIcon,
 } from "@hugeicons/core-free-icons";
+import { DragSelect } from "./DragSelect";
 import GooeyNav from "./motion/GooeyNav";
 
 interface NavLink {
@@ -36,12 +39,15 @@ const ICONS: Record<string, ReactNode> = {
   education: <HugeiconsIcon icon={GraduationScrollIcon} size={24} strokeWidth={1.75} />,
   credentials: <HugeiconsIcon icon={Certificate01Icon} size={24} strokeWidth={1.75} />,
   contact: <HugeiconsIcon icon={Mail01Icon} size={24} strokeWidth={1.75} />,
+  cv: <HugeiconsIcon icon={File01Icon} size={24} strokeWidth={1.75} />,
+  blog: <HugeiconsIcon icon={BookOpen01Icon} size={24} strokeWidth={1.75} />,
 };
 
 /**
  * One GooeyNav for every viewport: a fixed floating icon bar at the bottom below 1440px
- * (labels stay in the DOM for assistive tech) and, from 1440px up, a labelled bar absolutely
- * positioned INSIDE the sticky header, so it always moves with it (including macOS overscroll bounce). Anchors work without JavaScript; JS adds the active pill.
+ * (labels stay in the DOM for assistive tech) and, from 1440px up, a labelled bar fixed over the
+ * header row. It is rendered outside the sticky header (see SiteHeader). Anchors work without
+ * JavaScript; JS adds the active pill.
  */
 export function SiteNav({ links, navLabel }: SiteNavProps) {
   const [active, setActive] = useState<string | null>(null);
@@ -91,15 +97,25 @@ export function SiteNav({ links, navLabel }: SiteNavProps) {
     "--gn-muted": "rgb(243 246 255 / 0.82)",
     "--gn-frame": "var(--nav-surface)",
   } as CSSProperties;
-  // 6 icons at 48px fit a 320px screen; a 7th (credentials) needs tighter padding.
+  // 6 icons at 48px fit a 320px screen; a 7th (credentials on /cv) needs tighter padding.
   const mobileX = links.length > 6 ? "8px" : "12px";
 
   return (
     <div
       style={{ "--site-gn-x-mobile": mobileX } as CSSProperties}
-      className="print:hidden pointer-events-none fixed inset-x-0 bottom-[max(16px,env(safe-area-inset-bottom))] z-50 flex justify-center px-2 [--site-gn-font:21px] [--site-gn-gap:0px] [--site-gn-pad:6px] [--site-gn-x:var(--site-gn-x-mobile)] [--site-gn-y:14px] min-[1440px]:absolute min-[1440px]:bottom-auto min-[1440px]:top-0 min-[1440px]:h-[var(--header-height)] min-[1440px]:items-center min-[1440px]:[--site-gn-font:14px] min-[1440px]:[--site-gn-gap:4px] min-[1440px]:[--site-gn-pad:6px] min-[1440px]:[--site-gn-x:12px] min-[1536px]:[--site-gn-x:16px] min-[1440px]:[--site-gn-y:14px]"
+      className="print:hidden pointer-events-none fixed inset-x-0 bottom-[max(16px,env(safe-area-inset-bottom))] z-50 flex justify-center px-2 [--site-gn-font:21px] [--site-gn-gap:0px] [--site-gn-pad:6px] [--site-gn-x:var(--site-gn-x-mobile)] [--site-gn-y:14px] min-[1440px]:bottom-auto min-[1440px]:top-0 min-[1440px]:h-[var(--header-height)] min-[1440px]:items-center min-[1440px]:[--site-gn-font:14px] min-[1440px]:[--site-gn-gap:4px] min-[1440px]:[--site-gn-pad:6px] min-[1440px]:[--site-gn-x:12px] min-[1536px]:[--site-gn-x:16px] min-[1440px]:[--site-gn-y:14px]"
     >
-      <div className="pointer-events-auto">
+      <DragSelect
+        className="pointer-events-auto"
+        onPreview={(index) => {
+          lockUntil.current = Date.now() + 900;
+          setActive(links[index].id);
+        }}
+        onCommit={(_, item) => {
+          lockUntil.current = Date.now() + 900;
+          item.querySelector("a")?.click();
+        }}
+      >
         <GooeyNav
           aria-label={navLabel}
           style={sizing}
@@ -123,7 +139,7 @@ export function SiteNav({ links, navLabel }: SiteNavProps) {
           color={NAV_PILL}
           activeTextColor={NAV_PILL_INK}
         />
-      </div>
+      </DragSelect>
     </div>
   );
 }

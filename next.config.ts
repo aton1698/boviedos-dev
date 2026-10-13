@@ -15,7 +15,11 @@ const nextConfig: NextConfig = {
   },
   // English is served at the site root (canonical https://boviedos.dev); /en still resolves.
   async rewrites() {
-    return [{ source: "/", destination: "/en" }];
+    return [
+      { source: "/", destination: "/en" },
+      { source: "/cv", destination: "/en/cv" },
+      { source: "/blog/:category", destination: "/en/blog/:category" },
+    ];
   },
   // Defense in depth: anything that is not production must never be indexed.
   async headers() {

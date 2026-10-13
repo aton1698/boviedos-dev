@@ -11,6 +11,7 @@ import {
 import type { Credential, Localized } from "./types";
 
 export * from "./types";
+export { blogCategories, type BlogCategory, type BlogCategoryId } from "./blog";
 export {
   contributions,
   education,
@@ -62,6 +63,7 @@ function validateContent() {
 
   const ids = new Set<string>();
   for (const e of experiences) {
+    assert(Boolean(e.id && e.employer), "every experience needs an id and employer");
     assert(!ids.has(e.id), `duplicate experience id ${e.id}`);
     ids.add(e.id);
     assert(ISO_MONTH.test(e.startDate), `${e.id}.startDate must be YYYY-MM`);
@@ -117,9 +119,19 @@ export const sectionIds = [
 ] as const;
 export type SectionId = (typeof sectionIds)[number];
 
+/** Sections of the home page; the full CV lives at /cv (sectionIds). */
+export const homeSectionIds = ["profile", "cv", "blog", "contact"] as const;
+export type HomeSectionId = (typeof homeSectionIds)[number];
+export type NavId = SectionId | HomeSectionId;
+
 /** Single source for rendered sections and navigation links. */
 export const visibleSections: SectionId[] = sectionIds.filter(
   (id) => id !== "credentials" || verifiedCredentials.length > 0,
+);
+
+/** Sections of the /cv page: the full CV without the hero and contact blocks (those live on home). */
+export const cvPageSectionIds: SectionId[] = visibleSections.filter(
+  (id) => id !== "profile" && id !== "contact",
 );
 
 /** Formats an ISO month (YYYY-MM) for display; null means present. */

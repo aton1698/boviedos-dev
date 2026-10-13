@@ -137,3 +137,50 @@
     color: var(--gn-ink);
   }
 }
+
+/* Tabs mode: one line, never wrapping; long labels are cut with an ellipsis. */
+.gooey-nav--tabs .gooey-nav__list {
+  flex-wrap: nowrap;
+}
+
+.gooey-nav--tabs .gooey-nav__item {
+  flex: none;
+}
+
+.gooey-nav--tabs .gooey-nav__label {
+  display: block;
+  max-width: 12em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gooey-nav__scroll {
+  max-width: 100%;
+}
+
+/* Tabs mode: only the options scroll; the frame, pill and canvas stay in place. */
+.gooey-nav--tabs .gooey-nav__scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.gooey-nav--tabs .gooey-nav__scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.gooey-nav--tabs .gooey-nav__list--active > li:first-child {
+  margin-left: calc(-1 * var(--gn-scroll, 0px));
+}
+
+/* Flex items default to min-width:auto, which would stop the scroller from shrinking below its content. */
+.gooey-nav--tabs .gooey-nav__stage,
+.gooey-nav--tabs .gooey-nav__scroll {
+  min-width: 0;
+}
+
+/* The active-ink overlay mirrors every option; clip it to the stage so offscreen tabs never widen the page. */
+.gooey-nav--tabs .gooey-nav__list--active {
+  overflow: hidden;
+}

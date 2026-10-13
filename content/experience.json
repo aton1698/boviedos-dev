@@ -1,0 +1,78 @@
+[
+  {
+    "id": "moodys",
+    "employer": "Moody’s",
+    "role": {
+      "en": "Software Engineer",
+      "es": "Ingeniero de Software"
+    },
+    "startDate": "2025-12",
+    "endDate": null,
+    "bullets": {
+      "en": [
+        "Develop reusable React and TypeScript features for a risk analysis application.",
+        "Improve performance, resolve bugs and support peers through code reviews."
+      ],
+      "es": [
+        "Desarrollo funcionalidades reutilizables con React y TypeScript para una aplicación de análisis de riesgo.",
+        "Mejoro el rendimiento, resuelvo errores y apoyo a mis compañeros mediante revisiones de código."
+      ]
+    },
+    "technologies": [
+      "React",
+      "TypeScript"
+    ]
+  },
+  {
+    "id": "daugherty-cgi",
+    "employer": "CGI",
+    "role": {
+      "en": "Intermediate Full Stack Software Developer",
+      "es": "Desarrollador de Software Full Stack Intermedio"
+    },
+    "startDate": "2024-01",
+    "endDate": "2025-12",
+    "bullets": {
+      "en": [
+        "Built React interfaces and Java / Spring Boot microservices.",
+        "Integrated modern and legacy systems; streamlined incident resolution with internal tools."
+      ],
+      "es": [
+        "Construí interfaces con React y microservicios con Java / Spring Boot.",
+        "Integré sistemas modernos y heredados; agilicé la resolución de incidentes con herramientas internas."
+      ]
+    },
+    "technologies": [
+      "React",
+      "Java",
+      "Spring Boot"
+    ]
+  },
+  {
+    "id": "edify",
+    "employer": "Edify Software Consulting",
+    "role": {
+      "en": "Intermediate Full Stack Software Developer",
+      "es": "Desarrollador de Software Full Stack Intermedio"
+    },
+    "startDate": "2021-01",
+    "endDate": "2024-01",
+    "bullets": {
+      "en": [
+        "Delivered applications with Spring Boot, NestJS, Next.js, PostgreSQL and AWS.",
+        "Built secure integrations and mentored teammates as Engineering Champion."
+      ],
+      "es": [
+        "Entregué aplicaciones con Spring Boot, NestJS, Next.js, PostgreSQL y AWS.",
+        "Construí integraciones seguras y mentoreé a compañeros como Engineering Champion."
+      ]
+    },
+    "technologies": [
+      "Spring Boot",
+      "NestJS",
+      "Next.js",
+      "PostgreSQL",
+      "AWS"
+    ]
+  }
+]

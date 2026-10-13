@@ -1,6 +1,5 @@
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
-  Call02Icon,
   LinkSquare01Icon,
   Location01Icon,
   Mail01Icon,
@@ -17,7 +16,6 @@ const rowClass = "flex min-h-11 items-center gap-3 py-2";
 
 export function ContactSection({ locale }: { locale: Locale }) {
   const t = ui[locale];
-  const telHref = `tel:${profile.phone.replace(/[^\d+]/g, "")}`;
 
   return (
     <section id="contact" aria-labelledby="contact-title" className="border-t border-divider">
@@ -34,15 +32,6 @@ export function ContactSection({ locale }: { locale: Locale }) {
               <span>
                 <span className="sr-only">{t.contactLabels.email}: </span>
                 {profile.email}
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href={telHref} className={`${rowClass} link-arrow`}>
-              <HugeiconsIcon icon={Call02Icon} {...iconProps} aria-hidden="true" />
-              <span>
-                <span className="sr-only">{t.contactLabels.phone}: </span>
-                {profile.phone}
               </span>
             </a>
           </li>
