@@ -20,8 +20,8 @@ export const profile: Profile = {
     es: "Ingeniero de Software Full Stack",
   },
   summary: {
-    en: "I build reliable digital products, from the interface to the backend.",
-    es: "Construyo productos digitales confiables, desde la interfaz hasta el backend.",
+    en: "I build reliable digital products, from the backend to the interface.",
+    es: "Construyo productos digitales confiables, desde el backend hasta la interfaz.",
   },
   supportingLine: {
     en: "5+ years turning business needs into software that works.",

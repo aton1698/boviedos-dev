@@ -1,7 +1,10 @@
 import type { NavId } from "@/content";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Mail01Icon } from "@hugeicons/core-free-icons";
 import { ui } from "@/content/ui";
 import type { Locale } from "@/lib/i18n";
 import { localePath } from "@/lib/site";
+import { HeaderContactButton } from "./HeaderContactButton";
 import { LanguageSelect } from "./LanguageSelect";
 import { Logo } from "./Logo";
 import { SiteNav } from "./SiteNav";
@@ -37,6 +40,11 @@ export function SiteHeader({ locale, sections, path = "" }: SiteHeaderProps) {
           >
             <Logo priority className="h-12 w-auto shrink-0" />
           </a>
+          <HeaderContactButton
+            href={isHome ? "#contact" : `${localePath(locale)}#contact`}
+            label={t.cta}
+            fadeWithHero={isHome}
+          />
           <div className="flex items-center gap-3">
             <LanguageSelect
               locale={locale}
@@ -48,8 +56,8 @@ export function SiteHeader({ locale, sections, path = "" }: SiteHeaderProps) {
               href={isHome ? "#contact" : `${localePath(locale)}#contact`}
               className="btn-primary hidden !min-h-11 !px-5 text-sm sm:inline-flex"
             >
+              <HugeiconsIcon icon={Mail01Icon} size={20} strokeWidth={1.75} aria-hidden="true" />
               {t.cta}
-              <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>

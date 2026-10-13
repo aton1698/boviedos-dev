@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { File01Icon } from "@hugeicons/core-free-icons";
 import { ui } from "@/content/ui";
 import type { Locale } from "@/lib/i18n";
 import { localePath } from "@/lib/site";
@@ -30,8 +32,8 @@ export function CvSection({ locale }: { locale: Locale }) {
         />
         <div className="fade-row border-t border-divider pt-8">
           <Link className="btn-primary" href={localePath(locale, "/cv")}>
+            <HugeiconsIcon icon={File01Icon} size={20} strokeWidth={1.75} aria-hidden="true" />
             {t.viewFullCv}
-            <span aria-hidden="true">→</span>
           </Link>
         </div>
       </div>

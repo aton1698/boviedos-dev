@@ -11,7 +11,8 @@ import { Logo } from "./Logo";
 
 // One size for every footer link (15px on phones, the page size from md up); only the email shrinks further on
 // narrow phones so it stays on one line.
-const linkClass = "link-arrow w-fit max-w-full text-[15px] md:text-[1em] [overflow-wrap:anywhere]";
+const linkClass =
+  "link-arrow w-fit max-w-full text-[15px] [overflow-wrap:anywhere] max-md:justify-center max-md:rounded-full max-md:border max-md:border-[rgb(147_197_253/0.3)] max-md:bg-white/5 max-md:px-4 md:text-[1em]";
 const headingClass =
   "!text-sm !font-semibold !leading-normal !tracking-[0.2em] !text-text-muted uppercase";
 const iconProps = { size: 18, strokeWidth: 1.75 } as const;
@@ -23,17 +24,17 @@ export function SiteFooter({ locale }: { locale: Locale }) {
 
   return (
     <footer className="border-t border-divider bg-[var(--nav-surface)] backdrop-blur-sm">
-      <div className="container-page pt-16 pb-8 print:pt-4">
-        <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] gap-x-4 gap-y-12 print:hidden md:grid-cols-[1.1fr_1fr_1fr] md:gap-x-12">
-          <div className="col-span-2 md:col-span-1">
-            <Logo priority className="h-14 w-auto" />
+      <div className="container-page pt-12 pb-8 md:pt-16 print:pt-4">
+        <div className="grid grid-cols-1 gap-y-10 text-center print:hidden md:grid-cols-[1.1fr_1fr_1fr] md:gap-x-12 md:gap-y-12 md:text-left">
+          <div className="flex flex-col items-center md:block">
+            <Logo priority className="h-14 w-auto md:mx-0" />
             <p className="mt-6 text-lg font-semibold">{profile.fullName}</p>
-            <p className="eyebrow mt-3">{profile.headline[locale]}</p>
+            <p className="eyebrow mt-3 max-md:flex max-md:flex-col max-md:items-center">{profile.headline[locale]}</p>
           </div>
 
           <nav aria-label={t.footer.navLabel}>
             <h2 className={headingClass}>{t.footer.navigate}</h2>
-            <ul className="mt-4 flex flex-col">
+            <ul className="mt-4 flex flex-wrap justify-center gap-2 md:flex-col md:items-start md:gap-0">
               <li>
                 <Link className={linkClass} href={home}>
                   {t.footer.home}
@@ -61,10 +62,10 @@ export function SiteFooter({ locale }: { locale: Locale }) {
 
           <div className="min-w-0">
             <h2 className={headingClass}>{t.footer.connect}</h2>
-            <ul className="mt-4 flex flex-col">
+            <ul className="mt-4 flex flex-wrap justify-center gap-2 md:flex-col md:items-start md:gap-0">
               <li>
                 <a
-                  className={`${linkClass} gap-2 whitespace-nowrap max-[400px]:text-[13px] max-[340px]:text-[11.5px] md:gap-3`}
+                  className={`${linkClass} gap-2 md:gap-3`}
                   href={`mailto:${profile.email}`}
                 >
                   <HugeiconsIcon icon={Mail01Icon} {...iconProps} aria-hidden="true" className="shrink-0 text-accent" />
@@ -90,8 +91,8 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-2 border-divider text-sm text-text-muted md:mt-14 md:border-t md:pt-6 print:mt-0 print:border-0 print:pt-0 [&:not(:first-child)]:mt-12">
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-1">
+        <div className="flex flex-col flex-wrap items-center justify-between gap-x-8 gap-y-2 border-divider text-center text-sm md:flex-row md:text-left text-text-muted mt-10 border-t pt-8 md:mt-14 md:pt-6 print:mt-0 print:border-0 print:pt-0">
+          <div className="flex flex-col items-center gap-x-6 gap-y-1 md:flex-row md:flex-wrap">
             <p>
               © <CurrentYear /> {profile.fullName}
             </p>
