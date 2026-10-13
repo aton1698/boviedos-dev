@@ -74,7 +74,7 @@ export const ui: Record<Locale, UiStrings> = {
     technologies: "Technologies",
     headings: {
       skills: "Full stack. Clear strengths.",
-      experience: "Product engineering, shaped by consulting.",
+      experience: "Product engineering, end to end.",
       education: "Education. Research. Community.",
       research: "Research & Speaking",
       contributions: "What I bring to a team.",
@@ -146,7 +146,7 @@ export const ui: Record<Locale, UiStrings> = {
     technologies: "Tecnologías",
     headings: {
       skills: "Full stack. Fortalezas claras.",
-      experience: "Ingeniería de producto, con base en consultoría.",
+      experience: "Ingeniería de producto, de punta a punta.",
       education: "Educación. Investigación. Comunidad.",
       research: "Investigación y ponencias",
       contributions: "Lo que aporto a un equipo.",

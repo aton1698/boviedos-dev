@@ -17,6 +17,8 @@ export interface ExperienceTab {
 const TAB_PILL = "#2563ff";
 const TAB_PILL_INK = "#ffffff";
 
+const MOBILE_BULLETS = 2;
+
 const sizing = {
   "--gn-font": "15px",
   "--gn-pad": "6px",
@@ -72,8 +74,11 @@ export function ExperienceTabs({
             <p className="mt-1 text-text-muted">{tab.role}</p>
           </div>
           <ul className="flex flex-col gap-3">
-            {tab.bullets.map((bullet) => (
-              <li key={bullet}>{bullet}</li>
+            {tab.bullets.map((bullet, i) => (
+              // Mobile shows the first two bullets only; the full CV page has them all.
+              <li key={bullet} className={i >= MOBILE_BULLETS ? "max-md:hidden" : undefined}>
+                {bullet}
+              </li>
             ))}
           </ul>
           <div className="lg:col-start-2 lg:col-span-2">

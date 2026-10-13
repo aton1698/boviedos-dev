@@ -57,7 +57,7 @@ ________________
 
 Experience and Contributions
 Experience content
-Heading: Product engineering. Consulting experience. Present roles in reverse chronological order with dates, employer, exact role title and concise supporting bullets.
+Heading: Product engineering, end to end. Present roles in reverse chronological order with dates, employer, exact role title and concise supporting bullets.
 * Moody’s | Dec 2025–Present | Software Engineer. Develop reusable React and TypeScript features for a risk analysis application. Improve performance, resolve bugs and support peers through code reviews.
 * Daugherty / CGI | Jan 2024–Dec 2025 | Intermediate Full Stack Software Developer. Built React interfaces and Java / Spring Boot microservices. Integrated modern and legacy systems; streamlined incident resolution with internal tools.
 * Edify Software Consulting | Jan 2021–Jan 2024 | Intermediate Full Stack Software Developer. Delivered applications with Spring Boot, NestJS, Next.js, PostgreSQL and AWS. Built secure integrations and mentored teammates as Engineering Champion.
