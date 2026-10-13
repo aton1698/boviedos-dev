@@ -56,8 +56,8 @@ export default async function BlogCategoryPage({ params }: PageProps<"/[locale]/
                 {category.title[locale]}
               </SectionHeading>
             </div>
-            <p className="mt-6 max-w-[48ch] text-text-muted">{category.description[locale]}</p>
-            <div className="mt-12 rounded-2xl border border-divider bg-surface p-8">
+            <p className="reveal mt-6 max-w-[48ch] text-text-muted">{category.description[locale]}</p>
+            <div className="reveal mt-12 rounded-2xl border border-divider bg-surface p-8">
               <h2 className="text-xl">{t.blog.emptyTitle}</h2>
               <p className="mt-2 text-text-muted">{t.blog.emptyCopy}</p>
             </div>

@@ -28,7 +28,7 @@ export function CvSection({ locale }: { locale: Locale }) {
             technologies: job.technologies,
           }))}
         />
-        <div className="border-t border-divider pt-8">
+        <div className="fade-row border-t border-divider pt-8">
           <Link className="btn-primary" href={localePath(locale, "/cv")}>
             {t.viewFullCv}
             <span aria-hidden="true">→</span>

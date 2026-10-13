@@ -25,7 +25,7 @@ export function ContactSection({ locale }: { locale: Locale }) {
         </SectionHeading>
         <p className="mt-6 max-w-[48ch] text-text-muted">{t.contactCopy}</p>
 
-        <ul className="mt-12 grid gap-x-8 sm:grid-cols-2 lg:max-w-3xl">
+        <ul className="fade-row mt-12 grid gap-x-8 sm:grid-cols-2 lg:max-w-3xl">
           <li>
             <a href={`mailto:${profile.email}`} className={`${rowClass} link-arrow`}>
               <HugeiconsIcon icon={Mail01Icon} {...iconProps} aria-hidden="true" />
@@ -57,7 +57,7 @@ export function ContactSection({ locale }: { locale: Locale }) {
           </li>
         </ul>
 
-        <div className="mt-10">
+        <div className="fade-row mt-10">
           <CvDownload locale={locale} />
         </div>
       </div>

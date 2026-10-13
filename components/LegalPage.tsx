@@ -28,10 +28,10 @@ export function LegalPage({ id, locale }: { id: LegalPageId; locale: Locale }) {
             <p className="label mt-6">
               {t.lastUpdated}: <time dateTime={legalUpdated}>{updated}</time>
             </p>
-            <p className="mt-6 max-w-[64ch] text-lg text-text-muted">{doc.intro}</p>
+            <p className="reveal mt-6 max-w-[64ch] text-lg text-text-muted">{doc.intro}</p>
             <div className="mt-12 max-w-[64ch]">
               {doc.sections.map((section) => (
-                <section key={section.heading} className="border-t border-divider py-8">
+                <section key={section.heading} className="reveal border-t border-divider py-8">
                   <h2 className="text-xl">{section.heading}</h2>
                   {section.paragraphs.map((paragraph) => (
                     <p key={paragraph} className="mt-4 leading-7 text-text-muted lg:leading-8">

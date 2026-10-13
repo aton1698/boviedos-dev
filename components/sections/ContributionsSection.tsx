@@ -10,7 +10,7 @@ export function ContributionsSection({ locale }: { locale: Locale }) {
   return (
     <section id="contributions" aria-labelledby="contributions-title" className="border-t border-divider">
       <div className="container-page section-y">
-        <SectionHeading id="contributions-title" eyebrow={t.nav.contributions} className="max-w-[22ch]">
+        <SectionHeading id="contributions-title" eyebrow={t.nav.contributions} className="max-w-[26ch]">
           {t.headings.contributions}
         </SectionHeading>
         <p className="mt-6 max-w-[48ch] text-text-muted">{t.contributionsIntro}</p>
@@ -22,7 +22,7 @@ export function ContributionsSection({ locale }: { locale: Locale }) {
             return (
               <li
                 key={item.id}
-                className="grid gap-4 border-t border-divider py-10 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-16 lg:py-12"
+                className="fade-row grid gap-4 border-t border-divider py-10 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-16 lg:py-12"
               >
                 <div>
                   <p className="label !text-accent">{String(index + 1).padStart(2, "0")}</p>

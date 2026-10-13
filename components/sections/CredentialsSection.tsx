@@ -32,7 +32,7 @@ export function CredentialsSection({ locale }: { locale: Locale }) {
                 {items.map((c) => (
                   <li
                     key={c.id}
-                    className="grid gap-4 border-t border-divider py-10 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-16 lg:py-12"
+                    className="fade-row grid gap-4 border-t border-divider py-10 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-16 lg:py-12"
                   >
                     <div>
                       <p className="label">{formatMonth(c.issueDate, locale)}</p>

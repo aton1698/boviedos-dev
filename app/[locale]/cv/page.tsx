@@ -48,11 +48,11 @@ export default async function CvPage({ params }: PageProps<"/[locale]/cv">) {
       <PersonJsonLd locale={locale} />
       <SiteHeader locale={locale} sections={cvPageSectionIds} path="/cv" />
       <main id="main" className="pb-24 min-[1440px]:pb-0 print:pb-0">
-        <div className="container-page pt-6 print:hidden">
+        <div className="hero-exit container-page pt-6 print:hidden">
           <BackButton locale={locale} />
-          <p className="eyebrow mt-8">{ui[locale].nav.cv}</p>
-          <h1 className="mt-6">{profile.fullName}</h1>
-          <p className="mt-6 mb-12 max-w-[64ch] text-lg leading-relaxed text-text-muted">{profile.cvSummary[locale]}</p>
+          <p className="eyebrow mt-8 max-md:flex max-md:flex-col max-md:items-center">{ui[locale].nav.cv}</p>
+          <h1 className="mt-6 max-md:text-center">{profile.fullName}</h1>
+          <p className="reveal mt-6 mb-12 max-w-[64ch] max-md:text-center text-lg leading-relaxed text-text-muted">{profile.cvSummary[locale]}</p>
         </div>
         {cvPageSectionIds.map((id) => {
           const Section = sectionComponents[id];

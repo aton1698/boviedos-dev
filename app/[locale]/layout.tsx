@@ -57,6 +57,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
+      data-scroll-behavior="smooth"
       className={`${jakarta.variable} [--font-body:var(--font-heading)]`}
     >
       <body>

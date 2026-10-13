@@ -26,7 +26,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
       <div className="container-page pt-16 pb-8 print:pt-4">
         <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] gap-x-4 gap-y-12 print:hidden md:grid-cols-[1.1fr_1fr_1fr] md:gap-x-12">
           <div className="col-span-2 md:col-span-1">
-            <Logo className="h-14 w-auto" />
+            <Logo priority className="h-14 w-auto" />
             <p className="mt-6 text-lg font-semibold">{profile.fullName}</p>
             <p className="eyebrow mt-3">{profile.headline[locale]}</p>
           </div>

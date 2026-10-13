@@ -15,7 +15,7 @@ export function SkillsSection({ locale }: { locale: Locale }) {
           {skillGroups.map((group) => (
             <div
               key={group.id}
-              className="grid gap-4 border-t border-divider py-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-8"
+              className="fade-row grid gap-4 border-t border-divider py-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-8"
             >
               <h3 className="!text-lg lg:!pt-2 lg:!text-xl">{group.title[locale]}</h3>
               <ul className="flex flex-wrap gap-2">

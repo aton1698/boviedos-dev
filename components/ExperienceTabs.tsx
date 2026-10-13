@@ -46,18 +46,20 @@ export function ExperienceTabs({
   const panelId = (i: number) => `${baseId}-panel-${i}`;
 
   return (
-    <div className="mt-12">
-      <GooeyNav
-        tabs
-        aria-label={label}
-        style={sizing}
-        items={tabs.map((tab, i) => ({ label: tab.employer, id: tabId(i), controls: panelId(i) }))}
-        activeIndex={selected}
-        onChange={setSelected}
-        theme="dark"
-        color={TAB_PILL}
-        activeTextColor={TAB_PILL_INK}
-      />
+    <div className="fade-row mt-12">
+      <div className="flex justify-center">
+        <GooeyNav
+          tabs
+          aria-label={label}
+          style={sizing}
+          items={tabs.map((tab, i) => ({ label: tab.employer, id: tabId(i), controls: panelId(i) }))}
+          activeIndex={selected}
+          onChange={setSelected}
+          theme="dark"
+          color={TAB_PILL}
+          activeTextColor={TAB_PILL_INK}
+        />
+      </div>
 
       {tabs.map((tab, i) => (
         <div

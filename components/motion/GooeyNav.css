@@ -138,7 +138,7 @@
   }
 }
 
-/* Tabs mode: one line, never wrapping; long labels are cut with an ellipsis. */
+/* Tabs mode: one line, never wrapping; labels are cut with an ellipsis only in compact mode. */
 .gooey-nav--tabs .gooey-nav__list {
   flex-wrap: nowrap;
 }
@@ -149,10 +149,14 @@
 
 .gooey-nav--tabs .gooey-nav__label {
   display: block;
+  white-space: nowrap;
+}
+
+/* Set from GooeyNav.tsx only when the full labels no longer fit the container. */
+.gooey-nav--tabs.gooey-nav--compact .gooey-nav__label {
   max-width: 12em;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .gooey-nav__scroll {

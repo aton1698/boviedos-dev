@@ -110,8 +110,8 @@ export const contributions: Contribution[] = [
     title: { en: "Maintainable interfaces", es: "Interfaces mantenibles" },
     employer: "Moody’s",
     description: {
-      en: "Reusable React and TypeScript components for risk analysis workflows.",
-      es: "Componentes reutilizables con React y TypeScript para flujos de análisis de riesgo.",
+      en: "Built reusable React and TypeScript components for a risk analysis web application, with an AI-first approach. I focus on clean, scalable code and better performance, and I keep the app stable by finding and fixing bugs early. I also review teammates’ code and share technical guidance within an agile team.",
+      es: "Construí componentes reutilizables con React y TypeScript para una aplicación web de análisis de riesgo, con un enfoque AI-first. Me enfoco en código limpio y escalable y en mejorar el rendimiento, y mantengo la aplicación estable detectando y corrigiendo errores a tiempo. También reviso el código de mis compañeros y comparto guía técnica dentro de un equipo ágil.",
     },
     relatedExperienceId: "moodys",
   },
@@ -120,8 +120,8 @@ export const contributions: Contribution[] = [
     title: { en: "More efficient operations", es: "Operaciones más eficientes" },
     employer: "CGI",
     description: {
-      en: "Investigation, reverse engineering and internal tools that made incident resolution faster.",
-      es: "Investigación, ingeniería inversa y herramientas internas para resolver incidentes más rápido.",
+      en: "Investigated and reverse-engineered existing processes to improve them, then built scripts and internal tools that streamlined workflows and significantly reduced resolution times for complex incidents. I also adapted endpoints so modern features and legacy systems could work together, and provided advanced technical support.",
+      es: "Investigué e hice ingeniería inversa de procesos existentes para mejorarlos, y desarrollé scripts y herramientas internas que agilizaron los flujos de trabajo y redujeron de forma significativa los tiempos de resolución de incidentes complejos. También adapté endpoints para que las funcionalidades modernas y los sistemas heredados trabajaran juntos, y brindé soporte técnico avanzado.",
     },
     relatedExperienceId: "daugherty-cgi",
   },
@@ -130,8 +130,8 @@ export const contributions: Contribution[] = [
     title: { en: "End-to-end delivery", es: "Entrega de extremo a extremo" },
     employer: "Edify Software Consulting",
     description: {
-      en: "Application architecture, secure APIs, external integrations and technical mentoring.",
-      es: "Arquitectura de aplicaciones, APIs seguras, integraciones externas y mentoría técnica.",
+      en: "Led and contributed to full stack projects from design to production: defined application architecture, implemented secure and scalable APIs, and built secure integrations with external platforms. I kept test coverage high and enforced standards through peer reviews, turned client requirements into solutions aligned with business goals, and mentored the team as Engineering Champion.",
+      es: "Lideré y contribuí a proyectos full stack desde el diseño hasta producción: definí la arquitectura de las aplicaciones, implementé APIs seguras y escalables y construí integraciones seguras con plataformas externas. Mantuve una alta cobertura de pruebas y promoví los estándares mediante revisiones entre pares, traduje los requerimientos de clientes en soluciones alineadas con los objetivos del negocio y mentoreé al equipo como Engineering Champion.",
     },
     relatedExperienceId: "edify",
   },

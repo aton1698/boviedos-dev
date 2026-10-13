@@ -19,7 +19,7 @@ export function EducationSection({ locale }: { locale: Locale }) {
           {education.map((item) => (
             <li
               key={item.id}
-              className="grid gap-4 border-t border-divider py-10 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-16 lg:py-12"
+              className="fade-row grid gap-4 border-t border-divider py-10 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-16 lg:py-12"
             >
               <DateRange start={item.startDate} end={item.endDate} locale={locale} />
               <div>
@@ -35,7 +35,7 @@ export function EducationSection({ locale }: { locale: Locale }) {
           {publications.map((pub) => (
             <li
               key={pub.id}
-              className="grid gap-4 border-t border-divider py-10 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-16 lg:py-12"
+              className="fade-row grid gap-4 border-t border-divider py-10 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-16 lg:py-12"
             >
               <div>
                 <p className="text-lg font-semibold">{pub.event}</p>

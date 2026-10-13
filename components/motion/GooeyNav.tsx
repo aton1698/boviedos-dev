@@ -872,15 +872,24 @@ const GooeyNav = ({
   useEffect(() => {
     const scroller = scrollRef.current;
     if (!tabs || !scroller) return undefined;
-    const update = () =>
+    const nav = scroller.closest('nav');
+    const update = () => {
+      // Labels keep their full text until the bar reaches the width of its container; only then they are cut
+      // with an ellipsis (compact) and the bar scrolls. Measure at natural size, then settle the class.
+      if (nav) {
+        nav.classList.remove('gooey-nav--compact');
+        nav.classList.toggle('gooey-nav--compact', scroller.scrollWidth > scroller.clientWidth + 1);
+      }
       setFade({
         start: scroller.scrollLeft > 1,
         end: scroller.scrollLeft + scroller.clientWidth < scroller.scrollWidth - 1
       });
+    };
     update();
     scroller.addEventListener('scroll', update, { passive: true });
     const observer = new ResizeObserver(update);
     observer.observe(scroller);
+    if (nav?.parentElement) observer.observe(nav.parentElement);
     return () => {
       scroller.removeEventListener('scroll', update);
       observer.disconnect();

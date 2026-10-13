@@ -12,6 +12,7 @@ export interface UiStrings {
   currentlyAt: string;
   focus: string;
   technologies: string;
+  highlights: { years: string; companies: string; credentials: string };
   headings: {
     skills: string;
     experience: string;
@@ -81,16 +82,17 @@ export const ui: Record<Locale, UiStrings> = {
     currentlyAt: "Currently at",
     focus: "Focus",
     technologies: "Main technologies",
+    highlights: { years: "Years of experience", companies: "Companies", credentials: "Verified credentials" },
     headings: {
       skills: "Full stack. Clear strengths.",
       experience: "Product engineering, end to end.",
       education: "Education. Research. Community.",
       research: "Research & Speaking",
-      contributions: "What I bring to a team.",
+      contributions: "Hands-on engineering. Team-first collaboration.",
       contact: "Ready for the next opportunity. Let’s talk.",
       credentials: "Certifications & Courses",
-      cv: "My experience, in brief.",
-      blog: "Writing, professional and personal.",
+      cv: "Experience. In brief.",
+      blog: "Two blogs. One voice.",
     },
     viewFullCv: "View full CV",
     backHome: "Back to home",
@@ -156,16 +158,17 @@ export const ui: Record<Locale, UiStrings> = {
     currentlyAt: "Actualmente en",
     focus: "Enfoque",
     technologies: "Tecnologías principales",
+    highlights: { years: "Años de experiencia", companies: "Empresas", credentials: "Credenciales verificadas" },
     headings: {
       skills: "Full stack. Fortalezas claras.",
       experience: "Ingeniería de producto, de punta a punta.",
       education: "Educación. Investigación. Comunidad.",
       research: "Investigación y ponencias",
-      contributions: "Lo que aporto a un equipo.",
+      contributions: "Ingeniería práctica. Colaboración que pone al equipo primero.",
       contact: "Listo para la próxima oportunidad. Hablemos.",
       credentials: "Certificaciones y cursos",
-      cv: "Mi experiencia, en breve.",
-      blog: "Escritos, profesionales y personales.",
+      cv: "Experiencia. En breve.",
+      blog: "Dos blogs. Una voz.",
     },
     viewFullCv: "Ver CV completo",
     backHome: "Volver al inicio",

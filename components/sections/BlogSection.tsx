@@ -17,7 +17,7 @@ export function BlogSection({ locale }: { locale: Locale }) {
           {t.headings.blog}
         </SectionHeading>
         <p className="mt-6 max-w-[48ch] text-text-muted">{t.blog.intro}</p>
-        <div className="mt-12">
+        <div className="fade-row mt-12">
           <ChromaGrid
             columns={2}
             minCardWidth={280}

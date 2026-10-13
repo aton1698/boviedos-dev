@@ -29,7 +29,7 @@ export function ExperienceEntry({
 }: ExperienceEntryProps) {
   return (
     <div className={`grid gap-6 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-16 ${hideIdentity ? "pb-10 pt-2" : "py-10 lg:py-12"}`}>
-      <div>
+      <div className="lg:sticky lg:top-[calc(var(--header-height)+24px)] lg:self-start">
         {!hideIdentity && (
           <>
             {date}

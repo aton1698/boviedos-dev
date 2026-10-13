@@ -12,7 +12,7 @@ export function ExperienceList({ locale }: { locale: Locale }) {
   return (
     <div className="mt-12">
       {experiences.map((job, index) => (
-        <details key={job.id} name="experience" open={index === 0} className="group border-t border-divider">
+        <details key={job.id} name="experience" open={index === 0} className="fade-row group border-t border-divider">
           <summary className="flex min-h-11 cursor-pointer list-none items-start justify-between gap-4 py-8 [&::-webkit-details-marker]:hidden">
             <div className="grid gap-1 lg:grid-cols-[19rem_1fr] lg:gap-16">
               <div>
@@ -31,7 +31,7 @@ export function ExperienceList({ locale }: { locale: Locale }) {
             </div>
             <span
               aria-hidden="true"
-              className="mt-2 grid size-9 shrink-0 place-items-center rounded-full border border-[var(--color-control-border)] text-accent transition-transform group-open:rotate-180"
+              className="mt-2 grid size-9 shrink-0 place-items-center rounded-full border border-[var(--color-control-border)] text-accent transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)] group-open:rotate-180"
             >
               ↓
             </span>
