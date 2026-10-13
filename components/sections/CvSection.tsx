@@ -13,7 +13,7 @@ export function CvSection({ locale }: { locale: Locale }) {
   return (
     <section id="cv" aria-labelledby="cv-title" className="border-t border-divider">
       <div className="container-page section-y">
-        <SectionHeading id="cv-title" eyebrow={t.nav.cv} className="max-w-[20ch]">
+        <SectionHeading id="cv-title" eyebrow={t.nav.cv} className="max-w-[26ch]">
           {t.headings.experience}
         </SectionHeading>
         <ExperienceTabs

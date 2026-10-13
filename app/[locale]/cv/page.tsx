@@ -1,28 +1,27 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import type { ComponentType } from "react";
 import { notFound } from "next/navigation";
-import { cvPageSectionIds, profile, type SectionId } from "@/content";
+import { cvPageSectionIds, profile, type CvSectionId } from "@/content";
 import { ui } from "@/content/ui";
 import { isLocale, type Locale } from "@/lib/i18n";
-import { localePath, localeUrl } from "@/lib/site";
-import { PlaceholderSection } from "@/components/sections/PlaceholderSection";
+import { localeUrl } from "@/lib/site";
 import { CredentialsSection } from "@/components/sections/CredentialsSection";
 import { ContributionsSection } from "@/components/sections/ContributionsSection";
 import { EducationSection } from "@/components/sections/EducationSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { PersonJsonLd } from "@/components/PersonJsonLd";
+import { BackButton } from "@/components/BackButton";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 
-function renderSection(id: SectionId, locale: Locale) {
-  if (id === "skills") return <SkillsSection key={id} locale={locale} />;
-  if (id === "experience") return <ExperienceSection key={id} locale={locale} />;
-  if (id === "contributions") return <ContributionsSection key={id} locale={locale} />;
-  if (id === "credentials") return <CredentialsSection key={id} locale={locale} />;
-  if (id === "education") return <EducationSection key={id} locale={locale} />;
-  return <PlaceholderSection key={id} id={id} locale={locale} />;
-}
+const sectionComponents: Record<CvSectionId, ComponentType<{ locale: Locale }>> = {
+  skills: SkillsSection,
+  experience: ExperienceSection,
+  contributions: ContributionsSection,
+  education: EducationSection,
+  credentials: CredentialsSection,
+};
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/cv">): Promise<Metadata> {
   const { locale } = await params;
@@ -50,21 +49,17 @@ export default async function CvPage({ params }: PageProps<"/[locale]/cv">) {
       <SiteHeader locale={locale} sections={cvPageSectionIds} path="/cv" />
       <main id="main" className="pb-24 min-[1440px]:pb-0 print:pb-0">
         <div className="container-page pt-6 print:hidden">
-          <div>
-            <Link className="link-arrow" href={localePath(locale)}>
-              <span className="mr-2 text-accent" aria-hidden="true">
-                ←
-              </span>
-              {ui[locale].backHome}
-            </Link>
-          </div>
+          <BackButton locale={locale} />
           <p className="eyebrow mt-8">{ui[locale].nav.cv}</p>
           <h1 className="mt-6">{profile.fullName}</h1>
-          <p className="mt-6 mb-12 max-w-[64ch] text-lg text-text-muted">{profile.cvSummary[locale]}</p>
+          <p className="mt-6 mb-12 max-w-[64ch] text-lg leading-relaxed text-text-muted">{profile.cvSummary[locale]}</p>
         </div>
-        {cvPageSectionIds.map((id) => renderSection(id, locale))}
+        {cvPageSectionIds.map((id) => {
+          const Section = sectionComponents[id];
+          return <Section key={id} locale={locale} />;
+        })}
       </main>
-      <SiteFooter locale={locale} sections={cvPageSectionIds} />
+      <SiteFooter locale={locale} />
     </>
   );
 }

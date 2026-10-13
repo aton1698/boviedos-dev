@@ -35,7 +35,7 @@ export function SiteHeader({ locale, sections, path = "" }: SiteHeaderProps) {
             aria-label={t.homeLabel}
             className="flex min-w-11 items-center"
           >
-            <Logo priority className="h-11 w-auto shrink-0" />
+            <Logo priority className="h-12 w-auto shrink-0" />
           </a>
           <div className="flex items-center gap-3">
             <LanguageSelect

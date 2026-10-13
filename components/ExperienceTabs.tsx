@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState, type CSSProperties, type ReactNode } from "react";
+import { ExperienceEntry } from "./ExperienceEntry";
 import GooeyNav from "./motion/GooeyNav";
 
 export interface ExperienceTab {
@@ -66,25 +67,17 @@ export function ExperienceTabs({
           aria-labelledby={tabId(i)}
           hidden={selected !== i}
           tabIndex={0}
-          className="mt-6 grid gap-4 border-t border-divider py-8 lg:grid-cols-[200px_minmax(0,1fr)_minmax(0,1.4fr)] lg:gap-8"
+          className="mt-6 border-t border-divider"
         >
-          {tab.date}
-          <div>
-            <h3>{tab.employer}</h3>
-            <p className="mt-1 text-text-muted">{tab.role}</p>
-          </div>
-          <ul className="flex flex-col gap-3">
-            {tab.bullets.map((bullet, i) => (
-              // Mobile shows the first two bullets only; the full CV page has them all.
-              <li key={bullet} className={i >= MOBILE_BULLETS ? "max-md:hidden" : undefined}>
-                {bullet}
-              </li>
-            ))}
-          </ul>
-          <div className="lg:col-start-2 lg:col-span-2">
-            <p className="label">{technologiesLabel}</p>
-            <p className="mt-2 text-text-muted">{tab.technologies.join(" · ")}</p>
-          </div>
+          <ExperienceEntry
+            employer={tab.employer}
+            role={tab.role}
+            date={tab.date}
+            bullets={tab.bullets}
+            technologies={tab.technologies}
+            technologiesLabel={technologiesLabel}
+            mobileBullets={MOBILE_BULLETS}
+          />
         </div>
       ))}
     </div>

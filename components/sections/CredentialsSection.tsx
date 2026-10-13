@@ -17,7 +17,7 @@ export function CredentialsSection({ locale }: { locale: Locale }) {
   return (
     <section id="credentials" aria-labelledby="credentials-title" className="border-t border-divider">
       <div className="container-page section-y">
-        <SectionHeading id="credentials-title" eyebrow={t.nav.credentials} className="max-w-[16ch]">
+        <SectionHeading id="credentials-title" eyebrow={t.nav.credentials} className="max-w-[26ch]">
           {t.headings.credentials}
         </SectionHeading>
         <p className="mt-6 max-w-[48ch] text-text-muted">{t.credentialsCopy}</p>
@@ -32,19 +32,22 @@ export function CredentialsSection({ locale }: { locale: Locale }) {
                 {items.map((c) => (
                   <li
                     key={c.id}
-                    className="grid gap-4 border-t border-divider py-8 lg:grid-cols-[200px_minmax(0,1fr)_minmax(0,1.4fr)] lg:gap-8"
+                    className="grid gap-4 border-t border-divider py-10 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-16 lg:py-12"
                   >
-                    <p className="label">{formatMonth(c.issueDate, locale)}</p>
                     <div>
-                      <p className="font-medium">{c.title}</p>
-                      <p className="mt-1 text-text-muted">{c.issuer}</p>
+                      <p className="label">{formatMonth(c.issueDate, locale)}</p>
+                      <p className="mt-3 text-xl font-semibold leading-snug">{c.title}</p>
+                      <p className="mt-1 text-base text-text-muted">{c.issuer}</p>
                     </div>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col items-start gap-4">
                       {c.topics.length > 0 && (
-                        <p>
-                          <span className="label">{t.credentialLabels.topics}: </span>
-                          {c.topics.join(", ")}
-                        </p>
+                        <ul className="flex flex-wrap gap-2" aria-label={t.credentialLabels.topics}>
+                          {c.topics.map((topic) => (
+                            <li key={topic} className="skill-chip !min-h-8 !px-3 !py-1 !text-sm">
+                              {topic}
+                            </li>
+                          ))}
+                        </ul>
                       )}
                       {c.expiryDate && (
                         <p className="text-text-muted">
@@ -52,17 +55,18 @@ export function CredentialsSection({ locale }: { locale: Locale }) {
                         </p>
                       )}
                       {c.credentialId && (
-                        <p className="text-text-muted">
-                          {t.credentialLabels.id}: {c.credentialId}
+                        <p className="text-base text-text-muted">
+                          {t.credentialLabels.id}: <span className="text-text">{c.credentialId}</span>
                         </p>
                       )}
                       {c.verificationUrl && (
                         <ExternalLink
                           href={c.verificationUrl}
                           newTabLabel={t.opensNewTab}
-                          className="link-arrow"
+                          className="btn-secondary !min-h-11 !px-5 text-sm"
                         >
                           {t.credentialLabels.verify}
+                          <span aria-hidden="true">↗</span>
                         </ExternalLink>
                       )}
                     </div>

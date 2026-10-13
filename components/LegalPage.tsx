@@ -1,8 +1,7 @@
-import Link from "next/link";
-import { homeSectionIds, legalDocuments, legalUpdated, type LegalPageId } from "@/content";
+import { legalDocuments, legalUpdated, type LegalPageId } from "@/content";
 import { ui } from "@/content/ui";
 import type { Locale } from "@/lib/i18n";
-import { localePath } from "@/lib/site";
+import { BackButton } from "./BackButton";
 import { SectionHeading } from "./SectionHeading";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
@@ -20,12 +19,7 @@ export function LegalPage({ id, locale }: { id: LegalPageId; locale: Locale }) {
       <main id="main" className="min-h-[60vh] pb-24 min-[1440px]:pb-0">
         <article aria-labelledby="legal-title">
           <div className="container-page section-y">
-            <Link className="link-arrow" href={localePath(locale)}>
-              <span className="mr-2 text-accent" aria-hidden="true">
-                ←
-              </span>
-              {t.backHome}
-            </Link>
+            <BackButton locale={locale} />
             <div className="mt-8">
               <SectionHeading id="legal-title" eyebrow={t.footer.legalLabel}>
                 {doc.title}
@@ -40,7 +34,7 @@ export function LegalPage({ id, locale }: { id: LegalPageId; locale: Locale }) {
                 <section key={section.heading} className="border-t border-divider py-8">
                   <h2 className="text-xl">{section.heading}</h2>
                   {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph} className="mt-4 text-text-muted">
+                    <p key={paragraph} className="mt-4 leading-7 text-text-muted lg:leading-8">
                       {paragraph}
                     </p>
                   ))}
@@ -50,7 +44,7 @@ export function LegalPage({ id, locale }: { id: LegalPageId; locale: Locale }) {
           </div>
         </article>
       </main>
-      <SiteFooter locale={locale} sections={homeSectionIds} anchorBase={localePath(locale)} />
+      <SiteFooter locale={locale} />
     </>
   );
 }

@@ -27,7 +27,7 @@ export default async function Page({ params }: PageProps<"/[locale]">) {
       <main id="main" className="pb-24 min-[1440px]:pb-0 print:pb-0">
         {homeSectionIds.map((id) => renderSection(id, locale))}
       </main>
-      <SiteFooter locale={locale} sections={homeSectionIds} />
+      <SiteFooter locale={locale} />
     </>
   );
 }

@@ -30,17 +30,16 @@ export interface UiStrings {
     comingSoon: string;
     emptyTitle: string;
     emptyCopy: string;
-    metaDescription: string;
   };
   cvMeta: { title: string; description: string };
   contributionsIntro: string;
   contactCopy: string;
-  contactLabels: { email: string; phone: string; location: string };
+  contactLabels: { email: string; location: string };
   linkedin: string;
   opensNewTab: string;
   caseStudy: string;
   footer: {
-    tagline: string;
+    home: string;
     navigate: string;
     connect: string;
     navLabel: string;
@@ -81,7 +80,7 @@ export const ui: Record<Locale, UiStrings> = {
     downloadCv: "Download CV",
     currentlyAt: "Currently at",
     focus: "Focus",
-    technologies: "Technologies",
+    technologies: "Main technologies",
     headings: {
       skills: "Full stack. Clear strengths.",
       experience: "Product engineering, end to end.",
@@ -100,7 +99,6 @@ export const ui: Record<Locale, UiStrings> = {
       comingSoon: "Coming soon",
       emptyTitle: "No posts yet",
       emptyCopy: "The first posts are on their way. Check back soon.",
-      metaDescription: "Blog by Brandon Oviedo Sánchez.",
     },
     cvMeta: {
       title: "Curriculum Vitae | Brandon Oviedo Sánchez",
@@ -109,13 +107,13 @@ export const ui: Record<Locale, UiStrings> = {
     },
     contributionsIntro: "Selected contributions from my professional experience.",
     contactCopy: "If my experience matches what you’re looking for, I’d be glad to connect.",
-    contactLabels: { email: "Email", phone: "Phone", location: "Location" },
+    contactLabels: { email: "Email", location: "Location" },
     linkedin: "LinkedIn",
     opensNewTab: "(opens in a new tab)",
     caseStudy: "Read the case study",
     footer: {
-      tagline: "Building reliable digital products across the stack.",
-      navigate: "Navigate",
+      home: "Home",
+      navigate: "Explore",
       connect: "Connect",
       navLabel: "Footer navigation",
       backToTop: "Back to top",
@@ -157,7 +155,7 @@ export const ui: Record<Locale, UiStrings> = {
     downloadCv: "Descargar CV",
     currentlyAt: "Actualmente en",
     focus: "Enfoque",
-    technologies: "Tecnologías",
+    technologies: "Tecnologías principales",
     headings: {
       skills: "Full stack. Fortalezas claras.",
       experience: "Ingeniería de producto, de punta a punta.",
@@ -176,7 +174,6 @@ export const ui: Record<Locale, UiStrings> = {
       comingSoon: "Próximamente",
       emptyTitle: "Aún no hay publicaciones",
       emptyCopy: "Las primeras publicaciones están en camino. Vuelve pronto.",
-      metaDescription: "Blog de Brandon Oviedo Sánchez.",
     },
     cvMeta: {
       title: "Currículum | Brandon Oviedo Sánchez",
@@ -185,13 +182,13 @@ export const ui: Record<Locale, UiStrings> = {
     },
     contributionsIntro: "Contribuciones seleccionadas de mi experiencia profesional.",
     contactCopy: "Si mi experiencia coincide con lo que buscas, con gusto conversamos.",
-    contactLabels: { email: "Correo", phone: "Teléfono", location: "Ubicación" },
+    contactLabels: { email: "Correo", location: "Ubicación" },
     linkedin: "LinkedIn",
     opensNewTab: "(se abre en una pestaña nueva)",
     caseStudy: "Ver el caso de estudio",
     footer: {
-      tagline: "Construyendo productos digitales confiables de punta a punta.",
-      navigate: "Navegación",
+      home: "Inicio",
+      navigate: "Explorar",
       connect: "Contacto",
       navLabel: "Navegación del pie de página",
       backToTop: "Volver arriba",

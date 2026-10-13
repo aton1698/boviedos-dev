@@ -58,7 +58,7 @@ export function PageBackground() {
             maxFps={30}
           />
           {/* Dark veil: keeps the pattern visible but guarantees readable text on every section. */}
-          <div className="absolute inset-0 bg-[#050a1a]/45" />
+          <div className="absolute inset-0 bg-[#050a1a]/60" />
         </>
       )}
     </div>

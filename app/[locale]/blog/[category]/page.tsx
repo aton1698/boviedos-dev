@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { blogCategories, homeSectionIds } from "@/content";
+import { blogCategories } from "@/content";
 import { ui } from "@/content/ui";
 import { isLocale } from "@/lib/i18n";
-import { localePath, localeUrl } from "@/lib/site";
+import { localeUrl } from "@/lib/site";
 import { SectionHeading } from "@/components/SectionHeading";
+import { BackButton } from "@/components/BackButton";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 
@@ -50,12 +50,7 @@ export default async function BlogCategoryPage({ params }: PageProps<"/[locale]/
       <main id="main" className="min-h-[60vh] pb-24 min-[1440px]:pb-0">
         <section aria-labelledby="blog-category-title">
           <div className="container-page section-y">
-            <Link className="link-arrow" href={localePath(locale)}>
-              <span className="mr-2 text-accent" aria-hidden="true">
-                ←
-              </span>
-              {t.backHome}
-            </Link>
+            <BackButton locale={locale} />
             <div className="mt-8">
               <SectionHeading id="blog-category-title" eyebrow={t.nav.blog}>
                 {category.title[locale]}
@@ -69,7 +64,7 @@ export default async function BlogCategoryPage({ params }: PageProps<"/[locale]/
           </div>
         </section>
       </main>
-      <SiteFooter locale={locale} sections={homeSectionIds} anchorBase={localePath(locale)} />
+      <SiteFooter locale={locale} />
     </>
   );
 }

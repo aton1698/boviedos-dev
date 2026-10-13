@@ -8,7 +8,7 @@ export function ExperienceSection({ locale }: { locale: Locale }) {
   return (
     <section id="experience" aria-labelledby="experience-title" className="border-t border-divider">
       <div className="container-page section-y">
-        <SectionHeading id="experience-title" eyebrow={t.nav.experience} className="max-w-[20ch]">
+        <SectionHeading id="experience-title" eyebrow={t.nav.experience} className="max-w-[26ch]">
           {t.headings.experience}
         </SectionHeading>
         <ExperienceList locale={locale} />

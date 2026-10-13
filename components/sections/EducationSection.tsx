@@ -11,7 +11,7 @@ export function EducationSection({ locale }: { locale: Locale }) {
   return (
     <section id="education" aria-labelledby="education-title" className="border-t border-divider">
       <div className="container-page section-y">
-        <SectionHeading id="education-title" eyebrow={t.nav.education} className="max-w-[18ch]">
+        <SectionHeading id="education-title" eyebrow={t.nav.education} className="max-w-[26ch]">
           {t.headings.education}
         </SectionHeading>
 
@@ -19,12 +19,12 @@ export function EducationSection({ locale }: { locale: Locale }) {
           {education.map((item) => (
             <li
               key={item.id}
-              className="grid gap-4 border-t border-divider py-8 lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-8"
+              className="grid gap-4 border-t border-divider py-10 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-16 lg:py-12"
             >
               <DateRange start={item.startDate} end={item.endDate} locale={locale} />
               <div>
                 <h3>{item.institution}</h3>
-                <p className="mt-1 text-text-muted">{item.qualification[locale]}</p>
+                <p className="mt-1 text-base text-text-muted">{item.qualification[locale]}</p>
               </div>
             </li>
           ))}
@@ -35,18 +35,14 @@ export function EducationSection({ locale }: { locale: Locale }) {
           {publications.map((pub) => (
             <li
               key={pub.id}
-              className="grid gap-4 border-t border-divider py-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-8"
+              className="grid gap-4 border-t border-divider py-10 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-16 lg:py-12"
             >
               <div>
-                <p className="font-medium">
-                  {pub.event}
-                  {pub.eventLocation && (
-                    <span className="text-text-muted"> · {pub.eventLocation[locale]}</span>
-                  )}
-                </p>
-                <p className="label mt-1">{pub.role[locale]}</p>
+                <p className="text-lg font-semibold">{pub.event}</p>
+                {pub.eventLocation && <p className="mt-1 text-base text-text-muted">{pub.eventLocation[locale]}</p>}
+                <p className="label mt-3">{pub.role[locale]}</p>
               </div>
-              <div>
+              <div className="max-w-[62ch] leading-relaxed">
                 <p>{pub.title[locale]}</p>
                 {pub.note && (
                   <p className="mt-2 text-text-muted">

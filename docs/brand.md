@@ -48,10 +48,11 @@ Medium 500, Regular 400, Light 300.
 
 ## Logo
 Official vector files (provided by the owner) live in `public/logo/`:
-- `logo-bos-pulse-flow.svg`: full color (blue gradient `#1648EE` → `#286DFF` → `#36C4F9` with cyan glow). Default for
-  light and soft-blue backgrounds, header, hero, favicon (on a Charcoal rounded square) and the social image.
-- `logo-bos-pulse-flow-blanco.svg`: white, for dark/navy or photographic backgrounds.
-- `logo-bos-pulse-flow-monocromatico.svg`: Charcoal `#111827`, for single-color or print uses.
+- `BOS-tech-gradient.svg`: full color (blue gradient `#1147FF` → `#1E7BFF` → `#33D1F7`). Default for the header, hero and
+  the social image.
+- `BOS-tech-white.svg`: white, for dark/navy or photographic backgrounds.
+- `BOS-tech-dark.svg`: dark, for single-color or print uses on light backgrounds.
+- `BOS-tech-icon.svg`: compact gradient icon (also used as the favicon, `app/icon.svg`).
 Always use these files (via `components/Logo.tsx`); do not redraw or recolor the mark. Keep clear space of at least
 one stroke width. The mark itself is decorative (`alt=""`); the accessible name comes from the surrounding link.
 The header shows the mark ONLY (no name or subtitle; owner request). The link keeps its accessible name via aria-label.
@@ -59,9 +60,9 @@ The header shows the mark ONLY (no name or subtitle; owner request). The link ke
 ## Graphic system
 - Flowing wave lines: smooth, crossing sine-like curves in Royal/Electric Blue, thin (1–2px), with small round node dots
   at intersections; faint `</>` glyphs. Implemented as page background (Iridescence shader in local "monotone" mode: Electric Blue to near-black navy `#050A1A`,
-  softly blurred, with a ~45% dark veil) (the hero has no extra wave graphic: removed on owner request).
+  softly blurred, with a ~60% dark veil) (the hero has no extra wave graphic: removed on owner request).
 - Dark glow: deep navy with soft blue light streaks sweeping diagonally (now the whole page).
-- Readability first: the animated background carries a dark veil (~45%), the navigation frame and the footer share one navy surface (`--nav-surface`),
+- Readability first: the animated background carries a dark veil (~60%), the navigation frame and the footer share one navy surface (`--nav-surface`),
   and nav labels use near-white ink (>= 4.5:1). Never place small text directly on saturated parts of the pattern.
 - Header CTA is professional and short: "Get in touch" / "Contáctame" (goes to Contact). The text navigation only
   appears from 1440px (Spanish labels are wider); below that the floating icon bar is used.

@@ -19,7 +19,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
 
-  const logo = await readFile(join(process.cwd(), "public/logo/logo-bos-pulse-flow.svg"));
+  const logo = await readFile(join(process.cwd(), "public/logo/BOS-tech-gradient.svg"));
   const logoSrc = `data:image/svg+xml;base64,${logo.toString("base64")}`;
 
   return new ImageResponse(
@@ -46,7 +46,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
           </div>
           <div style={{ fontSize: 28, color: "#b9c6e4", marginTop: 56 }}>boviedos.dev</div>
         </div>
-        <img src={logoSrc} alt="" width={248} height={260} style={{ flexShrink: 0 }} />
+        <img src={logoSrc} alt="" width={260} height={260} style={{ flexShrink: 0 }} />
       </div>
     ),
     size,

@@ -132,8 +132,9 @@ export const visibleSections: SectionId[] = sectionIds.filter(
 );
 
 /** Sections of the /cv page: the full CV without the hero and contact blocks (those live on home). */
-export const cvPageSectionIds: SectionId[] = visibleSections.filter(
-  (id) => id !== "profile" && id !== "contact",
+export type CvSectionId = Exclude<SectionId, "profile" | "contact">;
+export const cvPageSectionIds: CvSectionId[] = visibleSections.filter(
+  (id): id is CvSectionId => id !== "profile" && id !== "contact",
 );
 
 /** Formats an ISO month (YYYY-MM) for display; null means present. */

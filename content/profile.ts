@@ -39,7 +39,6 @@ export const profile: Profile = {
   focusAreas: ["Frontend", "Backend", "Cloud"],
   currentEmployer: "Moody’s",
   email: "boviedos.98@gmail.com",
-  phone: "+506 8768 9781",
   linkedinUrl: "https://www.linkedin.com/in/brandon-oviedo-231069152/",
   cvUrl: "/cv/Brandon%20Oviedo%20FS.pdf",
 };

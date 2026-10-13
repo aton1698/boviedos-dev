@@ -14,7 +14,6 @@ export interface Profile {
   focusAreas: string[];
   currentEmployer: string;
   email: string;
-  phone: string;
   linkedinUrl: string;
   cvUrl: string;
 }
