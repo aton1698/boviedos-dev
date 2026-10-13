@@ -39,35 +39,44 @@ const ICONS: Record<string, ReactNode> = {
 };
 
 /**
- * One GooeyNav for every viewport: a floating icon bar at the bottom below 1440px
- * (labels stay in the DOM for assistive tech) and a labelled bar centered in the
- * header from 1440px up. Anchors work without JavaScript; JS adds the active pill.
+ * One GooeyNav for every viewport: a fixed floating icon bar at the bottom below 1440px
+ * (labels stay in the DOM for assistive tech) and, from 1440px up, a labelled bar absolutely
+ * positioned INSIDE the sticky header, so it always moves with it (including macOS overscroll bounce). Anchors work without JavaScript; JS adds the active pill.
  */
 export function SiteNav({ links, navLabel }: SiteNavProps) {
   const [active, setActive] = useState<string | null>(null);
   const lockUntil = useRef(0); // ignore the scroll observer while an anchor click scrolls
   const idsKey = links.map((l) => l.id).join(",");
 
-  // Track the section in view without touching browser history.
+  // Track the section in view without touching browser history. A section is current once its top
+  // passes a line at 35% of the viewport; at the very bottom of the page the last section wins, because
+  // the final section may be too short to ever reach that line.
   useEffect(() => {
     const ids = idsKey.split(",");
-    const inView = new Set<string>();
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) inView.add(entry.target.id);
-          else inView.delete(entry.target.id);
-        }
-        const first = ids.find((id) => inView.has(id));
-        if (first && Date.now() > lockUntil.current) setActive(first);
-      },
-      { rootMargin: "-96px 0px -55% 0px" },
-    );
-    for (const id of ids) {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    }
-    return () => observer.disconnect();
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      if (Date.now() < lockUntil.current) return;
+      const line = window.innerHeight * 0.35;
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= line) current = id;
+      }
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+      setActive(atBottom ? ids[ids.length - 1] : current);
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
   }, [idsKey]);
 
   // GooeyNav reads these vars from inline style (they beat its own stylesheet); the
@@ -88,7 +97,7 @@ export function SiteNav({ links, navLabel }: SiteNavProps) {
   return (
     <div
       style={{ "--site-gn-x-mobile": mobileX } as CSSProperties}
-      className="print:hidden pointer-events-none fixed inset-x-0 bottom-[max(16px,env(safe-area-inset-bottom))] z-50 flex justify-center px-2 [--site-gn-font:21px] [--site-gn-gap:0px] [--site-gn-pad:6px] [--site-gn-x:var(--site-gn-x-mobile)] [--site-gn-y:14px] min-[1440px]:bottom-auto min-[1440px]:top-0 min-[1440px]:h-[var(--header-height)] min-[1440px]:items-center min-[1440px]:[--site-gn-font:14px] min-[1440px]:[--site-gn-gap:4px] min-[1440px]:[--site-gn-pad:6px] min-[1440px]:[--site-gn-x:12px] min-[1536px]:[--site-gn-x:16px] min-[1440px]:[--site-gn-y:14px]"
+      className="print:hidden pointer-events-none fixed inset-x-0 bottom-[max(16px,env(safe-area-inset-bottom))] z-50 flex justify-center px-2 [--site-gn-font:21px] [--site-gn-gap:0px] [--site-gn-pad:6px] [--site-gn-x:var(--site-gn-x-mobile)] [--site-gn-y:14px] min-[1440px]:absolute min-[1440px]:bottom-auto min-[1440px]:top-0 min-[1440px]:h-[var(--header-height)] min-[1440px]:items-center min-[1440px]:[--site-gn-font:14px] min-[1440px]:[--site-gn-gap:4px] min-[1440px]:[--site-gn-pad:6px] min-[1440px]:[--site-gn-x:12px] min-[1536px]:[--site-gn-x:16px] min-[1440px]:[--site-gn-y:14px]"
     >
       <div className="pointer-events-auto">
         <GooeyNav
