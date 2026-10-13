@@ -11,11 +11,12 @@ import { usePathname } from "next/navigation";
 export function ScrollToTop() {
   const pathname = usePathname();
   const isFirstRender = useRef(true);
-  const fromHistory = useRef(false);
+  const lastPopState = useRef(0);
 
   useEffect(() => {
+    // Fragment links (#cv) fire popstate too, so only a very recent one counts as back/forward navigation.
     const onPopState = () => {
-      fromHistory.current = true;
+      lastPopState.current = Date.now();
     };
     window.addEventListener("popstate", onPopState);
     return () => window.removeEventListener("popstate", onPopState);
@@ -26,10 +27,7 @@ export function ScrollToTop() {
       isFirstRender.current = false;
       return;
     }
-    if (fromHistory.current) {
-      fromHistory.current = false;
-      return;
-    }
+    if (Date.now() - lastPopState.current < 500) return;
     if (window.location.hash) return;
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [pathname]);

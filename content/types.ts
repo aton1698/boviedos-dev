@@ -7,6 +7,8 @@ export interface Profile {
   headline: Localized;
   summary: Localized;
   supportingLine: Localized;
+  /** Longer professional summary, shown as the subtitle of the full CV page. */
+  cvSummary: Localized;
   location: Localized;
   languages: Localized<string[]>;
   focusAreas: string[];

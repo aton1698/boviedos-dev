@@ -10,11 +10,22 @@ const SOURCES = {
 interface LogoProps {
   variant?: keyof typeof SOURCES;
   className?: string;
-  /** Above-the-fold use (header, hero): loads eagerly and is preloaded. */
+  /** Above-the-fold use (header, hero): loads eagerly with high fetch priority (Next 16: `priority` is deprecated). */
   priority?: boolean;
 }
 
 /** Decorative mark (alt=""): put the accessible name on the surrounding link or heading. */
 export function Logo({ variant = "color", className, priority = false }: LogoProps) {
-  return <Image src={SOURCES[variant]} alt="" width={264} height={277} unoptimized priority={priority} className={className} />;
+  return (
+    <Image
+      src={SOURCES[variant]}
+      alt=""
+      width={264}
+      height={277}
+      unoptimized
+      loading={priority ? "eager" : undefined}
+      fetchPriority={priority ? "high" : undefined}
+      className={className}
+    />
+  );
 }

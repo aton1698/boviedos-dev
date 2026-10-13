@@ -18,12 +18,14 @@ export function CvSection({ locale }: { locale: Locale }) {
         </SectionHeading>
         <ExperienceTabs
           label={t.headings.experience}
+          technologiesLabel={t.technologies}
           tabs={experiences.map((job) => ({
             id: job.id,
             employer: job.employer,
             role: job.role[locale],
             date: <DateRange start={job.startDate} end={job.endDate} locale={locale} />,
             bullets: job.bullets[locale],
+            technologies: job.technologies,
           }))}
         />
         <div className="border-t border-divider pt-8">

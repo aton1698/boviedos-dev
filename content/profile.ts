@@ -19,12 +19,16 @@ export const profile: Profile = {
     es: "Ingeniero de Software Full Stack",
   },
   summary: {
-    en: "I build reliable digital products with React, TypeScript, and Java / Spring Boot.",
-    es: "Construyo productos digitales confiables con React, TypeScript y Java / Spring Boot.",
+    en: "I build reliable digital products, from the interface to the backend.",
+    es: "Construyo productos digitales confiables, desde la interfaz hasta el backend.",
   },
   supportingLine: {
-    en: "5+ years connecting interfaces, services, and business needs.",
-    es: "Más de 5 años conectando interfaces, servicios y necesidades de negocio.",
+    en: "5+ years turning business needs into software that works.",
+    es: "Más de 5 años convirtiendo necesidades de negocio en software que funciona.",
+  },
+  cvSummary: {
+    en: "Results-driven Full Stack Software Engineer with 5 years of experience delivering secure, scalable, and high-performance applications. Proven track record leading end-to-end development with Java/Spring Boot, React, AWS, and PostgreSQL, reducing incident resolution times and integrating complex third-party systems. Skilled in translating business requirements into technical solutions, optimizing processes, and mentoring team members to deliver quality software on time.",
+    es: "Ingeniero de Software Full Stack orientado a resultados, con 5 años de experiencia entregando aplicaciones seguras, escalables y de alto rendimiento. Trayectoria comprobada liderando el desarrollo de extremo a extremo con Java/Spring Boot, React, AWS y PostgreSQL, reduciendo los tiempos de resolución de incidentes e integrando sistemas complejos de terceros. Capaz de traducir requerimientos de negocio en soluciones técnicas, optimizar procesos y mentorear a otros miembros del equipo para entregar software de calidad a tiempo.",
   },
   location: { en: "Costa Rica", es: "Costa Rica" },
   languages: {
@@ -116,8 +120,8 @@ export const contributions: Contribution[] = [
     title: { en: "More efficient operations", es: "Operaciones más eficientes" },
     employer: "CGI",
     description: {
-      en: "Investigation, reverse engineering and internal tools to streamline incident resolution.",
-      es: "Investigación, ingeniería inversa y herramientas internas para agilizar la resolución de incidentes.",
+      en: "Investigation, reverse engineering and internal tools that made incident resolution faster.",
+      es: "Investigación, ingeniería inversa y herramientas internas para resolver incidentes más rápido.",
     },
     relatedExperienceId: "daugherty-cgi",
   },
@@ -143,12 +147,13 @@ export const education: Education[] = [
   },
 ];
 
-// `url` stays absent until an exact verified link is supplied.
+// `url` stays absent until an exact verified link is supplied. When set, it links the publication note.
 export const publications: Publication[] = [
   {
     id: "jocici-2019",
     event: "JOCICI 2019",
     year: 2019,
+    url: "https://ieeexplore.ieee.org/document/9105207",
     role: { en: "Speaker & co-author", es: "Ponente y coautor" },
     title: {
       en: "Promoting community participation in thematic mapping processes by simplifying the free tool OSMTracker for Android",

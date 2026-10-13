@@ -3,6 +3,7 @@ import { ui } from "@/content/ui";
 import { SectionHeading } from "../SectionHeading";
 import type { Locale } from "@/lib/i18n";
 import { DateRange } from "../DateRange";
+import { ExternalLink } from "../ExternalLink";
 
 export function EducationSection({ locale }: { locale: Locale }) {
   const t = ui[locale];
@@ -46,8 +47,22 @@ export function EducationSection({ locale }: { locale: Locale }) {
                 <p className="label mt-1">{pub.role[locale]}</p>
               </div>
               <div>
-                <p>{pub.url ? <a className="link-arrow" href={pub.url}>{pub.title[locale]}</a> : pub.title[locale]}</p>
-                {pub.note && <p className="mt-2 text-text-muted">{pub.note[locale]}</p>}
+                <p>{pub.title[locale]}</p>
+                {pub.note && (
+                  <p className="mt-2 text-text-muted">
+                    {pub.url ? (
+                      <ExternalLink
+                        href={pub.url}
+                        newTabLabel={t.opensNewTab}
+                        className="underline decoration-accent underline-offset-4 hover:text-[var(--color-hover-text)]"
+                      >
+                        {pub.note[locale]}
+                      </ExternalLink>
+                    ) : (
+                      pub.note[locale]
+                    )}
+                  </p>
+                )}
               </div>
             </li>
           ))}

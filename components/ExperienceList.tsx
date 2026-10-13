@@ -1,8 +1,10 @@
 import { experiences } from "@/content";
+import { ui } from "@/content/ui";
 import type { Locale } from "@/lib/i18n";
 import { DateRange } from "./DateRange";
 
 export function ExperienceList({ locale }: { locale: Locale }) {
+  const t = ui[locale];
   return (
     <ol className="mt-12">
       {experiences.map((job) => (
@@ -20,6 +22,10 @@ export function ExperienceList({ locale }: { locale: Locale }) {
               <li key={bullet}>{bullet}</li>
             ))}
           </ul>
+          <div className="lg:col-start-2 lg:col-span-2">
+            <p className="label">{t.technologies}</p>
+            <p className="mt-2 text-text-muted">{job.technologies.join(" · ")}</p>
+          </div>
         </li>
       ))}
     </ol>

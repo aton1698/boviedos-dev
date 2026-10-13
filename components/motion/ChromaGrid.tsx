@@ -177,6 +177,51 @@ export function ChromaGrid({
     };
   }, []);
 
+  // Scroll reveal: cards that start below the fold fade and rise in as they enter the viewport. Content is
+  // visible by default; this only runs after hydration and is skipped for reduced motion.
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    const cards = Array.from(root.querySelectorAll<HTMLElement>('.chroma-card'));
+    const hidden = cards.filter(card => card.getBoundingClientRect().top > window.innerHeight * 0.9);
+    if (!hidden.length) return undefined;
+
+    const perRow = Math.max(1, Math.round(columns));
+    const done = (event: TransitionEvent) => {
+      if (event.propertyName !== 'transform') return;
+      const card = event.currentTarget as HTMLElement;
+      card.classList.remove('chroma-reveal', 'is-revealed');
+      card.style.removeProperty('transition-delay');
+      card.removeEventListener('transitionend', done);
+      placeRef.current?.();
+    };
+    const observer = new IntersectionObserver(
+      entries => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const card = entry.target as HTMLElement;
+          observer.unobserve(card);
+          card.classList.add('is-revealed');
+        }
+      },
+      { threshold: 0.2 }
+    );
+    hidden.forEach(card => {
+      card.classList.add('chroma-reveal');
+      card.style.transitionDelay = `${(cards.indexOf(card) % perRow) * 120}ms`;
+      card.addEventListener('transitionend', done);
+      observer.observe(card);
+    });
+    return () => {
+      observer.disconnect();
+      hidden.forEach(card => {
+        card.classList.remove('chroma-reveal', 'is-revealed');
+        card.style.removeProperty('transition-delay');
+        card.removeEventListener('transitionend', done);
+      });
+    };
+  }, [columns]);
+
   // Card offsets feed the spotlight mask: recompute after every render (layout can change with the items).
   useLayoutEffect(() => {
     placeRef.current?.();

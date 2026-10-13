@@ -9,6 +9,7 @@ export interface ExperienceTab {
   role: string;
   date: ReactNode;
   bullets: string[];
+  technologies: string[];
 }
 
 // GooeyNav parses colors in JS, so it cannot take CSS variables: keep in sync with
@@ -27,7 +28,15 @@ const sizing = {
 } as CSSProperties;
 
 /** Experience tabs: the site's GooeyNav in tabs mode (tablist, arrow keys) plus one panel per entry. */
-export function ExperienceTabs({ tabs, label }: { tabs: ExperienceTab[]; label: string }) {
+export function ExperienceTabs({
+  tabs,
+  label,
+  technologiesLabel,
+}: {
+  tabs: ExperienceTab[];
+  label: string;
+  technologiesLabel: string;
+}) {
   const [selected, setSelected] = useState(0);
   const baseId = useId();
   const tabId = (i: number) => `${baseId}-tab-${i}`;
@@ -67,6 +76,10 @@ export function ExperienceTabs({ tabs, label }: { tabs: ExperienceTab[]; label: 
               <li key={bullet}>{bullet}</li>
             ))}
           </ul>
+          <div className="lg:col-start-2 lg:col-span-2">
+            <p className="label">{technologiesLabel}</p>
+            <p className="mt-2 text-text-muted">{tab.technologies.join(" · ")}</p>
+          </div>
         </div>
       ))}
     </div>

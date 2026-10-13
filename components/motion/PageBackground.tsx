@@ -12,7 +12,8 @@ const Iridescence = dynamic(() => import("./Iridescence"), { ssr: false });
 const FLOW_TINT = "#2563ff";
 const FLOW_BASE = "#050a1a";
 
-// Decorative only: aria-hidden, no pointer events, softly blurred so it never competes with text.
+// Decorative only: aria-hidden, no pointer events. Half resolution already gives it a soft look (no CSS blur: it forced a
+// re-composite of the animating canvas on every frame).
 // html already paints the page color, so nothing is missing before the effect mounts or if WebGL fails.
 export function PageBackground() {
   const [ready, setReady] = useState(false);
@@ -31,7 +32,7 @@ export function PageBackground() {
   return (
     <div
       aria-hidden="true"
-      className={`pointer-events-none fixed -inset-6 -z-10 blur-[2px] transition-opacity duration-1000 print:hidden ${
+      className={`pointer-events-none fixed inset-0 -z-10 transition-opacity duration-1000 print:hidden ${
         ready ? "opacity-100" : "opacity-0"
       }`}
     >
@@ -45,7 +46,7 @@ export function PageBackground() {
             contrast={0.9}
             speed={0.6}
             scale={1.4}
-            detail={8}
+            detail={6}
             warp={1}
             amplitude={0.1}
             stir={0.5}
@@ -53,6 +54,8 @@ export function PageBackground() {
             clickSwirl
             // Half resolution: the layer is blurred anyway, and it is 4x fewer pixels to shade.
             resolution={0.5}
+            // 30 fps: the pattern drifts slowly, so it looks the same with half the GPU work.
+            maxFps={30}
           />
           {/* Dark veil: keeps the pattern visible but guarantees readable text on every section. */}
           <div className="absolute inset-0 bg-[#050a1a]/45" />

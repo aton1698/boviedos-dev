@@ -24,6 +24,8 @@ export interface IridescenceProps {
   fade?: number;
   opacity?: number;
   resolution?: number;
+  // Local addition: cap the frame rate (0 = uncapped). The pattern drifts slowly, so 30 looks identical and halves GPU work.
+  maxFps?: number;
   paused?: boolean;
   className?: string;
   style?: React.CSSProperties;
@@ -185,6 +187,7 @@ const Iridescence = ({
   fade = 0,
   opacity = 1,
   resolution = 1,
+  maxFps = 0,
   paused = false,
   monotone = false,
   monotoneBase = '#ffffff',
@@ -203,6 +206,7 @@ const Iridescence = ({
     mouseReact,
     scale: Math.max(0.05, scale),
     detail: clamp(Math.round(detail), 1, 24),
+    maxFps: Math.max(0, maxFps),
     rotation,
     warp,
     hueShift,
@@ -448,10 +452,16 @@ const Iridescence = ({
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     };
 
+    let lastDraw = 0;
     const frame = (now: number) => {
       raf = 0;
       if (!alive || !visible) return;
       const s = settingsRef.current;
+      if (s.maxFps > 0 && lastDraw && now - lastDraw < 1000 / s.maxFps - 2) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
+      lastDraw = now;
       const dt = last ? Math.min(0.05, (now - last) / 1000) : 1 / 60;
       last = now;
       const moving = !s.paused && !reduce;
@@ -470,7 +480,10 @@ const Iridescence = ({
         Math.abs(target[1] - state.mouse[1]) > 0.0005 ||
         Math.abs((pointer.inside ? 1 : 0) - state.presence) > 0.002;
       if (moving || settling || state.fieldActive || state.swirls.length) raf = requestAnimationFrame(frame);
-      else last = 0;
+      else {
+        last = 0;
+        lastDraw = 0;
+      }
     };
 
     const wake = () => {

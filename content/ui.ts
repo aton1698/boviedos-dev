@@ -11,6 +11,7 @@ export interface UiStrings {
   downloadCv: string;
   currentlyAt: string;
   focus: string;
+  technologies: string;
   headings: {
     skills: string;
     experience: string;
@@ -70,16 +71,17 @@ export const ui: Record<Locale, UiStrings> = {
     downloadCv: "Download CV",
     currentlyAt: "Currently at",
     focus: "Focus",
+    technologies: "Technologies",
     headings: {
       skills: "Full stack. Clear strengths.",
-      experience: "Product engineering. Consulting experience.",
+      experience: "Product engineering, shaped by consulting.",
       education: "Education. Research. Community.",
       research: "Research & Speaking",
       contributions: "What I bring to a team.",
-      contact: "Excited for the next opportunity. Let’s talk.",
+      contact: "Ready for the next opportunity. Let’s talk.",
       credentials: "Certifications & Courses",
-      cv: "Experience, in brief.",
-      blog: "Writing. Professional and personal.",
+      cv: "My experience, in brief.",
+      blog: "Writing, professional and personal.",
     },
     viewFullCv: "View full CV",
     backHome: "Back to home",
@@ -112,10 +114,10 @@ export const ui: Record<Locale, UiStrings> = {
     meta: {
       title: "Brandon Oviedo Sánchez | Full Stack Software Engineer",
       description:
-        "Full stack software engineer based in Costa Rica, building reliable digital products with React, TypeScript, Java, Spring Boot, and AWS.",
+        "Full stack software engineer in Costa Rica, building reliable digital products with React, TypeScript, Java, Spring Boot, and AWS.",
       ogAlt: "Brandon Oviedo Sánchez, Full Stack Software Engineer",
     },
-    credentialsCopy: "Continuous learning, backed by verifiable credentials.",
+    credentialsCopy: "Always learning, with credentials you can verify.",
     credentialGroups: { certification: "Certifications", course: "Courses" },
     credentialLabels: { topics: "Topics", id: "Credential ID", verify: "Verify credential", expires: "Expires" },
     languageLabel: "Language",
@@ -141,16 +143,17 @@ export const ui: Record<Locale, UiStrings> = {
     downloadCv: "Descargar CV",
     currentlyAt: "Actualmente en",
     focus: "Enfoque",
+    technologies: "Tecnologías",
     headings: {
       skills: "Full stack. Fortalezas claras.",
-      experience: "Ingeniería de producto. Experiencia en consultoría.",
+      experience: "Ingeniería de producto, con base en consultoría.",
       education: "Educación. Investigación. Comunidad.",
       research: "Investigación y ponencias",
       contributions: "Lo que aporto a un equipo.",
-      contact: "Entusiasmo por la próxima oportunidad. Hablemos.",
+      contact: "Listo para la próxima oportunidad. Hablemos.",
       credentials: "Certificaciones y cursos",
-      cv: "Experiencia, en breve.",
-      blog: "Escritura. Profesional y personal.",
+      cv: "Mi experiencia, en breve.",
+      blog: "Escritos, profesionales y personales.",
     },
     viewFullCv: "Ver CV completo",
     backHome: "Volver al inicio",
@@ -183,10 +186,10 @@ export const ui: Record<Locale, UiStrings> = {
     meta: {
       title: "Brandon Oviedo Sánchez | Ingeniero de Software Full Stack",
       description:
-        "Ingeniero de software full stack con sede en Costa Rica, que construye productos digitales confiables con React, TypeScript, Java, Spring Boot y AWS.",
+        "Ingeniero de software full stack en Costa Rica que construye productos digitales confiables con React, TypeScript, Java, Spring Boot y AWS.",
       ogAlt: "Brandon Oviedo Sánchez, Ingeniero de Software Full Stack",
     },
-    credentialsCopy: "Aprendizaje continuo, respaldado por credenciales verificables.",
+    credentialsCopy: "Siempre aprendiendo, con credenciales que puedes verificar.",
     credentialGroups: { certification: "Certificaciones", course: "Cursos" },
     credentialLabels: { topics: "Temas", id: "ID de credencial", verify: "Verificar credencial", expires: "Vence" },
     languageLabel: "Idioma",

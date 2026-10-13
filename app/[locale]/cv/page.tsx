@@ -50,14 +50,17 @@ export default async function CvPage({ params }: PageProps<"/[locale]/cv">) {
       <SiteHeader locale={locale} sections={cvPageSectionIds} path="/cv" />
       <main id="main" className="pb-24 min-[1440px]:pb-0 print:pb-0">
         <div className="container-page pt-6 print:hidden">
-          <Link className="link-arrow" href={localePath(locale)}>
-            <span className="mr-2 text-accent" aria-hidden="true">
-              ←
-            </span>
-            {ui[locale].backHome}
-          </Link>
+          <div>
+            <Link className="link-arrow" href={localePath(locale)}>
+              <span className="mr-2 text-accent" aria-hidden="true">
+                ←
+              </span>
+              {ui[locale].backHome}
+            </Link>
+          </div>
           <p className="eyebrow mt-8">{ui[locale].nav.cv}</p>
           <h1 className="mt-6">{profile.fullName}</h1>
+          <p className="mt-6 mb-12 max-w-[64ch] text-lg text-text-muted">{profile.cvSummary[locale]}</p>
         </div>
         {cvPageSectionIds.map((id) => renderSection(id, locale))}
       </main>

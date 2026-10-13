@@ -60,6 +60,7 @@ function validateContent() {
   assert(profile.cvUrl.startsWith("/"), "profile.cvUrl must be a site path");
   assertLocalized(profile.headline, "profile.headline");
   assertLocalized(profile.summary, "profile.summary");
+  assertLocalized(profile.cvSummary, "profile.cvSummary");
 
   const ids = new Set<string>();
   for (const e of experiences) {
