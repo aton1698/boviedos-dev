@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { Download01Icon, LinkSquare01Icon, Mail01Icon } from "@hugeicons/core-free-icons";
+import { ArrowUp01Icon, Download01Icon, LinkSquare01Icon, Mail01Icon } from "@hugeicons/core-free-icons";
 import { blogCategories, profile } from "@/content";
 import { ui } from "@/content/ui";
 import type { Locale } from "@/lib/i18n";
@@ -76,9 +76,6 @@ export function SiteFooter({ locale }: { locale: Locale }) {
                 <ExternalLink href={profile.linkedinUrl} newTabLabel={t.opensNewTab} className={`${linkClass} gap-2 md:gap-3`}>
                   <HugeiconsIcon icon={LinkSquare01Icon} {...iconProps} aria-hidden="true" className="shrink-0 text-accent" />
                   {t.linkedin}
-                  <span aria-hidden="true" className="text-accent">
-                    ↗
-                  </span>
                 </ExternalLink>
               </li>
               <li>
@@ -111,7 +108,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
               aria-hidden="true"
               className="grid size-9 place-items-center rounded-full border border-[var(--color-control-border)] text-accent"
             >
-              ↑
+              <HugeiconsIcon icon={ArrowUp01Icon} size={18} strokeWidth={1.75} />
             </span>
           </a>
         </div>

@@ -1,4 +1,6 @@
 import { formatMonth, verifiedCredentials, type Credential } from "@/content";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { LinkSquare01Icon } from "@hugeicons/core-free-icons";
 import { ui } from "@/content/ui";
 import { SectionHeading } from "../SectionHeading";
 import type { Locale } from "@/lib/i18n";
@@ -65,8 +67,8 @@ export function CredentialsSection({ locale }: { locale: Locale }) {
                           newTabLabel={t.opensNewTab}
                           className="btn-secondary !min-h-11 !px-5 text-sm"
                         >
+                          <HugeiconsIcon icon={LinkSquare01Icon} size={18} strokeWidth={1.75} aria-hidden="true" className="text-accent" />
                           {t.credentialLabels.verify}
-                          <span aria-hidden="true">↗</span>
                         </ExternalLink>
                       )}
                     </div>
