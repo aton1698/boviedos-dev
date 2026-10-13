@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { blogCategories } from "@/content";
 import { ui } from "@/content/ui";
-import { isLocale } from "@/lib/i18n";
+import { isLocale, locales } from "@/lib/i18n";
 import { localeUrl } from "@/lib/site";
 import { SectionHeading } from "@/components/SectionHeading";
 import { BackButton } from "@/components/BackButton";
@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 
 export function generateStaticParams() {
-  return blogCategories.map(({ id }) => ({ category: id }));
+  return locales.flatMap((locale) => blogCategories.map(({ id }) => ({ locale, category: id })));
 }
 
 function findCategory(id: string) {

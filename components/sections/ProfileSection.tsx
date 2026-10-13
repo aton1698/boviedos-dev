@@ -47,7 +47,7 @@ export function ProfileSection({ locale }: { locale: Locale }) {
           </div>
           <div>
             <dt className="label">{t.focus}</dt>
-            <dd className="mt-2">{profile.focusAreas.join(" / ")}</dd>
+            <dd className="mt-2">{profile.focusAreas[locale].join(" / ")}</dd>
           </div>
         </dl>
 

@@ -24,19 +24,22 @@ export const profile: Profile = {
     es: "Construyo productos digitales confiables, desde el backend hasta la interfaz.",
   },
   supportingLine: {
-    en: "5+ years turning business needs into software that works.",
-    es: "Más de 5 años convirtiendo necesidades de negocio en software que funciona.",
+    en: "5+ years of full stack experience, shipping with agentic coding and AI-driven engineering.",
+    es: "Más de 5 años de experiencia full stack, entregando con agentic coding e ingeniería impulsada por IA.",
   },
   cvSummary: {
-    en: "Results-driven Full Stack Software Engineer with 5 years of experience delivering secure, scalable, and high-performance applications. Proven track record leading end-to-end development with Java/Spring Boot, React, AWS, and PostgreSQL, reducing incident resolution times and integrating complex third-party systems. Skilled in translating business requirements into technical solutions, optimizing processes, and mentoring team members to deliver quality software on time.",
-    es: "Ingeniero de Software Full Stack orientado a resultados, con 5 años de experiencia entregando aplicaciones seguras, escalables y de alto rendimiento. Trayectoria comprobada liderando el desarrollo de extremo a extremo con Java/Spring Boot, React, AWS y PostgreSQL, reduciendo los tiempos de resolución de incidentes e integrando sistemas complejos de terceros. Capaz de traducir requerimientos de negocio en soluciones técnicas, optimizar procesos y mentorear a otros miembros del equipo para entregar software de calidad a tiempo.",
+    en: "Results-driven Full Stack Software Engineer with 5 years of experience delivering secure, scalable, and high-performance applications. Proven track record leading end-to-end development with Java/Spring Boot, React, AWS, and PostgreSQL, reducing incident resolution times and integrating complex third-party systems. Skilled in translating business requirements into technical solutions, optimizing processes, and mentoring team members to deliver quality software on time. Focused on AI-driven engineering: agentic coding workflows with Claude Code and the Model Context Protocol (MCP) applied across the development cycle.",
+    es: "Ingeniero de Software Full Stack orientado a resultados, con 5 años de experiencia entregando aplicaciones seguras, escalables y de alto rendimiento. Trayectoria comprobada liderando el desarrollo de extremo a extremo con Java/Spring Boot, React, AWS y PostgreSQL, reduciendo los tiempos de resolución de incidentes e integrando sistemas complejos de terceros. Capaz de traducir requerimientos de negocio en soluciones técnicas, optimizar procesos y mentorear a otros miembros del equipo para entregar software de calidad a tiempo. Enfocado en ingeniería impulsada por IA: flujos de agentic coding con Claude Code y el Model Context Protocol (MCP) aplicados a lo largo del ciclo de desarrollo.",
   },
   location: { en: "Costa Rica", es: "Costa Rica" },
   languages: {
     en: ["Native Spanish", "Professional English"],
     es: ["Español nativo", "Inglés profesional"],
   },
-  focusAreas: ["Frontend", "Backend", "Cloud"],
+  focusAreas: {
+    en: ["Full stack", "AI-driven engineering", "Agentic coding"],
+    es: ["Full stack", "Ingeniería impulsada por IA", "Agentic coding"],
+  },
   currentEmployer: "Moody’s",
   email: "boviedos.98@gmail.com",
   linkedinUrl: "https://www.linkedin.com/in/brandon-oviedo-231069152/",
@@ -96,8 +99,15 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     id: "ai-assisted",
-    title: { en: "AI-assisted Development", es: "Desarrollo asistido por IA" },
-    skills: [{ name: "Cursor" }, { name: "Claude" }, { name: "Copilot" }],
+    title: { en: "AI-driven Engineering", es: "Ingeniería impulsada por IA" },
+    skills: [
+      { name: "Agentic coding" },
+      { name: "Claude Code" },
+      { name: "Model Context Protocol (MCP)" },
+      { name: "Claude" },
+      { name: "Cursor" },
+      { name: "Copilot" },
+    ],
   },
 ];
 
@@ -110,8 +120,8 @@ export const contributions: Contribution[] = [
     title: { en: "Maintainable interfaces", es: "Interfaces mantenibles" },
     employer: "Moody’s",
     description: {
-      en: "Built reusable React and TypeScript components for a risk analysis web application, with an AI-first approach. I focus on clean, scalable code and better performance, and I keep the app stable by finding and fixing bugs early. I also review teammates’ code and share technical guidance within an agile team.",
-      es: "Construí componentes reutilizables con React y TypeScript para una aplicación web de análisis de riesgo, con un enfoque AI-first. Me enfoco en código limpio y escalable y en mejorar el rendimiento, y mantengo la aplicación estable detectando y corrigiendo errores a tiempo. También reviso el código de mis compañeros y comparto guía técnica dentro de un equipo ágil.",
+      en: "Built reusable React and TypeScript components for a risk analysis web application, with an AI-first approach. I focus on clean, scalable code and better performance, and I keep the app stable by finding and fixing bugs early. I review teammates’ code and share technical guidance within an agile team.",
+      es: "Construí componentes reutilizables con React y TypeScript para una aplicación web de análisis de riesgo, con un enfoque AI-first. Me enfoco en código limpio y escalable y en mejorar el rendimiento, y mantengo la aplicación estable detectando y corrigiendo errores a tiempo. Reviso el código de mis compañeros y comparto guía técnica dentro de un equipo ágil.",
     },
     relatedExperienceId: "moodys",
   },
@@ -120,8 +130,8 @@ export const contributions: Contribution[] = [
     title: { en: "More efficient operations", es: "Operaciones más eficientes" },
     employer: "CGI",
     description: {
-      en: "Investigated and reverse-engineered existing processes to improve them, then built scripts and internal tools that streamlined workflows and significantly reduced resolution times for complex incidents. I also adapted endpoints so modern features and legacy systems could work together, and provided advanced technical support.",
-      es: "Investigué e hice ingeniería inversa de procesos existentes para mejorarlos, y desarrollé scripts y herramientas internas que agilizaron los flujos de trabajo y redujeron de forma significativa los tiempos de resolución de incidentes complejos. También adapté endpoints para que las funcionalidades modernas y los sistemas heredados trabajaran juntos, y brindé soporte técnico avanzado.",
+      en: "Investigated and reverse-engineered existing processes to improve them, then built scripts and internal tools that streamlined workflows and significantly reduced resolution times for complex incidents. I adapted endpoints so modern features and legacy systems could work together, and provided advanced technical support.",
+      es: "Investigué e hice ingeniería inversa de procesos existentes para mejorarlos, y desarrollé scripts y herramientas internas que agilizaron los flujos de trabajo y redujeron de forma significativa los tiempos de resolución de incidentes complejos. Adapté endpoints para que las funcionalidades modernas y los sistemas heredados trabajaran juntos, y brindé soporte técnico avanzado.",
     },
     relatedExperienceId: "daugherty-cgi",
   },

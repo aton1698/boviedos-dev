@@ -11,7 +11,7 @@ export interface Profile {
   cvSummary: Localized;
   location: Localized;
   languages: Localized<string[]>;
-  focusAreas: string[];
+  focusAreas: Localized<string[]>;
   currentEmployer: string;
   email: string;
   linkedinUrl: string;

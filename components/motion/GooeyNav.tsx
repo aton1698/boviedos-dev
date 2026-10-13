@@ -987,6 +987,11 @@ const GooeyNav = ({
     listRef.current?.querySelectorAll<HTMLElement>('[role="tab"]')[next]?.focus();
   };
 
+  // The edge fade covers the labels only: masking the whole stage would also clip the canvas, and the effect
+  // is meant to spill out of the bar.
+  const edgeFade: CSSProperties | undefined =
+    tabs && (fade.start || fade.end) ? { maskImage: edgeMask(fade), WebkitMaskImage: edgeMask(fade) } : undefined;
+
   return (
     <nav
       aria-label={tabs ? undefined : ariaLabel}
@@ -998,11 +1003,10 @@ const GooeyNav = ({
       <div
         ref={stageRef}
         className="gooey-nav__stage"
-        style={tabs && (fade.start || fade.end) ? { maskImage: edgeMask(fade), WebkitMaskImage: edgeMask(fade) } : undefined}
       >
         <canvas ref={canvasRef} className="gooey-nav__canvas" aria-hidden="true" />
         <span ref={fallbackRef} className="gooey-nav__fallback" aria-hidden="true" />
-        <div ref={scrollRef} className="gooey-nav__scroll">
+        <div ref={scrollRef} className="gooey-nav__scroll" style={edgeFade}>
         <ul
           ref={listRef}
           className="gooey-nav__list"
@@ -1013,7 +1017,7 @@ const GooeyNav = ({
           {labels(true)}
         </ul>
         </div>
-        <ul ref={overlayRef} className="gooey-nav__list gooey-nav__list--active" aria-hidden="true">
+        <ul ref={overlayRef} className="gooey-nav__list gooey-nav__list--active" aria-hidden="true" style={edgeFade}>
           {labels(false)}
         </ul>
       </div>

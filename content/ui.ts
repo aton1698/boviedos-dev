@@ -79,7 +79,7 @@ export const ui: Record<Locale, UiStrings> = {
     homeLabel: "Brandon Oviedo Sánchez, back to top",
     getInTouch: "Let’s talk",
     downloadCv: "Download CV",
-    currentlyAt: "Currently at",
+    currentlyAt: "Company",
     focus: "Focus",
     technologies: "Main technologies",
     highlights: { years: "Years of experience", companies: "Companies", credentials: "Verified credentials" },
@@ -128,7 +128,7 @@ export const ui: Record<Locale, UiStrings> = {
     meta: {
       title: "Brandon Oviedo Sánchez | Full Stack Software Engineer",
       description:
-        "Full stack software engineer in Costa Rica, building reliable digital products with React, TypeScript, Java, Spring Boot, and AWS.",
+        "Full stack software engineer in Costa Rica, building reliable digital products with React, TypeScript, Java, Spring Boot, and AWS, and AI-driven engineering workflows with Claude.",
       ogAlt: "Brandon Oviedo Sánchez, Full Stack Software Engineer",
     },
     credentialsCopy: "Always learning, with credentials you can verify.",
@@ -155,7 +155,7 @@ export const ui: Record<Locale, UiStrings> = {
     homeLabel: "Brandon Oviedo Sánchez, volver al inicio",
     getInTouch: "Ponte en contacto",
     downloadCv: "Descargar CV",
-    currentlyAt: "Actualmente en",
+    currentlyAt: "Empresa",
     focus: "Enfoque",
     technologies: "Tecnologías principales",
     highlights: { years: "Años de experiencia", companies: "Empresas", credentials: "Credenciales verificadas" },
@@ -204,7 +204,7 @@ export const ui: Record<Locale, UiStrings> = {
     meta: {
       title: "Brandon Oviedo Sánchez | Ingeniero de Software Full Stack",
       description:
-        "Ingeniero de software full stack en Costa Rica que construye productos digitales confiables con React, TypeScript, Java, Spring Boot y AWS.",
+        "Ingeniero de software full stack en Costa Rica que construye productos digitales confiables con React, TypeScript, Java, Spring Boot y AWS, y flujos de ingeniería impulsada por IA con Claude.",
       ogAlt: "Brandon Oviedo Sánchez, Ingeniero de Software Full Stack",
     },
     credentialsCopy: "Siempre aprendiendo, con credenciales que puedes verificar.",

@@ -47,7 +47,7 @@ export function ExperienceTabs({
 
   return (
     <div className="fade-row mt-12">
-      <div className="flex justify-center">
+      <div className="flex justify-center overflow-x-clip">
         <GooeyNav
           tabs
           aria-label={label}
