@@ -10,8 +10,11 @@ Next.js 16 App Router, React 19, strict TypeScript, Tailwind 4. Yarn 4 only (nev
 - `app/[locale]/` layout + page (routes `/en`, `/es`; `/` redirects to `/en`)
 - `app/globals.css` design tokens, type scale, base components
 - `content/` typed content (`types.ts`, `profile.ts`), validation, `verifiedCredentials`, `visibleSections`, `formatMonth` (`index.ts`)
-- `lib/i18n.ts` locales; `docs/spec.md` normalized spec; `docs/design/` renders 01–07
+- `lib/i18n.ts` locales; `lib/site.ts` canonical URL + production gate (`SITE_ENV=production` / `VERCEL_ENV`); `docs/spec.md` normalized spec; `docs/design/` renders 01–07
 - Rules: `.claude/rules/react.md` (React/Next/a11y/i18n best practices)
+
+## Brand
+Visual identity is **Pulse Flow**: follow `docs/brand.md` (and `.claude/rules/brand.md`) for every UI change. It overrides the earlier dark/lime direction in the spec.
 
 ## Scope
 Public CV page only. No auth, CMS, backend, DB, blog, contact form or theme switcher.

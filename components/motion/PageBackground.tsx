@@ -1,39 +1,38 @@
 "use client";
 
-import FluxLines from "./FluxLines";
+import Iridescence from "./Iridescence";
 
-// FluxLines parses colors in JS, so it cannot take CSS variables: keep in sync with --color-bg.
-const PAGE_BG = "#090c10";
+// Iridescence parses colors in JS, so it cannot take CSS variables: keep in sync with the brand tokens
+// in globals.css. Monotone mode maps the folds to a gradient from Electric Blue to deep navy, so the
+// surface only contains blues and near-black navy (the stock shader would add pinks and cyans).
+const FLOW_TINT = "#2563ff";
+const FLOW_BASE = "#050a1a";
 
-// Values from the React Bits "Calm" preset customization. Decorative only:
-// the canvas paints its own opaque background, and html keeps the same color if WebGL fails.
+// Decorative only: aria-hidden, no pointer events, softly blurred so it never competes with text,
+// and html keeps the page color if WebGL is unavailable.
 export function PageBackground() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 -z-10 print:hidden"
+      className="pointer-events-none fixed -inset-6 -z-10 blur-[2px] print:hidden"
     >
-      <FluxLines
-        colors={["#041b4d", "#0a3a9e", "#8ec5ff"]}
-        glow={1.6}
-        rimWidth={0.14}
-        sharpness={2.5}
-        lineWidth={1}
-        shimmer={1}
-        scale={1.6}
-        speed={0.1}
-        turbulence={0.6}
-        fluidity={0.1}
-        flowDirection="down"
-        mouseInteraction
-        mouseStrength={1}
-        mouseRadius={0.35}
+      <Iridescence
+        color={FLOW_TINT}
+        monotone
+        monotoneBase={FLOW_BASE}
+        brightness={1}
+        contrast={0.9}
+        speed={0.6}
+        scale={1.4}
+        detail={8}
+        warp={1}
+        amplitude={0.1}
+        stir={0.5}
+        sheen={0.08}
         clickSwirl
-        intro
-        lightMode={false}
-        transparent={false}
-        backgroundColor={PAGE_BG}
       />
+      {/* Dark veil: keeps the pattern visible but guarantees readable text on every section. */}
+      <div className="absolute inset-0 bg-[#050a1a]/45" />
     </div>
   );
 }

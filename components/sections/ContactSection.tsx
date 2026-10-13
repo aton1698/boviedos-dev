@@ -7,6 +7,7 @@ import {
 } from "@hugeicons/core-free-icons";
 import { profile } from "@/content";
 import { ui } from "@/content/ui";
+import { SectionHeading } from "../SectionHeading";
 import type { Locale } from "@/lib/i18n";
 import { CvDownload } from "../CvDownload";
 import { ExternalLink } from "../ExternalLink";
@@ -21,9 +22,9 @@ export function ContactSection({ locale }: { locale: Locale }) {
   return (
     <section id="contact" aria-labelledby="contact-title" className="border-t border-divider">
       <div className="container-page section-y">
-        <h2 id="contact-title" className="max-w-[16ch]">
+        <SectionHeading id="contact-title" eyebrow={t.nav.contact} className="max-w-[22ch]">
           {t.headings.contact}
-        </h2>
+        </SectionHeading>
         <p className="mt-6 max-w-[48ch] text-text-muted">{t.contactCopy}</p>
 
         <ul className="mt-12 grid gap-x-8 sm:grid-cols-2 lg:max-w-3xl">

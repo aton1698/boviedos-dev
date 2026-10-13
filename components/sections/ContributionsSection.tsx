@@ -1,5 +1,6 @@
 import { contributions, experiences } from "@/content";
 import { ui } from "@/content/ui";
+import { SectionHeading } from "../SectionHeading";
 import type { Locale } from "@/lib/i18n";
 import { ExternalLink } from "../ExternalLink";
 
@@ -9,9 +10,9 @@ export function ContributionsSection({ locale }: { locale: Locale }) {
   return (
     <section id="contributions" aria-labelledby="contributions-title" className="border-t border-divider">
       <div className="container-page section-y">
-        <h2 id="contributions-title" className="max-w-[16ch]">
+        <SectionHeading id="contributions-title" eyebrow={t.nav.contributions} className="max-w-[16ch]">
           {t.headings.contributions}
-        </h2>
+        </SectionHeading>
         <p className="mt-6 max-w-[48ch] text-text-muted">{t.contributionsIntro}</p>
 
         <ol className="mt-12">

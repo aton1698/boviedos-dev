@@ -1,14 +1,16 @@
 import { skillGroups } from "@/content";
 import { ui } from "@/content/ui";
+import { SectionHeading } from "../SectionHeading";
 import type { Locale } from "@/lib/i18n";
 
 export function SkillsSection({ locale }: { locale: Locale }) {
+  const t = ui[locale];
   return (
     <section id="skills" aria-labelledby="skills-title" className="border-t border-divider">
       <div className="container-page section-y">
-        <h2 id="skills-title" className="max-w-[16ch]">
-          {ui[locale].headings.skills}
-        </h2>
+        <SectionHeading id="skills-title" eyebrow={t.nav.skills} className="max-w-[16ch]">
+          {t.headings.skills}
+        </SectionHeading>
         <div className="mt-12">
           {skillGroups.map((group) => (
             <div

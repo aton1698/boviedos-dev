@@ -18,6 +18,7 @@ export interface UiStrings {
     education: string;
     research: string;
     contact: string;
+    credentials: string;
   };
   contributionsIntro: string;
   contactCopy: string;
@@ -25,6 +26,11 @@ export interface UiStrings {
   linkedin: string;
   opensNewTab: string;
   caseStudy: string;
+  cta: string;
+  meta: { title: string; description: string; ogAlt: string };
+  credentialsCopy: string;
+  credentialGroups: { certification: string; course: string };
+  credentialLabels: { topics: string; id: string; verify: string; expires: string };
   languageLabel: string; // accessible name of the language selector
   languageName: string; // name of this locale, used by the switcher
 }
@@ -45,7 +51,7 @@ export const ui: Record<Locale, UiStrings> = {
     menu: "Menu",
     mainNav: "Main navigation",
     homeLabel: "Brandon Oviedo Sánchez, back to top",
-    getInTouch: "Get in touch",
+    getInTouch: "Let’s talk",
     downloadCv: "Download CV",
     currentlyAt: "Currently at",
     focus: "Focus",
@@ -55,7 +61,8 @@ export const ui: Record<Locale, UiStrings> = {
       education: "Education. Research. Community.",
       research: "Research & Speaking",
       contributions: "What I bring to a team.",
-      contact: "Let’s talk about your next team.",
+      contact: "Excited for the next opportunity. Let’s talk.",
+      credentials: "Certifications & Courses",
     },
     contributionsIntro: "Selected contributions from my professional experience.",
     contactCopy: "If my experience matches what you’re looking for, I’d be glad to connect.",
@@ -63,6 +70,16 @@ export const ui: Record<Locale, UiStrings> = {
     linkedin: "LinkedIn",
     opensNewTab: "(opens in a new tab)",
     caseStudy: "Read the case study",
+    cta: "Get in touch",
+    meta: {
+      title: "Brandon Oviedo Sánchez | Full Stack Software Engineer",
+      description:
+        "Full stack software engineer based in Costa Rica, building reliable digital products with React, TypeScript, Java, Spring Boot, and AWS.",
+      ogAlt: "Brandon Oviedo Sánchez, Full Stack Software Engineer",
+    },
+    credentialsCopy: "Continuous learning, backed by verifiable credentials.",
+    credentialGroups: { certification: "Certifications", course: "Courses" },
+    credentialLabels: { topics: "Topics", id: "Credential ID", verify: "Verify credential", expires: "Expires" },
     languageLabel: "Language",
     languageName: "English",
   },
@@ -80,7 +97,7 @@ export const ui: Record<Locale, UiStrings> = {
     menu: "Menú",
     mainNav: "Navegación principal",
     homeLabel: "Brandon Oviedo Sánchez, volver al inicio",
-    getInTouch: "Contáctame",
+    getInTouch: "Ponte en contacto",
     downloadCv: "Descargar CV",
     currentlyAt: "Actualmente en",
     focus: "Enfoque",
@@ -90,7 +107,8 @@ export const ui: Record<Locale, UiStrings> = {
       education: "Educación. Investigación. Comunidad.",
       research: "Investigación y ponencias",
       contributions: "Lo que aporto a un equipo.",
-      contact: "Hablemos de tu próximo equipo.",
+      contact: "Entusiasmo por la próxima oportunidad. Hablemos.",
+      credentials: "Certificaciones y cursos",
     },
     contributionsIntro: "Contribuciones seleccionadas de mi experiencia profesional.",
     contactCopy: "Si mi experiencia coincide con lo que buscas, con gusto conversamos.",
@@ -98,6 +116,16 @@ export const ui: Record<Locale, UiStrings> = {
     linkedin: "LinkedIn",
     opensNewTab: "(se abre en una pestaña nueva)",
     caseStudy: "Ver el caso de estudio",
+    cta: "Contáctame",
+    meta: {
+      title: "Brandon Oviedo Sánchez | Ingeniero de Software Full Stack",
+      description:
+        "Ingeniero de software full stack con sede en Costa Rica, que construye productos digitales confiables con React, TypeScript, Java, Spring Boot y AWS.",
+      ogAlt: "Brandon Oviedo Sánchez, Ingeniero de Software Full Stack",
+    },
+    credentialsCopy: "Aprendizaje continuo, respaldado por credenciales verificables.",
+    credentialGroups: { certification: "Certificaciones", course: "Cursos" },
+    credentialLabels: { topics: "Temas", id: "ID de credencial", verify: "Verificar credencial", expires: "Vence" },
     languageLabel: "Idioma",
     languageName: "Español",
   },

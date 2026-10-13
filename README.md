@@ -28,6 +28,14 @@ Open [http://localhost:3000](http://localhost:3000); `/` redirects to `/en`.
 
 Run `yarn build` before `yarn typecheck` if route types look stale.
 
+## Indexing (production vs preview)
+
+Only production is indexable. Everything else (previews, local builds) gets `noindex` in the page metadata, an `X-Robots-Tag` header and `Disallow: /` in robots.txt.
+
+- Vercel: nothing to configure; `VERCEL_ENV=production` is set on the production environment.
+- Any other host: set `SITE_ENV=production` for the production build only.
+- English is served at `https://boviedos.dev` (canonical); Spanish at `https://boviedos.dev/es`. `/en` still resolves but canonicalizes to the root.
+
 ## Notes
 
 - Package manager is Yarn only; do not commit `package-lock.json`.

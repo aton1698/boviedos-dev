@@ -13,8 +13,16 @@ const nextConfig: NextConfig = {
       },
     },
   },
-  async redirects() {
-    return [{ source: "/", destination: "/en", permanent: false }];
+  // English is served at the site root (canonical https://boviedos.dev); /en still resolves.
+  async rewrites() {
+    return [{ source: "/", destination: "/en" }];
+  },
+  // Defense in depth: anything that is not production must never be indexed.
+  async headers() {
+    if (process.env.SITE_ENV === "production" || process.env.VERCEL_ENV === "production") return [];
+    return [
+      { source: "/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
+    ];
   },
 };
 

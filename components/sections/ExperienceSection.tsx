@@ -1,15 +1,17 @@
 import { experiences } from "@/content";
 import { ui } from "@/content/ui";
+import { SectionHeading } from "../SectionHeading";
 import type { Locale } from "@/lib/i18n";
 import { DateRange } from "../DateRange";
 
 export function ExperienceSection({ locale }: { locale: Locale }) {
+  const t = ui[locale];
   return (
     <section id="experience" aria-labelledby="experience-title" className="border-t border-divider">
       <div className="container-page section-y">
-        <h2 id="experience-title" className="max-w-[20ch]">
-          {ui[locale].headings.experience}
-        </h2>
+        <SectionHeading id="experience-title" eyebrow={t.nav.experience} className="max-w-[20ch]">
+          {t.headings.experience}
+        </SectionHeading>
         <ol className="mt-12">
           {experiences.map((job) => (
             <li

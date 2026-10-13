@@ -24,9 +24,9 @@ interface SiteNavProps {
 }
 
 // GooeyNav parses colors in JS, so it cannot take CSS variables: keep in sync with
-// --color-accent / --color-on-accent in globals.css.
-const NAV_PILL = "#5aa9ff";
-const NAV_PILL_INK = "#090c10";
+// --brand-electric in globals.css.
+const NAV_PILL = "#2563ff";
+const NAV_PILL_INK = "#ffffff";
 
 const ICONS: Record<string, ReactNode> = {
   profile: <HugeiconsIcon icon={UserIcon} size={24} strokeWidth={1.75} />,
@@ -39,9 +39,9 @@ const ICONS: Record<string, ReactNode> = {
 };
 
 /**
- * One GooeyNav for every viewport: a floating icon bar at the bottom below 1200px
+ * One GooeyNav for every viewport: a floating icon bar at the bottom below 1440px
  * (labels stay in the DOM for assistive tech) and a labelled bar centered in the
- * header from 1200px up. Anchors work without JavaScript; JS adds the active pill.
+ * header from 1440px up. Anchors work without JavaScript; JS adds the active pill.
  */
 export function SiteNav({ links, navLabel }: SiteNavProps) {
   const [active, setActive] = useState<string | null>(null);
@@ -78,6 +78,9 @@ export function SiteNav({ links, navLabel }: SiteNavProps) {
     "--gn-x": "var(--site-gn-x)",
     "--gn-y": "var(--site-gn-y)",
     "--gn-font": "var(--site-gn-font)",
+    // Brighter inactive labels and a navy frame: the stock dark theme is too faint on the animated background.
+    "--gn-muted": "rgb(243 246 255 / 0.82)",
+    "--gn-frame": "rgb(8 16 42 / 0.88)",
   } as CSSProperties;
   // 6 icons at 48px fit a 320px screen; a 7th (credentials) needs tighter padding.
   const mobileX = links.length > 6 ? "8px" : "12px";
@@ -85,7 +88,7 @@ export function SiteNav({ links, navLabel }: SiteNavProps) {
   return (
     <div
       style={{ "--site-gn-x-mobile": mobileX } as CSSProperties}
-      className="print:hidden pointer-events-none fixed inset-x-0 bottom-[max(16px,env(safe-area-inset-bottom))] z-50 flex justify-center px-2 [--site-gn-font:21px] [--site-gn-gap:0px] [--site-gn-pad:6px] [--site-gn-x:var(--site-gn-x-mobile)] [--site-gn-y:14px] min-[1200px]:bottom-auto min-[1200px]:top-0 min-[1200px]:h-[var(--header-height)] min-[1200px]:items-center min-[1200px]:[--site-gn-font:14px] min-[1200px]:[--site-gn-gap:4px] min-[1200px]:[--site-gn-pad:6px] min-[1200px]:[--site-gn-x:16px] min-[1200px]:[--site-gn-y:9px]"
+      className="print:hidden pointer-events-none fixed inset-x-0 bottom-[max(16px,env(safe-area-inset-bottom))] z-50 flex justify-center px-2 [--site-gn-font:21px] [--site-gn-gap:0px] [--site-gn-pad:6px] [--site-gn-x:var(--site-gn-x-mobile)] [--site-gn-y:14px] min-[1440px]:bottom-auto min-[1440px]:top-0 min-[1440px]:h-[var(--header-height)] min-[1440px]:items-center min-[1440px]:[--site-gn-font:14px] min-[1440px]:[--site-gn-gap:4px] min-[1440px]:[--site-gn-pad:6px] min-[1440px]:[--site-gn-x:12px] min-[1536px]:[--site-gn-x:16px] min-[1440px]:[--site-gn-y:14px]"
     >
       <div className="pointer-events-auto">
         <GooeyNav
@@ -93,12 +96,12 @@ export function SiteNav({ links, navLabel }: SiteNavProps) {
           style={sizing}
           items={links.map(({ id, label }) => ({
             href: `#${id}`,
-            // Icon below 1200px, text from 1200px up. The text always stays in the DOM
+            // Icon below 1440px, text from 1440px up. The text always stays in the DOM
             // (visually hidden on small screens) so every link keeps its accessible name.
             icon: (
               <span className="flex items-center">
-                <span className="min-[1200px]:hidden">{ICONS[id]}</span>
-                <span className="sr-only min-[1200px]:not-sr-only">{label}</span>
+                <span className="min-[1440px]:hidden">{ICONS[id]}</span>
+                <span className="sr-only min-[1440px]:not-sr-only">{label}</span>
               </span>
             ),
           }))}

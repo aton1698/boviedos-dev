@@ -1,5 +1,6 @@
 import { education, publications } from "@/content";
 import { ui } from "@/content/ui";
+import { SectionHeading } from "../SectionHeading";
 import type { Locale } from "@/lib/i18n";
 import { DateRange } from "../DateRange";
 
@@ -9,9 +10,9 @@ export function EducationSection({ locale }: { locale: Locale }) {
   return (
     <section id="education" aria-labelledby="education-title" className="border-t border-divider">
       <div className="container-page section-y">
-        <h2 id="education-title" className="max-w-[18ch]">
+        <SectionHeading id="education-title" eyebrow={t.nav.education} className="max-w-[18ch]">
           {t.headings.education}
-        </h2>
+        </SectionHeading>
 
         <ul className="mt-12">
           {education.map((item) => (

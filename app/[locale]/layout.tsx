@@ -1,42 +1,50 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { PageBackground } from "@/components/motion/PageBackground";
 import { ui } from "@/content/ui";
 import { isLocale, locales } from "@/lib/i18n";
+import { isProduction, localeUrl, siteUrl } from "@/lib/site";
 import "../globals.css";
 
-const heading = Space_Grotesk({
+// Brand font (docs/brand.md): one variable family (Light 300 to Bold 700) for headings and body.
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin", "latin-ext"],
-  weight: ["500", "600"],
   variable: "--font-heading",
   display: "swap",
   fallback: ["Arial", "sans-serif"],
-});
-
-const body = Inter({
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600"],
-  variable: "--font-body",
-  display: "swap",
-  fallback: ["Arial", "sans-serif"],
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
-  display: "swap",
-  fallback: ["monospace"],
 });
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export const metadata: Metadata = {
-  title: "Brandon Oviedo Sánchez | Full Stack Software Engineer",
-};
+export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const { title, description } = ui[locale].meta;
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title,
+    description,
+    alternates: {
+      canonical: localeUrl(locale),
+      languages: { en: localeUrl("en"), es: localeUrl("es"), "x-default": localeUrl("en") },
+    },
+    openGraph: {
+      type: "website",
+      url: localeUrl(locale),
+      siteName: "Brandon Oviedo Sánchez",
+      title,
+      description,
+      locale: locale === "en" ? "en_US" : "es_CR",
+      alternateLocale: locale === "en" ? "es_CR" : "en_US",
+    },
+    twitter: { card: "summary_large_image", title, description },
+    robots: isProduction ? { index: true, follow: true } : { index: false, follow: false },
+  };
+}
 
 export default async function LocaleLayout({
   children,
@@ -48,7 +56,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${heading.variable} ${body.variable} ${mono.variable}`}
+      className={`${jakarta.variable} [--font-body:var(--font-heading)]`}
     >
       <body>
         <a className="skip-link print:hidden" href="#main">
