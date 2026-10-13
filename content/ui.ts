@@ -26,6 +26,7 @@ export interface UiStrings {
   linkedin: string;
   opensNewTab: string;
   caseStudy: string;
+  footer: { tagline: string; navigate: string; connect: string; navLabel: string; backToTop: string };
   cta: string;
   meta: { title: string; description: string; ogAlt: string };
   credentialsCopy: string;
@@ -70,6 +71,13 @@ export const ui: Record<Locale, UiStrings> = {
     linkedin: "LinkedIn",
     opensNewTab: "(opens in a new tab)",
     caseStudy: "Read the case study",
+    footer: {
+      tagline: "Building reliable digital products across the stack.",
+      navigate: "Navigate",
+      connect: "Connect",
+      navLabel: "Footer navigation",
+      backToTop: "Back to top",
+    },
     cta: "Get in touch",
     meta: {
       title: "Brandon Oviedo Sánchez | Full Stack Software Engineer",
@@ -116,6 +124,13 @@ export const ui: Record<Locale, UiStrings> = {
     linkedin: "LinkedIn",
     opensNewTab: "(se abre en una pestaña nueva)",
     caseStudy: "Ver el caso de estudio",
+    footer: {
+      tagline: "Construyendo productos digitales confiables de punta a punta.",
+      navigate: "Navegación",
+      connect: "Contacto",
+      navLabel: "Navegación del pie de página",
+      backToTop: "Volver arriba",
+    },
     cta: "Contáctame",
     meta: {
       title: "Brandon Oviedo Sánchez | Ingeniero de Software Full Stack",

@@ -61,7 +61,7 @@ The header shows the mark ONLY (no name or subtitle; owner request). The link ke
   at intersections; faint `</>` glyphs. Implemented as page background (Iridescence shader in local "monotone" mode: Electric Blue to near-black navy `#050A1A`,
   softly blurred, with a ~45% dark veil) (the hero has no extra wave graphic: removed on owner request).
 - Dark glow: deep navy with soft blue light streaks sweeping diagonally (now the whole page).
-- Readability first: the animated background carries a dark veil (~45%), the navigation frame is near-opaque navy,
+- Readability first: the animated background carries a dark veil (~45%), the navigation frame and the footer share one navy surface (`--nav-surface`),
   and nav labels use near-white ink (>= 4.5:1). Never place small text directly on saturated parts of the pattern.
 - Header CTA is professional and short: "Get in touch" / "Contáctame" (goes to Contact). The text navigation only
   appears from 1440px (Spanish labels are wider); below that the floating icon bar is used.

@@ -80,7 +80,7 @@ export function SiteNav({ links, navLabel }: SiteNavProps) {
     "--gn-font": "var(--site-gn-font)",
     // Brighter inactive labels and a navy frame: the stock dark theme is too faint on the animated background.
     "--gn-muted": "rgb(243 246 255 / 0.82)",
-    "--gn-frame": "rgb(8 16 42 / 0.88)",
+    "--gn-frame": "var(--nav-surface)",
   } as CSSProperties;
   // 6 icons at 48px fit a 320px screen; a 7th (credentials) needs tighter padding.
   const mobileX = links.length > 6 ? "8px" : "12px";

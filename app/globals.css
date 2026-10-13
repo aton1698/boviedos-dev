@@ -21,6 +21,7 @@
   --color-control-border: #7f93c9;
   --color-on-accent: #ffffff;
   --color-hover-text: #ffffff;
+  --nav-surface: rgb(8 16 42 / 0.88); /* shared by the navigation bar frame and the footer */
   --btn-primary: #2563ff;
   --btn-primary-hover: #1d4ed8; /* white on this is 6.7:1 (a lighter hover fails 4.5:1) */
   --header-height: 72px;
