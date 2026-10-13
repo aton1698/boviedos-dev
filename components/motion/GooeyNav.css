@@ -184,3 +184,9 @@
 .gooey-nav--tabs .gooey-nav__list--active {
   overflow: hidden;
 }
+
+/* The WebGL canvas is drawn 72px past the stage on every side. In tabs mode the bar spans the page width, so
+   that margin would widen the document (a strip appears when zooming out): clip it horizontally only. */
+.gooey-nav--tabs {
+  overflow-x: clip;
+}
