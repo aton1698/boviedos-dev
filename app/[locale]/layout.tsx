@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { PageBackground } from "@/components/motion/PageBackground";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { ui } from "@/content/ui";
 import { isLocale, locales } from "@/lib/i18n";
 import { isProduction, localeUrl, siteUrl } from "@/lib/site";
@@ -63,6 +64,7 @@ export default async function LocaleLayout({
           {ui[locale].skipLink}
         </a>
         <PageBackground />
+        <ScrollToTop />
         {children}
       </body>
     </html>
