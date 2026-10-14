@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { ArrowUp01Icon, Download01Icon, LinkSquare01Icon, Mail01Icon } from "@hugeicons/core-free-icons";
+import { ArrowUp01Icon, LinkSquare01Icon, Mail01Icon } from "@hugeicons/core-free-icons";
 import { blogCategories, profile } from "@/content";
 import { ui } from "@/content/ui";
 import type { Locale } from "@/lib/i18n";
@@ -13,8 +13,9 @@ import { Logo } from "./Logo";
 // One size for every footer link (15px on phones, the page size from md up); only the email shrinks further on
 // narrow phones so it stays on one line.
 const linkClass = "link-arrow w-fit max-w-full text-[15px] [overflow-wrap:anywhere] max-md:!min-h-10 md:text-[1em]";
-// Two columns of plain text on phones, a single column from md up.
-const listClass = "mt-2 grid grid-cols-2 gap-x-4 md:mt-4 md:flex md:flex-col md:items-start md:gap-0";
+// Plain text on phones: one row when there are up to three links, two columns otherwise; a single column from md up.
+const rowListClass = "mt-2 flex flex-wrap gap-x-6 md:mt-4 md:flex-col md:items-start md:gap-0";
+const gridListClass = "mt-2 grid grid-cols-2 gap-x-4 md:mt-4 md:flex md:flex-col md:items-start md:gap-0";
 const headingClass =
   "!text-sm !font-semibold !leading-normal !tracking-[0.2em] !text-text-muted uppercase";
 const iconProps = { size: 18, strokeWidth: 1.75 } as const;
@@ -23,6 +24,7 @@ const iconProps = { size: 18, strokeWidth: 1.75 } as const;
 export function SiteFooter({ locale }: { locale: Locale }) {
   const t = ui[locale];
   const home = localePath(locale);
+  const exploreCount = 3 + (features.blog ? blogCategories.length : 0); // home, CV, contact + the blogs
 
   return (
     <footer className="border-t border-divider bg-[var(--nav-surface)] backdrop-blur-sm">
@@ -36,7 +38,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
 
           <nav aria-label={t.footer.navLabel}>
             <h2 className={headingClass}>{t.footer.navigate}</h2>
-            <ul className={listClass}>
+            <ul className={exploreCount <= 3 ? rowListClass : gridListClass}>
               <li>
                 <Link className={linkClass} href={home}>
                   {t.footer.home}
@@ -65,7 +67,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
 
           <div className="min-w-0">
             <h2 className={headingClass}>{t.footer.connect}</h2>
-            <ul className={listClass}>
+            <ul className={rowListClass}>
               <li>
                 <ExternalLink href={profile.linkedinUrl} newTabLabel={t.opensNewTab} className={`${linkClass} gap-2 md:gap-3`}>
                   <HugeiconsIcon icon={LinkSquare01Icon} {...iconProps} aria-hidden="true" className="shrink-0 text-accent max-md:hidden" />
@@ -73,12 +75,6 @@ export function SiteFooter({ locale }: { locale: Locale }) {
                 </ExternalLink>
               </li>
               <li>
-                <a className={`${linkClass} gap-2 md:gap-3`} href={profile.cvUrl} download="Brandon Oviedo FS.pdf">
-                  <HugeiconsIcon icon={Download01Icon} {...iconProps} aria-hidden="true" className="shrink-0 text-accent max-md:hidden" />
-                  {t.downloadCv}
-                </a>
-              </li>
-              <li className="max-md:col-span-2">
                 <a
                   className={`${linkClass} gap-2 md:gap-3`}
                   href={`mailto:${profile.email}`}

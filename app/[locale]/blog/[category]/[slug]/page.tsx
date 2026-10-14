@@ -13,10 +13,15 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 
+// Cache Components requires at least one result. Mock posts are listed even in production (the page itself answers
+// 404 for them there) and a placeholder covers the case of no posts at all, so the build never fails on an empty blog.
 export function generateStaticParams() {
-  return locales.flatMap((locale) =>
-    blogCategories.flatMap(({ id }) => getPosts(id).map((post) => ({ locale, category: id, slug: post.id }))),
+  const params = locales.flatMap((locale) =>
+    blogCategories.flatMap(({ id }) =>
+      getPosts(id, { includeMock: true }).map((post) => ({ locale, category: id, slug: post.id })),
+    ),
   );
+  return params.length > 0 ? params : [{ locale: locales[0], category: blogCategories[0].id, slug: "none" }];
 }
 
 function findPost(categoryId: string, slug: string) {

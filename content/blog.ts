@@ -50,8 +50,11 @@ function isPost(value: unknown): value is BlogPost {
   );
 }
 
-/** Posts of one blog, newest first. Reads the JSON files of its folder at build time. */
-export function getPosts(category: BlogCategoryId): BlogPost[] {
+/**
+ * Posts of one blog, newest first. Reads the JSON files of its folder at build time. Mock posts are left out in
+ * production unless `includeMock` is set (only generateStaticParams does, see the post page).
+ */
+export function getPosts(category: BlogCategoryId, { includeMock = false } = {}): BlogPost[] {
   const { folder } = blogCategories.find((c) => c.id === category) ?? { folder: "" };
   const dir = path.join(/*turbopackIgnore: true*/ process.cwd(), folder);
   if (!folder || !fs.existsSync(/*turbopackIgnore: true*/ dir)) return [];
@@ -64,6 +67,6 @@ export function getPosts(category: BlogCategoryId): BlogPost[] {
       if (post.id !== file.replace(/\.json$/, "")) throw new Error(`${folder}/${file}: id must match the file name`);
       return post;
     })
-    .filter((post) => !post.mock || !isProduction)
+    .filter((post) => includeMock || !post.mock || !isProduction)
     .sort((a, b) => b.date.localeCompare(a.date));
 }
