@@ -1,6 +1,10 @@
+import Link from "next/link";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { File01Icon, Mail01Icon } from "@hugeicons/core-free-icons";
 import { profile } from "@/content";
 import { ui } from "@/content/ui";
 import type { Locale } from "@/lib/i18n";
+import { localePath } from "@/lib/site";
 import { CvDownload } from "../CvDownload";
 import { Highlights } from "../Highlights";
 import { Logo } from "../Logo";
@@ -28,7 +32,12 @@ export function ProfileSection({ locale }: { locale: Locale }) {
 
           <div className="mt-10 flex flex-wrap gap-4">
             <CvDownload locale={locale} />
+            <Link className="btn-secondary print:hidden" href={localePath(locale, "/cv")}>
+              <HugeiconsIcon icon={File01Icon} size={20} strokeWidth={1.75} aria-hidden="true" />
+              {t.viewFullCv}
+            </Link>
             <a className="btn-secondary print:hidden" href="#contact">
+              <HugeiconsIcon icon={Mail01Icon} size={20} strokeWidth={1.75} aria-hidden="true" />
               {t.getInTouch}
             </a>
           </div>
