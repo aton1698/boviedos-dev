@@ -30,7 +30,7 @@ export function CvSection({ locale }: { locale: Locale }) {
             technologies: job.technologies,
           }))}
         />
-        <div className="fade-row border-t border-divider pt-8">
+        <div className="fade-row flex justify-center border-t border-divider pt-8">
           <Link className="btn-primary" href={localePath(locale, "/cv")}>
             <HugeiconsIcon icon={File01Icon} size={20} strokeWidth={1.75} aria-hidden="true" />
             {t.viewFullCv}
