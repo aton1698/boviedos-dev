@@ -1,0 +1,30 @@
+{
+  "id": "learning-in-public",
+  "mock": true,
+  "date": "2026-09-10",
+  "title": {
+    "en": "Learning in public",
+    "es": "Aprender en público"
+  },
+  "excerpt": {
+    "en": "Why writing down what I learn makes it stick.",
+    "es": "Por qué escribir lo que aprendo hace que se me quede."
+  },
+  "cover": {
+    "src": "/blog/personal.svg",
+    "alt": {
+      "en": "Mock cover image",
+      "es": "Imagen de portada de ejemplo"
+    }
+  },
+  "body": {
+    "en": [
+      "Placeholder text. Replace this mock post with real content.",
+      "This file lives in the blogs folder; each paragraph is one item of the body array."
+    ],
+    "es": [
+      "Texto de ejemplo. Reemplaza esta publicación de prueba por contenido real.",
+      "Este archivo vive en la carpeta de blogs; cada párrafo es un elemento del arreglo body."
+    ]
+  }
+}

@@ -289,8 +289,10 @@ h3 {
   padding-inline: 20px;
 }
 
+/* 24px on top at every size (the /cv page top spacing); the bottom keeps the larger rhythm. */
 .section-y {
-  padding-block: 64px;
+  padding-top: 24px;
+  padding-bottom: 64px;
 }
 
 .btn-primary,
@@ -400,7 +402,8 @@ h3 {
       padding-inline: 56px;
     }
     .section-y {
-      padding-block: 112px;
+      padding-top: 24px;
+      padding-bottom: 112px;
     }
   }
 }

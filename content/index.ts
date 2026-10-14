@@ -12,7 +12,7 @@ import type { Credential, Localized } from "./types";
 
 export * from "./types";
 export { legalDocuments, legalPages, legalUpdated, type LegalPageId } from "./legal";
-export { blogCategories, type BlogCategory, type BlogCategoryId } from "./blog";
+export { blogCategories, getPosts, type BlogCategory, type BlogCategoryId } from "./blog";
 export {
   contributions,
   education,

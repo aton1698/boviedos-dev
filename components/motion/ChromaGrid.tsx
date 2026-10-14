@@ -12,8 +12,8 @@ export interface ChromaItem {
   title: string;
   subtitle?: string;
   tag?: string;
-  /** Internal route; the whole card becomes a link. */
-  href: string;
+  /** Internal route; the whole card becomes a link. Without it the card is plain, non-interactive content. */
+  href?: string;
   /** Accent color for the glow; JS-side value, keep in sync with the brand tokens in globals.css. */
   accent: string;
 }
@@ -251,30 +251,36 @@ export function ChromaGrid({
       style={rootStyle}
     >
       <div className="chroma-grid-inner">
-        {items.map(item => (
-          <Link
-            key={item.id}
-            className="chroma-card"
-            data-chroma-area=""
-            style={{ '--chroma-accent': item.accent } as CSSProperties}
-            href={item.href}
-          >
-            <span className="chroma-wash" aria-hidden="true" />
-            <div className="chroma-media" data-chroma-area="">
-              {/* Decorative cover: the title below carries the meaning. */}
-              <Image className="chroma-mono" src={item.image} alt="" fill sizes="(min-width: 768px) 50vw, 100vw" unoptimized />
-              <Image className="chroma-color" src={item.image} alt="" aria-hidden="true" fill sizes="(min-width: 768px) 50vw, 100vw" unoptimized />
-              <span className="chroma-media-rim" aria-hidden="true" />
+        {items.map(item => {
+          const content = (
+            <>
+              <span className="chroma-wash" aria-hidden="true" />
+              <div className="chroma-media" data-chroma-area="">
+                {/* Decorative cover: the title below carries the meaning. */}
+                <Image className="chroma-mono" src={item.image} alt="" fill sizes="(min-width: 768px) 50vw, 100vw" unoptimized />
+                <Image className="chroma-color" src={item.image} alt="" aria-hidden="true" fill sizes="(min-width: 768px) 50vw, 100vw" unoptimized />
+                <span className="chroma-media-rim" aria-hidden="true" />
+              </div>
+              <div className="chroma-info">
+                {item.tag && <span className="chroma-tag">{item.tag}</span>}
+                <span className="chroma-title">{item.title}</span>
+                {item.subtitle && <span className="chroma-subtitle">{item.subtitle}</span>}
+              </div>
+              <span className="chroma-card-rim" aria-hidden="true" />
+              <span className="chroma-card-glow" aria-hidden="true" />
+            </>
+          );
+          const style = { '--chroma-accent': item.accent } as CSSProperties;
+          return item.href ? (
+            <Link key={item.id} className="chroma-card" data-chroma-area="" style={style} href={item.href}>
+              {content}
+            </Link>
+          ) : (
+            <div key={item.id} className="chroma-card chroma-card--static" data-chroma-area="" style={style}>
+              {content}
             </div>
-            <div className="chroma-info">
-              {item.tag && <span className="chroma-tag">{item.tag}</span>}
-              <span className="chroma-title">{item.title}</span>
-              {item.subtitle && <span className="chroma-subtitle">{item.subtitle}</span>}
-            </div>
-            <span className="chroma-card-rim" aria-hidden="true" />
-            <span className="chroma-card-glow" aria-hidden="true" />
-          </Link>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

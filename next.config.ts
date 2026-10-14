@@ -21,6 +21,7 @@ const nextConfig: NextConfig = {
       { source: "/privacy", destination: "/en/privacy" },
       { source: "/terms", destination: "/en/terms" },
       { source: "/blog/:category", destination: "/en/blog/:category" },
+      { source: "/blog/:category/:slug", destination: "/en/blog/:category/:slug" },
     ];
   },
   async headers() {

@@ -67,6 +67,20 @@ export interface Publication {
   url?: string; // only exact verified URLs
 }
 
+export interface BlogPost {
+  id: string;
+  /** Mock posts are placeholders: they show up in development and previews, never in production. */
+  mock?: boolean;
+  /** ISO date (YYYY-MM-DD). */
+  date: string;
+  title: Localized;
+  excerpt: Localized;
+  /** The post's single image, shown above the text: `src` is a path under public/, e.g. "/blog/posts/my-post/cover.png". */
+  cover?: { src: string; alt: Localized };
+  /** One string per paragraph. */
+  body: Localized<string[]>;
+}
+
 export interface Credential {
   id: string;
   kind: "certification" | "course";

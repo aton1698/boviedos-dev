@@ -50,7 +50,7 @@ export default async function CvPage({ params }: PageProps<"/[locale]/cv">) {
       <main id="main" className="pb-24 min-[1440px]:pb-0 print:pb-0">
         <div className="hero-exit container-page pt-6 print:hidden">
           <BackButton locale={locale} />
-          <p className="eyebrow mt-8">{ui[locale].nav.cv}</p>
+          <p className="eyebrow mt-6">{ui[locale].nav.cv}</p>
           <h1 className="mt-6">{profile.fullName}</h1>
           <p className="reveal mt-6 mb-12 max-w-[64ch] text-lg leading-relaxed text-text-muted">{profile.cvSummary[locale]}</p>
         </div>

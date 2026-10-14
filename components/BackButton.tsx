@@ -6,11 +6,19 @@ import type { Locale } from "@/lib/i18n";
 import { localePath } from "@/lib/site";
 
 /** Icon-only round button back to the home page. The tooltip is visual; the accessible name is the aria-label. */
-export function BackButton({ locale }: { locale: Locale }) {
-  const label = ui[locale].backHome;
+export function BackButton({
+  locale,
+  href,
+  label = ui[locale].backHome,
+}: {
+  locale: Locale;
+  /** Defaults to the home page. */
+  href?: string;
+  label?: string;
+}) {
 
   return (
-    <Link href={localePath(locale)} aria-label={label} className="group relative flex w-fit print:hidden">
+    <Link href={href ?? localePath(locale)} aria-label={label} className="group relative flex w-fit print:hidden">
       <span className="grid size-11 place-items-center rounded-full border border-[var(--color-control-border)] text-accent transition-colors group-hover:border-accent group-hover:bg-surface group-hover:text-[var(--color-hover-text)]">
         <HugeiconsIcon icon={ArrowLeft01Icon} size={22} strokeWidth={2} aria-hidden="true" />
       </span>

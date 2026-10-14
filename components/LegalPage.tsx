@@ -20,7 +20,7 @@ export function LegalPage({ id, locale }: { id: LegalPageId; locale: Locale }) {
         <article aria-labelledby="legal-title">
           <div className="container-page section-y">
             <BackButton locale={locale} />
-            <div className="mt-8">
+            <div className="mt-6">
               <SectionHeading id="legal-title" eyebrow={t.footer.legalLabel}>
                 {doc.title}
               </SectionHeading>

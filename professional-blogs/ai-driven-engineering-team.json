@@ -1,0 +1,30 @@
+{
+  "id": "ai-driven-engineering-team",
+  "mock": true,
+  "date": "2026-08-05",
+  "title": {
+    "en": "AI-driven engineering without losing the craft",
+    "es": "Ingeniería impulsada por IA sin perder el oficio"
+  },
+  "excerpt": {
+    "en": "Where AI speeds a team up and where human judgment still decides the outcome.",
+    "es": "Dónde la IA acelera a un equipo y dónde el criterio humano sigue decidiendo el resultado."
+  },
+  "cover": {
+    "src": "/blog/professional.svg",
+    "alt": {
+      "en": "Mock cover image",
+      "es": "Imagen de portada de ejemplo"
+    }
+  },
+  "body": {
+    "en": [
+      "Placeholder text. Replace this mock post with real content.",
+      "This file lives in the blogs folder; each paragraph is one item of the body array."
+    ],
+    "es": [
+      "Texto de ejemplo. Reemplaza esta publicación de prueba por contenido real.",
+      "Este archivo vive en la carpeta de blogs; cada párrafo es un elemento del arreglo body."
+    ]
+  }
+}

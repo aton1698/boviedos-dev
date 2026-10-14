@@ -26,11 +26,13 @@ export interface UiStrings {
   };
   viewFullCv: string;
   backHome: string;
+  backToBlog: string;
   blog: {
     intro: string;
     comingSoon: string;
     emptyTitle: string;
     emptyCopy: string;
+    search: { label: string; placeholder: string; clear: string; noResults: string; resultOne: string; resultMany: string };
   };
   cvMeta: { title: string; description: string };
   contributionsIntro: string;
@@ -96,11 +98,20 @@ export const ui: Record<Locale, UiStrings> = {
     },
     viewFullCv: "View full CV",
     backHome: "Back to home",
+    backToBlog: "Back to the blog",
     blog: {
       intro: "Two blogs: one about engineering and the craft, one about everything else.",
       comingSoon: "Coming soon",
       emptyTitle: "No posts yet",
       emptyCopy: "The first posts are on their way. Check back soon.",
+      search: {
+        label: "Search posts",
+        placeholder: "Search by title or topic",
+        clear: "Clear search",
+        noResults: "No posts match your search.",
+        resultOne: "post",
+        resultMany: "posts",
+      },
     },
     cvMeta: {
       title: "Curriculum Vitae | Brandon Oviedo Sánchez",
@@ -172,11 +183,20 @@ export const ui: Record<Locale, UiStrings> = {
     },
     viewFullCv: "Ver CV completo",
     backHome: "Volver al inicio",
+    backToBlog: "Volver al blog",
     blog: {
       intro: "Dos blogs: uno sobre ingeniería y el oficio, otro sobre todo lo demás.",
       comingSoon: "Próximamente",
       emptyTitle: "Aún no hay publicaciones",
       emptyCopy: "Las primeras publicaciones están en camino. Vuelve pronto.",
+      search: {
+        label: "Buscar publicaciones",
+        placeholder: "Buscar por título o tema",
+        clear: "Borrar búsqueda",
+        noResults: "Ninguna publicación coincide con tu búsqueda.",
+        resultOne: "publicación",
+        resultMany: "publicaciones",
+      },
     },
     cvMeta: {
       title: "Currículum | Brandon Oviedo Sánchez",

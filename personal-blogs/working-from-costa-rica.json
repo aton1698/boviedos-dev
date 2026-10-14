@@ -1,0 +1,30 @@
+{
+  "id": "working-from-costa-rica",
+  "mock": true,
+  "date": "2026-07-18",
+  "title": {
+    "en": "Building a career from Costa Rica",
+    "es": "Construir una carrera desde Costa Rica"
+  },
+  "excerpt": {
+    "en": "Notes on working with international teams from where I live.",
+    "es": "Notas sobre trabajar con equipos internacionales desde donde vivo."
+  },
+  "cover": {
+    "src": "/blog/personal.svg",
+    "alt": {
+      "en": "Mock cover image",
+      "es": "Imagen de portada de ejemplo"
+    }
+  },
+  "body": {
+    "en": [
+      "Placeholder text. Replace this mock post with real content.",
+      "This file lives in the blogs folder; each paragraph is one item of the body array."
+    ],
+    "es": [
+      "Texto de ejemplo. Reemplaza esta publicación de prueba por contenido real.",
+      "Este archivo vive en la carpeta de blogs; cada párrafo es un elemento del arreglo body."
+    ]
+  }
+}

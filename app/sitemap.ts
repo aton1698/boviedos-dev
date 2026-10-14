@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
-import { blogCategories, legalPages } from "@/content";
+import { blogCategories, getPosts, legalPages } from "@/content";
 import { locales } from "@/lib/i18n";
+import { features } from "@/lib/features";
 import { localeUrl } from "@/lib/site";
 
-const paths = ["", "/cv", ...blogCategories.map((c) => `/blog/${c.id}`), ...legalPages.map((id) => `/${id}`)];
+const paths = ["", "/cv", ...(features.blog ? blogCategories : []).flatMap((c) => [`/blog/${c.id}`, ...getPosts(c.id).map((post) => `/blog/${c.id}/${post.id}`)]), ...legalPages.map((id) => `/${id}`)];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return paths.flatMap((path) => {

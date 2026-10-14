@@ -1,12 +1,10 @@
 import { blogCategories } from "@/content";
 import { ui } from "@/content/ui";
 import type { Locale } from "@/lib/i18n";
+import { features } from "@/lib/features";
 import { localePath } from "@/lib/site";
 import ChromaGrid from "../motion/ChromaGrid";
 import { SectionHeading } from "../SectionHeading";
-
-// ChromaGrid takes colors in JS: keep in sync with --brand-electric / --brand-soft in globals.css.
-const ACCENTS = { professional: "#2563ff", personal: "#93c5fd" } as const;
 
 export function BlogSection({ locale }: { locale: Locale }) {
   const t = ui[locale];
@@ -28,8 +26,8 @@ export function BlogSection({ locale }: { locale: Locale }) {
               title: category.title[locale],
               subtitle: category.description[locale],
               tag: t.blog.comingSoon,
-              href: localePath(locale, `/blog/${category.id}`),
-              accent: ACCENTS[category.id],
+              href: features.blog ? localePath(locale, `/blog/${category.id}`) : undefined,
+              accent: category.accent,
             }))}
           />
         </div>
