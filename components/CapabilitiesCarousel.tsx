@@ -51,13 +51,67 @@ export function CapabilitiesCarousel({ items, labels }: CapabilitiesCarouselProp
     const schedule = () => {
       if (!frame) frame = requestAnimationFrame(update);
     };
+
+    // Safety net: snapping already centers the focused card, but if a scroll ever ends a little off (a resize, a
+    // focused link, a browser that skips the snap) the nearest card is moved to the exact middle.
+    let settleTimer = 0;
+    let touching = false;
+    const centerNearest = (behavior: ScrollBehavior) => {
+      const box = scroller.getBoundingClientRect();
+      let delta = 0;
+      let best = Infinity;
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const offset = rect.left + rect.width / 2 - (box.left + box.width / 2);
+        if (Math.abs(offset) < Math.abs(best)) {
+          best = offset;
+          delta = offset;
+        }
+      });
+      if (Math.abs(delta) > 1) scroller.scrollBy({ left: delta, behavior });
+    };
+    const onScroll = () => {
+      schedule();
+      window.clearTimeout(settleTimer);
+      settleTimer = window.setTimeout(() => {
+        if (!touching) centerNearest("smooth");
+      }, 160);
+    };
+    const onResize = () => {
+      schedule();
+      centerNearest("auto");
+    };
+    const onFocusIn = (event: FocusEvent) => {
+      const card = (event.target as HTMLElement).closest<HTMLElement>(".chroma-card");
+      if (!card) return;
+      const box = scroller.getBoundingClientRect();
+      const rect = card.getBoundingClientRect();
+      scroller.scrollBy({ left: rect.left + rect.width / 2 - (box.left + box.width / 2), behavior: "smooth" });
+    };
+    const onTouchStart = () => {
+      touching = true;
+    };
+    const onTouchEnd = () => {
+      touching = false;
+      window.clearTimeout(settleTimer);
+      settleTimer = window.setTimeout(() => centerNearest("smooth"), 400);
+    };
     update();
-    scroller.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule);
+    scroller.addEventListener("scroll", onScroll, { passive: true });
+    scroller.addEventListener("focusin", onFocusIn);
+    scroller.addEventListener("touchstart", onTouchStart, { passive: true });
+    scroller.addEventListener("touchend", onTouchEnd, { passive: true });
+    scroller.addEventListener("touchcancel", onTouchEnd, { passive: true });
+    window.addEventListener("resize", onResize);
     return () => {
       cancelAnimationFrame(frame);
-      scroller.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
+      window.clearTimeout(settleTimer);
+      scroller.removeEventListener("scroll", onScroll);
+      scroller.removeEventListener("focusin", onFocusIn);
+      scroller.removeEventListener("touchstart", onTouchStart);
+      scroller.removeEventListener("touchend", onTouchEnd);
+      scroller.removeEventListener("touchcancel", onTouchEnd);
+      window.removeEventListener("resize", onResize);
     };
   }, [items.length]);
 

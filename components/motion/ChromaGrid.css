@@ -238,7 +238,9 @@ a.chroma-card:focus-visible {
     display: grid;
     grid-template-columns: none;
     grid-auto-flow: column;
-    grid-auto-columns: 86%;
+    /* The side padding is 7% of the width, so the content box is exactly 86% of it: a card is as wide as that box,
+       and with the same padding on both sides the first and the last card can also sit in the middle. */
+    grid-auto-columns: 100%;
     padding-inline: 7%;
     overflow-x: auto;
     overscroll-behavior-x: contain;

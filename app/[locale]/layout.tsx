@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
@@ -16,6 +16,10 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
   fallback: ["Arial", "sans-serif"],
 });
+
+// Declares that the page handles both color schemes itself. Browsers with a "dark mode for websites" option (Samsung
+// Internet, for one) then leave the page alone instead of turning the light theme gray.
+export const viewport: Viewport = { colorScheme: "light dark" };
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
