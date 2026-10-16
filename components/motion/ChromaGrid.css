@@ -242,7 +242,10 @@ a.chroma-card:focus-visible {
        and with the same padding on both sides the first and the last card can also sit in the middle. */
     grid-auto-columns: 100%;
     padding-inline: 7%;
+    /* Room for the waiting cards, which sit 14px lower: without it they would make the row scroll vertically. */
+    padding-bottom: 16px;
     overflow-x: auto;
+    overflow-y: hidden;
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
