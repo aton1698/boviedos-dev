@@ -5,8 +5,6 @@ import { profile } from "@/content";
 import { ui } from "@/content/ui";
 import type { Locale } from "@/lib/i18n";
 import { localePath } from "@/lib/site";
-import { CvDownload } from "../CvDownload";
-import { Highlights } from "../Highlights";
 import { Logo } from "../Logo";
 
 export function ProfileSection({ locale }: { locale: Locale }) {
@@ -31,8 +29,7 @@ export function ProfileSection({ locale }: { locale: Locale }) {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
-            <CvDownload locale={locale} />
-            <Link className="btn-secondary print:hidden" href={localePath(locale, "/cv")}>
+            <Link className="btn-primary print:hidden" href={localePath(locale, "/cv")}>
               <HugeiconsIcon icon={File01Icon} size={20} strokeWidth={1.75} aria-hidden="true" />
               {t.viewFullCv}
             </Link>
@@ -49,18 +46,12 @@ export function ProfileSection({ locale }: { locale: Locale }) {
           <Logo priority className="mx-auto h-auto w-full max-w-xs drop-shadow-[0_0_40px_rgb(37_99_255/0.5)]" />
         </div>
 
-        <dl className="grid gap-6 border-t border-divider pt-8 sm:grid-cols-2 lg:col-span-2">
-          <div>
-            <dt className="label">{t.currentlyAt}</dt>
-            <dd className="mt-2">{profile.currentEmployer}</dd>
-          </div>
+        <dl className="grid gap-6 border-t border-divider pt-8 lg:col-span-2">
           <div>
             <dt className="label">{t.focus}</dt>
             <dd className="mt-2">{profile.focusAreas[locale].join(" / ")}</dd>
           </div>
         </dl>
-
-        <Highlights locale={locale} />
       </div>
     </section>
   );

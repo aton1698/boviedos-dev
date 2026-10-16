@@ -37,20 +37,6 @@ export interface ChromaGridProps {
   className?: string;
 }
 
-// Pulse Flow navy theme (docs/brand.md); values mirror --color-surface / --color-text / --color-accent.
-const THEME: Record<string, string> = {
-  '--chroma-tile': 'linear-gradient(180deg, #0d1b45 0%, #0a1535 100%)',
-  '--chroma-tile-edge': 'rgba(147, 197, 253, 0.22)',
-  '--chroma-tile-highlight': 'rgba(255, 255, 255, 0.1)',
-  '--chroma-tile-shadow': '0 4px 14px -4px rgba(0, 0, 0, 0.7)',
-  '--chroma-media-edge': 'rgba(147, 197, 253, 0.18)',
-  '--chroma-well': 'rgba(255, 255, 255, 0.06)',
-  '--chroma-ink': '#f3f6ff',
-  '--chroma-muted': '#b4c0dc',
-  '--chroma-hover': 'brightness(1.12)',
-  '--chroma-press': 'brightness(0.85)'
-};
-
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
 const falloffStops = (softness: number) => {
@@ -228,7 +214,6 @@ export function ChromaGrid({
   });
 
   const rootStyle = {
-    ...THEME,
     '--chroma-cols': Math.max(1, Math.round(columns)),
     '--chroma-min': `${Math.max(80, minCardWidth)}px`,
     '--chroma-gap': `${Math.max(0, gap)}px`,

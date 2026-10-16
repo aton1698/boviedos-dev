@@ -1,15 +1,12 @@
 import type {
-  Contribution,
   Credential,
   Education,
-  Experience,
   Profile,
   Publication,
   SkillGroup,
 } from "./types";
 
 import credentialsData from "./credentials.json";
-import experienceData from "./experience.json";
 
 // Spanish copy is a draft translation pending owner review.
 
@@ -24,12 +21,12 @@ export const profile: Profile = {
     es: "Construyo productos digitales confiables, desde el backend hasta la interfaz.",
   },
   supportingLine: {
-    en: "5+ years of full stack experience, shipping with agentic coding and AI-driven engineering.",
-    es: "Más de 5 años de experiencia full stack, entregando con agentic coding e ingeniería impulsada por IA.",
+    en: "Full stack engineering that ships with agentic coding and AI-driven workflows.",
+    es: "Ingeniería full stack que entrega con agentic coding y flujos impulsados por IA.",
   },
   cvSummary: {
-    en: "Results-driven Full Stack Software Engineer with 5 years of experience delivering secure, scalable, and high-performance applications. Proven track record leading end-to-end development with Java/Spring Boot, React, AWS, and PostgreSQL, reducing incident resolution times and integrating complex third-party systems. Skilled in translating business requirements into technical solutions, optimizing processes, and mentoring team members to deliver quality software on time. Focused on AI-driven engineering: agentic coding workflows with Claude Code and the Model Context Protocol (MCP) applied across the development cycle.",
-    es: "Ingeniero de Software Full Stack orientado a resultados, con 5 años de experiencia entregando aplicaciones seguras, escalables y de alto rendimiento. Trayectoria comprobada liderando el desarrollo de extremo a extremo con Java/Spring Boot, React, AWS y PostgreSQL, reduciendo los tiempos de resolución de incidentes e integrando sistemas complejos de terceros. Capaz de traducir requerimientos de negocio en soluciones técnicas, optimizar procesos y mentorear a otros miembros del equipo para entregar software de calidad a tiempo. Enfocado en ingeniería impulsada por IA: flujos de agentic coding con Claude Code y el Model Context Protocol (MCP) aplicados a lo largo del ciclo de desarrollo.",
+    en: "Full Stack Software Engineer who delivers secure, scalable and high-performance applications end to end, with Java/Spring Boot, React, AWS and PostgreSQL. Skilled at translating business requirements into technical solutions, speeding up incident resolution, integrating complex third-party systems and mentoring teammates to deliver quality software on time. Focused on AI-driven engineering: agentic coding workflows with Claude Code and the Model Context Protocol (MCP) applied across the development cycle.",
+    es: "Ingeniero de Software Full Stack que entrega aplicaciones seguras, escalables y de alto rendimiento de extremo a extremo, con Java/Spring Boot, React, AWS y PostgreSQL. Capaz de traducir requerimientos de negocio en soluciones técnicas, acelerar la resolución de incidentes, integrar sistemas complejos de terceros y mentorear a compañeros para entregar software de calidad a tiempo. Enfocado en ingeniería impulsada por IA: flujos de agentic coding con Claude Code y el Model Context Protocol (MCP) aplicados a lo largo del ciclo de desarrollo.",
   },
   location: { en: "Costa Rica", es: "Costa Rica" },
   languages: {
@@ -40,10 +37,8 @@ export const profile: Profile = {
     en: ["Full stack", "AI-driven engineering", "Agentic coding"],
     es: ["Full stack", "Ingeniería impulsada por IA", "Agentic coding"],
   },
-  currentEmployer: "Moody’s",
   email: "boviedos.98@gmail.com",
   linkedinUrl: "https://www.linkedin.com/in/brandon-oviedo-231069152/",
-  cvUrl: "/cv/Brandon%20Oviedo%20FS.pdf",
 };
 
 export const skillGroups: SkillGroup[] = [
@@ -108,42 +103,6 @@ export const skillGroups: SkillGroup[] = [
       { name: "Cursor" },
       { name: "Copilot" },
     ],
-  },
-];
-
-// Reverse chronological. Edit content/experience.json to add or change entries.
-export const experiences: Experience[] = experienceData;
-
-export const contributions: Contribution[] = [
-  {
-    id: "maintainable-interfaces",
-    title: { en: "Maintainable interfaces", es: "Interfaces mantenibles" },
-    employer: "Moody’s",
-    description: {
-      en: "Built reusable React and TypeScript components for a risk analysis web application, with an AI-first approach. I focus on clean, scalable code and better performance, and I keep the app stable by finding and fixing bugs early. I review teammates’ code and share technical guidance within an agile team.",
-      es: "Construí componentes reutilizables con React y TypeScript para una aplicación web de análisis de riesgo, con un enfoque AI-first. Me enfoco en código limpio y escalable y en mejorar el rendimiento, y mantengo la aplicación estable detectando y corrigiendo errores a tiempo. Reviso el código de mis compañeros y comparto guía técnica dentro de un equipo ágil.",
-    },
-    relatedExperienceId: "moodys",
-  },
-  {
-    id: "efficient-operations",
-    title: { en: "More efficient operations", es: "Operaciones más eficientes" },
-    employer: "CGI",
-    description: {
-      en: "Investigated and reverse-engineered existing processes to improve them, then built scripts and internal tools that streamlined workflows and significantly reduced resolution times for complex incidents. I adapted endpoints so modern features and legacy systems could work together, and provided advanced technical support.",
-      es: "Investigué e hice ingeniería inversa de procesos existentes para mejorarlos, y desarrollé scripts y herramientas internas que agilizaron los flujos de trabajo y redujeron de forma significativa los tiempos de resolución de incidentes complejos. Adapté endpoints para que las funcionalidades modernas y los sistemas heredados trabajaran juntos, y brindé soporte técnico avanzado.",
-    },
-    relatedExperienceId: "daugherty-cgi",
-  },
-  {
-    id: "end-to-end-delivery",
-    title: { en: "End-to-end delivery", es: "Entrega de extremo a extremo" },
-    employer: "Edify Software Consulting",
-    description: {
-      en: "Led and contributed to full stack projects from design to production: defined application architecture, implemented secure and scalable APIs, and built secure integrations with external platforms. I kept test coverage high and enforced standards through peer reviews, turned client requirements into solutions aligned with business goals, and mentored the team as Engineering Champion.",
-      es: "Lideré y contribuí a proyectos full stack desde el diseño hasta producción: definí la arquitectura de las aplicaciones, implementé APIs seguras y escalables y construí integraciones seguras con plataformas externas. Mantuve una alta cobertura de pruebas y promoví los estándares mediante revisiones entre pares, traduje los requerimientos de clientes en soluciones alineadas con los objetivos del negocio y mentoreé al equipo como Engineering Champion.",
-    },
-    relatedExperienceId: "edify",
   },
 ];
 

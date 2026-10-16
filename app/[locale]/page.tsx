@@ -3,7 +3,7 @@ import { homeSectionIds, type HomeSectionId } from "@/content";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { BlogSection } from "@/components/sections/BlogSection";
 import { ContactSection } from "@/components/sections/ContactSection";
-import { CvSection } from "@/components/sections/CvSection";
+import { CapabilitiesOverview } from "@/components/sections/CapabilitiesOverview";
 import { ProfileSection } from "@/components/sections/ProfileSection";
 import { PersonJsonLd } from "@/components/PersonJsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -11,7 +11,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 
 function renderSection(id: HomeSectionId, locale: Locale) {
   if (id === "profile") return <ProfileSection key={id} locale={locale} />;
-  if (id === "cv") return <CvSection key={id} locale={locale} />;
+  if (id === "capabilities") return <CapabilitiesOverview key={id} locale={locale} />;
   if (id === "blog") return <BlogSection key={id} locale={locale} />;
   return <ContactSection key={id} locale={locale} />;
 }

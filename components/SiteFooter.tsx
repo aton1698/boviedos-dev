@@ -8,6 +8,7 @@ import { features } from "@/lib/features";
 import { localePath } from "@/lib/site";
 import { CurrentYear } from "./CurrentYear";
 import { ExternalLink } from "./ExternalLink";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 import { Logo } from "./Logo";
 
 // One size for every footer link (15px on phones, the page size from md up); only the email shrinks further on
@@ -46,7 +47,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
               </li>
               <li>
                 <Link className={linkClass} href={localePath(locale, "/cv")}>
-                  {t.nav.cv}
+                  {t.nav.capabilities}
                 </Link>
               </li>
               {features.blog &&
@@ -101,6 +102,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
               </Link>
             </nav>
           </div>
+          <ThemeSwitcher labels={t.footer.theme} />
           <a href="#" className="link-arrow gap-3 print:hidden">
             {t.footer.backToTop}
             <span

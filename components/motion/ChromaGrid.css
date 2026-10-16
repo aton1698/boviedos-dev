@@ -1,4 +1,15 @@
 .chroma-grid {
+  /* Colors come from the page theme tokens (globals.css), so the cards follow the dark/light choice. */
+  --chroma-tile: var(--tile-bg);
+  --chroma-tile-edge: var(--tile-edge);
+  --chroma-tile-highlight: var(--tile-highlight);
+  --chroma-tile-shadow: var(--tile-shadow);
+  --chroma-media-edge: var(--tile-edge);
+  --chroma-well: var(--well);
+  --chroma-ink: var(--color-text);
+  --chroma-muted: var(--color-text-muted);
+  --chroma-hover: var(--tile-hover);
+  --chroma-press: brightness(0.85);
   --chroma-x: -9999px;
   --chroma-y: -9999px;
   --chroma-power: 0;
@@ -139,6 +150,13 @@ a.chroma-card:focus-visible {
   letter-spacing: -0.01em;
 }
 
+/* Longer texts: titles and subtitles wrap instead of being cut with an ellipsis. */
+.chroma-grid--wrap .chroma-title,
+.chroma-grid--wrap .chroma-subtitle {
+  white-space: normal;
+  overflow: visible;
+}
+
 .chroma-subtitle {
   font-size: 15px;
   line-height: 1.5;
@@ -209,4 +227,61 @@ a.chroma-card:focus-visible {
 /* Cards without a link are not interactive. */
 .chroma-card--static {
   cursor: default;
+}
+
+/* Phones: the cards sit in one horizontal row that snaps card by card, with the focused card centered. The card in
+   focus (data-focus="true", set by CapabilitiesCarousel) comes in sharp, full size and fully opaque; the others wait
+   at the sides, softer, smaller and blurred. Every change of focus replays the same smooth transition, which also
+   replaces the one-time scroll reveal of the cards. Without JavaScript no card has data-focus and all stay sharp. */
+@media (max-width: 767px) {
+  .chroma-grid--carousel .chroma-grid-inner {
+    display: grid;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 86%;
+    padding-inline: 7%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .chroma-grid--carousel .chroma-grid-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chroma-grid--carousel .chroma-card,
+  .chroma-grid--carousel .chroma-card.chroma-reveal,
+  .chroma-grid--carousel .chroma-card.chroma-reveal.is-revealed {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    transition:
+      opacity 0.9s var(--ease-out),
+      filter 0.9s var(--ease-out),
+      transform 0.9s var(--ease-out);
+  }
+
+  .chroma-grid--carousel .chroma-card[data-focus='false'],
+  .chroma-grid--carousel .chroma-card.chroma-reveal[data-focus='false'],
+  .chroma-grid--carousel .chroma-card.chroma-reveal.is-revealed[data-focus='false'] {
+    opacity: 0.5;
+    filter: blur(3px);
+    transform: translateY(14px) scale(0.93);
+  }
+
+  .chroma-grid--carousel .chroma-card[data-focus='true'],
+  .chroma-grid--carousel .chroma-card.chroma-reveal[data-focus='true'],
+  .chroma-grid--carousel .chroma-card.chroma-reveal.is-revealed[data-focus='true'] {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .chroma-grid--carousel .chroma-card,
+  .chroma-grid--carousel .chroma-card.chroma-reveal,
+  .chroma-grid--carousel .chroma-card.chroma-reveal.is-revealed {
+    transition: none;
+  }
 }

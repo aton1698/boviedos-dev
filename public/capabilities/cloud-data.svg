@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1a46"/><stop offset="1" stop-color="#030816"/></linearGradient>
+<radialGradient id="halo" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#2563ff" stop-opacity="0.45"/><stop offset="1" stop-color="#2563ff" stop-opacity="0"/></radialGradient>
+<filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1200" height="800" fill="url(#bg)"/>
+<ellipse cx="600" cy="400" rx="430" ry="300" fill="url(#halo)"/>
+<path d="M0,203.2 L24,200.0 L48,196.4 L72,192.3 L96,187.8 L120,182.9 L144,177.8 L168,172.4 L192,166.8 L216,161.2 L240,155.5 L264,149.9 L288,144.5 L312,139.2 L336,134.2 L360,129.5 L384,125.3 L408,121.4 L432,118.1 L456,115.3 L480,113.0 L504,111.4 L528,110.4 L552,110.0 L576,110.3 L600,111.2 L624,112.7 L648,114.8 L672,117.5 L696,120.7 L720,124.5 L744,128.7 L768,133.3 L792,138.2 L816,143.4 L840,148.9 L864,154.4 L888,160.1 L912,165.7 L936,171.3 L960,176.7 L984,181.9 L1008,186.9 L1032,191.4 L1056,195.6 L1080,199.4 L1104,202.6 L1128,205.3 L1152,207.4 L1176,208.9 L1200,209.8" fill="none" stroke="#1e40af" stroke-width="2" opacity="0.35"/>
+<path d="M0,395.6 L24,385.2 L48,375.0 L72,365.4 L96,356.4 L120,348.2 L144,341.0 L168,335.0 L192,330.2 L216,326.7 L240,324.6 L264,324.0 L288,324.8 L312,327.1 L336,330.7 L360,335.7 L384,341.8 L408,349.1 L432,357.4 L456,366.5 L480,376.2 L504,386.4 L528,396.8 L552,407.3 L576,417.6 L600,427.7 L624,437.2 L648,445.9 L672,453.8 L696,460.7 L720,466.4 L744,470.9 L768,474.0 L792,475.7 L816,475.9 L840,474.7 L864,472.1 L888,468.1 L912,462.8 L936,456.3 L960,448.7 L984,440.2 L1008,430.9 L1032,421.1 L1056,410.8 L1080,400.3 L1104,389.9 L1128,379.6 L1152,369.7 L1176,360.4 L1200,351.8" fill="none" stroke="#2563ff" stroke-width="2" opacity="0.35"/>
+<path d="M0,546.6 L24,541.1 L48,538.4 L72,538.3 L96,540.9 L120,546.2 L144,554.0 L168,564.1 L192,576.2 L216,589.9 L240,605.1 L264,621.1 L288,637.7 L312,654.3 L336,670.5 L360,685.9 L384,700.1 L408,712.7 L432,723.4 L456,731.8 L480,737.8 L504,741.2 L528,741.9 L552,739.9 L576,735.2 L600,728.0 L624,718.4 L648,706.8 L672,693.4 L696,678.5 L720,662.6 L744,646.2 L768,629.5 L792,613.2 L816,597.5 L840,583.0 L864,570.0 L888,558.9 L912,549.9 L936,543.3 L960,539.3 L984,538.0 L1008,539.4 L1032,543.5 L1056,550.1 L1080,559.2 L1104,570.3 L1128,583.4 L1152,597.9 L1176,613.6 L1200,630.0" fill="none" stroke="#1e40af" stroke-width="2" opacity="0.35"/>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+<path d="M470 350 a62 62 0 0 1 -6 -124 a100 100 0 0 1 190 -26 a78 78 0 0 1 104 74 a56 56 0 0 1 -18 76 Z" stroke="#93c5fd" fill="rgba(37,99,255,0.14)" stroke-width="3.5" filter="url(#glow)"/>
+<path d="M600,350 L600,450" stroke="#2563ff" stroke-width="3" stroke-dasharray="3 12"/>
+<path d="M480,350 L480,450" stroke="#2563ff" stroke-width="3" stroke-dasharray="3 12"/>
+<path d="M720,350 L720,450" stroke="#2563ff" stroke-width="3" stroke-dasharray="3 12"/>
+<ellipse cx="480" cy="470" rx="62" ry="20" stroke="#93c5fd" fill="none"/>
+<path d="M418,470 V560 a62,20 0 0 0 124,0 V470" stroke="#93c5fd" fill="none"/>
+<path d="M418,515 a62,20 0 0 0 124,0" stroke="#1e40af" fill="none" stroke-width="2"/>
+<circle cx="480" cy="450" r="6" fill="#2563ff" stroke="none"/>
+<ellipse cx="600" cy="470" rx="62" ry="20" stroke="#93c5fd" fill="none"/>
+<path d="M538,470 V560 a62,20 0 0 0 124,0 V470" stroke="#93c5fd" fill="none"/>
+<path d="M538,515 a62,20 0 0 0 124,0" stroke="#1e40af" fill="none" stroke-width="2"/>
+<circle cx="600" cy="450" r="6" fill="#2563ff" stroke="none"/>
+<ellipse cx="720" cy="470" rx="62" ry="20" stroke="#93c5fd" fill="none"/>
+<path d="M658,470 V560 a62,20 0 0 0 124,0 V470" stroke="#93c5fd" fill="none"/>
+<path d="M658,515 a62,20 0 0 0 124,0" stroke="#1e40af" fill="none" stroke-width="2"/>
+<circle cx="720" cy="450" r="6" fill="#2563ff" stroke="none"/>
+<text x="860" y="310" font-family="Plus Jakarta Sans, Arial, sans-serif" font-weight="600" font-size="34" fill="#93c5fd" opacity="0.8" stroke="none">S3</text>
+<text x="210" y="330" font-family="Plus Jakarta Sans, Arial, sans-serif" font-weight="600" font-size="34" fill="#93c5fd" opacity="0.8" stroke="none">SQL</text>
+<text x="900" y="540" font-family="Plus Jakarta Sans, Arial, sans-serif" font-weight="600" font-size="56" fill="#93c5fd" opacity="0.7" stroke="none">λ</text>
+</g>
+</svg>

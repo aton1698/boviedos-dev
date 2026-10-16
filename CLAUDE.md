@@ -1,6 +1,6 @@
 # boviedos.dev
 
-Personal professional site of Brandon Oviedo Sánchez. Bilingual (en/es): home (hero, CV experience tabs, blog cards, contact) plus a full CV page.
+Personal professional site of Brandon Oviedo Sánchez. Bilingual (en/es): home (hero, capabilities overview, blog cards, contact) plus a full capabilities page at `/cv`.
 Next.js 16 App Router, React 19, strict TypeScript, Tailwind 4. Yarn 4 only (never npm/pnpm).
 
 ## Commands
@@ -18,9 +18,9 @@ Next.js 16 App Router, React 19, strict TypeScript, Tailwind 4. Yarn 4 only (nev
 Visual identity is **Pulse Flow**: follow `docs/brand.md` (and `.claude/rules/brand.md`) for every UI change. It overrides the earlier dark/lime direction in the spec.
 
 ## Scope
-Public site only: home, full CV, blog landing pages and post pages (posts are JSON files; the current ones are mock), privacy and terms. No auth, CMS, backend, DB, contact form, analytics or theme switcher. The legal texts in `content/legal.ts` describe the site as it works today (no cookies/analytics/forms): update them if that changes.
+Public site only: home, capabilities page, blog landing pages and post pages (posts are JSON files; the current ones are mock), privacy and terms. No auth, CMS, database, analytics or accounts. The only server code is `app/api/cv/route.ts` (CV download form: Cloudflare Turnstile check + Resend email; keys in `.env.example`, PDF in `private/cv/`, never in `public/`). Theme: dark, light or system, chosen in the footer (`lib/theme.ts`, tokens in `app/globals.css`). The legal texts in `content/legal.ts` describe the site as it works today (no cookies, analytics or accounts; the CV form is described there): update them if that changes.
 Spec v1.1 is English-only; EN/ES is an owner-approved extension — update DD/REQ entries before changing behavior (DD-12).
-Home sections: Profile → CV → Blog → Contact (IDs profile, cv, blog, contact). `/cv` sections: Skills → Experience → Contributions → Education → Certifications & Courses (IDs skills, experience, contributions, education, credentials).
+The site presents capabilities, not a CV: no employer names, dates of employment or figures (years, counts) in the copy, and no CV download buttons. Home sections: Profile → Capabilities → Blog → Contact (IDs profile, capabilities, blog, contact). `/cv` (the capabilities page; the URL keeps the old name) sections: Capabilities → Skills → Education → Certifications & Courses (IDs capabilities, skills, education, credentials). Capabilities live in `content/capabilities.ts`.
 Never invent credentials, metrics, testimonials or links. Credentials/research URLs stay empty until supplied; the credentials section and its nav item are hidden when no verified records exist. Spanish copy is draft pending owner review.
 
 ## Workflow
@@ -31,7 +31,7 @@ Never invent credentials, metrics, testimonials or links. Credentials/research U
 - Finish with <= 8 bullets: changed files, checks run/results, blockers.
 
 ## Unresolved inputs
-- T05 final CV PDF (`/cv/Brandon Oviedo FS.pdf` supplied by owner 2026-10-12; awaiting owner approval as final)
+- T05 CV PDF: no longer linked from the site (`public/cv/Brandon Oviedo FS.pdf` is still served at its URL; delete it if it should not be public)
 - T11 verified credentials
 - T20 hosting/git/domain/DNS
 - Optional exact research URLs (JOCICI 2019, State of the Map Latam 2019)

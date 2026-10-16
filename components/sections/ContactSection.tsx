@@ -8,8 +8,11 @@ import { profile } from "@/content";
 import { ui } from "@/content/ui";
 import { SectionHeading } from "../SectionHeading";
 import type { Locale } from "@/lib/i18n";
-import { CvDownload } from "../CvDownload";
 import { ExternalLink } from "../ExternalLink";
+import { CvDownloadForm } from "../CvDownloadForm";
+import { CvFormReveal } from "../CvFormReveal";
+import { localePath } from "@/lib/site";
+import { turnstileSiteKey } from "@/lib/turnstile";
 
 const iconProps = { size: 20, strokeWidth: 1.75 } as const;
 const rowClass = "flex min-h-11 items-center gap-3 py-2";
@@ -57,9 +60,15 @@ export function ContactSection({ locale }: { locale: Locale }) {
           </li>
         </ul>
 
-        <div className="fade-row mt-10">
-          <CvDownload locale={locale} />
-        </div>
+        <CvFormReveal label={t.cvForm.open} title={t.cvForm.title} intro={t.cvForm.intro}>
+          <CvDownloadForm
+            t={t.cvForm}
+            locale={locale}
+            siteKey={turnstileSiteKey()}
+            privacyHref={localePath(locale, "/privacy")}
+          />
+        </CvFormReveal>
+
       </div>
     </section>
   );

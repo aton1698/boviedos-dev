@@ -8,20 +8,15 @@ export interface UiStrings {
   mainNav: string;
   homeLabel: string;
   getInTouch: string;
-  downloadCv: string;
-  currentlyAt: string;
   focus: string;
   technologies: string;
-  highlights: { years: string; companies: string; credentials: string };
   headings: {
     skills: string;
-    experience: string;
-    contributions: string;
+    capabilities: string;
     education: string;
     research: string;
     contact: string;
     credentials: string;
-    cv: string;
     blog: string;
   };
   viewFullCv: string;
@@ -35,7 +30,28 @@ export interface UiStrings {
     search: { label: string; placeholder: string; clear: string; noResults: string; resultOne: string; resultMany: string };
   };
   cvMeta: { title: string; description: string };
-  contributionsIntro: string;
+  cvForm: {
+    title: string;
+    open: string;
+    intro: string;
+    stepLabel: string;
+    steps: { contact: string; verify: string };
+    name: { label: string; placeholder: string };
+    company: { label: string; placeholder: string; error: string };
+    email: { label: string; placeholder: string; error: string };
+    comments: { label: string; placeholder: string; counter: string };
+    verify: { label: string; hint: string; loading: string };
+    back: string;
+    next: string;
+    download: string;
+    sending: string;
+    errors: { human: string; generic: string; unavailable: string };
+    success: { title: string; body: string };
+    privacy: string;
+  };
+  capabilitiesNav: { label: string; previous: string; next: string; position: string };
+  capabilitiesIntro: string;
+  pointsLabel: string;
   contactCopy: string;
   contactLabels: { email: string; location: string };
   linkedin: string;
@@ -50,6 +66,7 @@ export interface UiStrings {
     privacy: string;
     terms: string;
     legalLabel: string;
+    theme: { label: string; dark: string; light: string; system: string };
   };
   lastUpdated: string;
   cta: string;
@@ -66,13 +83,11 @@ export const ui: Record<Locale, UiStrings> = {
   en: {
     nav: {
       profile: "Profile",
+      capabilities: "Capabilities",
       skills: "Skills",
-      experience: "Experience",
-      contributions: "Contributions",
       education: "Education",
       credentials: "Certifications & Courses",
       contact: "Contact",
-      cv: "CV",
       blog: "Blog",
     },
     skipLink: "Skip to main content",
@@ -80,23 +95,18 @@ export const ui: Record<Locale, UiStrings> = {
     mainNav: "Main navigation",
     homeLabel: "Brandon Oviedo Sánchez, back to top",
     getInTouch: "Let’s talk",
-    downloadCv: "Download CV",
-    currentlyAt: "Currently at",
     focus: "Focus",
-    technologies: "Main technologies",
-    highlights: { years: "Years of experience", companies: "Companies", credentials: "Verified credentials" },
+    technologies: "Technologies",
     headings: {
       skills: "Full stack. Clear strengths.",
-      experience: "Product engineering, end to end.",
+      capabilities: "What I do. How I do it.",
       education: "Education. Research. Community.",
       research: "Research & Speaking",
-      contributions: "Hands-on engineering. Team-first collaboration.",
       contact: "Ready for the next opportunity. Let’s talk.",
       credentials: "Certifications & Courses",
-      cv: "Experience. In brief.",
       blog: "Two blogs. One voice.",
     },
-    viewFullCv: "View full CV",
+    viewFullCv: "See all capabilities",
     backHome: "Back to home",
     backToBlog: "Back to the blog",
     blog: {
@@ -114,11 +124,40 @@ export const ui: Record<Locale, UiStrings> = {
       },
     },
     cvMeta: {
-      title: "Curriculum Vitae | Brandon Oviedo Sánchez",
+      title: "Capabilities | Brandon Oviedo Sánchez",
       description:
-        "Full CV of Brandon Oviedo Sánchez: skills, professional experience, contributions, education and research.",
+        "What Brandon Oviedo Sánchez does: frontend, backend and APIs, architecture, cloud, quality, troubleshooting, AI-driven engineering and mentoring.",
     },
-    contributionsIntro: "Selected contributions from my professional experience.",
+    cvForm: {
+      title: "Download my CV",
+      open: "Download my CV",
+      intro: "I’d love to share my CV with you. Tell me a bit about who you are and how to reach you.",
+      stepLabel: "Step",
+      steps: { contact: "Your details", verify: "Verification" },
+      name: { label: "Your name (optional)", placeholder: "Your name" },
+      company: { label: "Company that is hiring", placeholder: "Company name", error: "Enter the company name (at least 2 characters)." },
+      email: { label: "Email to reach you", placeholder: "name@company.com", error: "Enter a valid email address." },
+      comments: { label: "Comments (optional)", placeholder: "Anything you would like me to know", counter: "characters left" },
+      verify: {
+        label: "Almost there: confirm you are human.",
+        hint: "The download button appears once the check passes.",
+        loading: "Loading the check…",
+      },
+      back: "Back",
+      next: "Continue",
+      download: "Download CV",
+      sending: "Preparing your CV…",
+      errors: {
+        human: "The human check did not pass. Please try again.",
+        generic: "Something went wrong. Please try again in a moment.",
+        unavailable: "The CV download is not available right now. Please email me instead.",
+      },
+      success: { title: "Your CV is downloading", body: "Thank you. I will get back to you at the email you shared if it fits." },
+      privacy: "These details are sent to me by email, and I only use them to reply to you.",
+    },
+    capabilitiesNav: { label: "Capabilities", previous: "Previous capability", next: "Next capability", position: "of" },
+    capabilitiesIntro: "The work, grouped by what it makes possible.",
+    pointsLabel: "What it covers",
     contactCopy: "If my experience matches what you’re looking for, I’d be glad to connect.",
     contactLabels: { email: "Email", location: "Location" },
     linkedin: "LinkedIn",
@@ -133,6 +172,7 @@ export const ui: Record<Locale, UiStrings> = {
       privacy: "Privacy",
       terms: "Terms",
       legalLabel: "Legal",
+      theme: { label: "Theme", dark: "Dark", light: "Light", system: "Auto" },
     },
     lastUpdated: "Last updated",
     cta: "Get in touch",
@@ -151,13 +191,11 @@ export const ui: Record<Locale, UiStrings> = {
   es: {
     nav: {
       profile: "Perfil",
+      capabilities: "Capacidades",
       skills: "Habilidades",
-      experience: "Experiencia",
-      contributions: "Contribuciones",
       education: "Educación",
       credentials: "Certificaciones y cursos",
       contact: "Contacto",
-      cv: "CV",
       blog: "Blog",
     },
     skipLink: "Saltar al contenido principal",
@@ -165,23 +203,18 @@ export const ui: Record<Locale, UiStrings> = {
     mainNav: "Navegación principal",
     homeLabel: "Brandon Oviedo Sánchez, volver al inicio",
     getInTouch: "Ponte en contacto",
-    downloadCv: "Descargar CV",
-    currentlyAt: "Actualmente en",
     focus: "Enfoque",
-    technologies: "Tecnologías principales",
-    highlights: { years: "Años de experiencia", companies: "Empresas", credentials: "Credenciales verificadas" },
+    technologies: "Tecnologías",
     headings: {
       skills: "Full stack. Fortalezas claras.",
-      experience: "Ingeniería de producto, de punta a punta.",
+      capabilities: "Qué hago. Cómo lo hago.",
       education: "Educación. Investigación. Comunidad.",
       research: "Investigación y ponencias",
-      contributions: "Ingeniería práctica. Colaboración que pone al equipo primero.",
       contact: "Listo para la próxima oportunidad. Hablemos.",
       credentials: "Certificaciones y cursos",
-      cv: "Experiencia. En breve.",
       blog: "Dos blogs. Una voz.",
     },
-    viewFullCv: "Ver CV completo",
+    viewFullCv: "Ver todas las capacidades",
     backHome: "Volver al inicio",
     backToBlog: "Volver al blog",
     blog: {
@@ -199,11 +232,40 @@ export const ui: Record<Locale, UiStrings> = {
       },
     },
     cvMeta: {
-      title: "Currículum | Brandon Oviedo Sánchez",
+      title: "Capacidades | Brandon Oviedo Sánchez",
       description:
-        "CV completo de Brandon Oviedo Sánchez: habilidades, experiencia profesional, contribuciones, educación e investigación.",
+        "Lo que hace Brandon Oviedo Sánchez: frontend, backend y APIs, arquitectura, nube, calidad, resolución de problemas, ingeniería impulsada por IA y mentoría.",
     },
-    contributionsIntro: "Contribuciones seleccionadas de mi experiencia profesional.",
+    cvForm: {
+      title: "Descarga mi CV",
+      open: "Descargar mi CV",
+      intro: "Con gusto te comparto mi CV. Cuéntame un poco quién eres y cómo contactarte.",
+      stepLabel: "Paso",
+      steps: { contact: "Tus datos", verify: "Verificación" },
+      name: { label: "Tu nombre (opcional)", placeholder: "Tu nombre" },
+      company: { label: "Empresa que recluta", placeholder: "Nombre de la empresa", error: "Escribe el nombre de la empresa (al menos 2 caracteres)." },
+      email: { label: "Correo para contactarte", placeholder: "nombre@empresa.com", error: "Escribe un correo válido." },
+      comments: { label: "Comentarios (opcional)", placeholder: "Algo que quieras que sepa", counter: "caracteres restantes" },
+      verify: {
+        label: "Ya casi: confirma que eres una persona.",
+        hint: "El botón de descarga aparece cuando pasa la verificación.",
+        loading: "Cargando la verificación…",
+      },
+      back: "Atrás",
+      next: "Continuar",
+      download: "Descargar CV",
+      sending: "Preparando tu CV…",
+      errors: {
+        human: "No se pasó la verificación. Inténtalo de nuevo.",
+        generic: "Algo salió mal. Inténtalo de nuevo en un momento.",
+        unavailable: "La descarga del CV no está disponible ahora. Escríbeme por correo.",
+      },
+      success: { title: "Tu CV se está descargando", body: "Gracias. Te responderé al correo que compartiste si encaja." },
+      privacy: "Estos datos me llegan por correo y los uso solo para responderte.",
+    },
+    capabilitiesNav: { label: "Capacidades", previous: "Capacidad anterior", next: "Capacidad siguiente", position: "de" },
+    capabilitiesIntro: "El trabajo, agrupado por lo que hace posible.",
+    pointsLabel: "Qué abarca",
     contactCopy: "Si mi experiencia coincide con lo que buscas, con gusto conversamos.",
     contactLabels: { email: "Correo", location: "Ubicación" },
     linkedin: "LinkedIn",
@@ -218,6 +280,7 @@ export const ui: Record<Locale, UiStrings> = {
       privacy: "Privacidad",
       terms: "Términos",
       legalLabel: "Legal",
+      theme: { label: "Tema", dark: "Oscuro", light: "Claro", system: "Auto" },
     },
     lastUpdated: "Última actualización",
     cta: "Contáctame",

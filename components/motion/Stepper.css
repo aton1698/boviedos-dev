@@ -1,0 +1,261 @@
+.stepper {
+  /* Pulse Flow theme: navy panel, blue accent (tokens from globals.css). */
+  --stepper-frame: var(--nav-surface);
+  --stepper-frame-edge: var(--color-divider);
+  --stepper-tile: var(--tile-bg);
+  --stepper-tile-edge: var(--tile-edge);
+  --stepper-well: var(--well);
+  --stepper-ink: var(--color-text);
+  --stepper-muted: var(--color-text-muted);
+  --stepper-faint: var(--chip-border);
+  --stepper-solid: var(--btn-primary);
+  --stepper-solid-ink: #ffffff;
+  --stepper-radius: 24px;
+  --stepper-well-radius: 16px;
+  --stepper-tile-radius: 12px;
+  --stepper-inset: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, var(--stepper-width, 560px));
+  box-sizing: border-box;
+  padding: 8px;
+  border-radius: var(--stepper-radius);
+  background: var(--stepper-frame);
+  box-shadow: inset 0 0 0 1px var(--stepper-frame-edge);
+  color: var(--stepper-ink);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stepper__track {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--stepper-well-radius);
+  background: var(--stepper-well);
+}
+
+.stepper__glider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--stepper-tile-radius);
+  background: var(--stepper-tile);
+  box-shadow: inset 0 0 0 1px var(--stepper-tile-edge);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.stepper__segment {
+  position: relative;
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 8px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: var(--stepper-tile-radius);
+  background: none;
+  color: var(--stepper-muted);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.stepper__segment:disabled {
+  cursor: default;
+}
+
+.stepper__badge {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px var(--stepper-faint);
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease,
+    color 0.15s ease;
+}
+
+.stepper__badge[data-status='active'] {
+  box-shadow: inset 0 0 0 1.5px var(--stepper-ink);
+  color: var(--stepper-ink);
+}
+
+.stepper__badge[data-status='complete'] {
+  background: var(--stepper-solid);
+  box-shadow: none;
+  color: var(--stepper-solid-ink);
+}
+
+.stepper__title {
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--stepper-muted);
+}
+
+.stepper__segment[data-status='active'] .stepper__title,
+.stepper__segment[data-status='complete'] .stepper__title {
+  color: var(--stepper-ink);
+}
+
+/* On narrow screens only the current step keeps its label. */
+@media (max-width: 520px) {
+  .stepper__segment:not([data-status='active']) .stepper__title {
+    display: none;
+  }
+
+  .stepper__segment[data-status='active'] {
+    flex-grow: 3;
+  }
+}
+
+.stepper__body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 20px var(--stepper-inset) var(--stepper-inset);
+}
+
+.stepper__viewport {
+  position: relative;
+  margin: -6px -20px;
+  overflow: hidden;
+}
+
+.stepper__pane {
+  box-sizing: border-box;
+  padding: 6px 20px;
+  outline: none;
+}
+
+.stepper__pane--leaving {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.stepper__footer-wrap {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition:
+    grid-template-rows 480ms var(--ease-out),
+    opacity 0.2s ease;
+}
+
+.stepper__footer-wrap[data-hidden] {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.stepper__footer-clip {
+  min-height: 0;
+}
+
+.stepper__footer-wrap[data-hidden] .stepper__footer-clip {
+  overflow: hidden;
+}
+
+.stepper__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 20px;
+}
+
+.stepper__button {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.stepper__button--back {
+  background: var(--stepper-tile);
+  box-shadow: inset 0 0 0 1px var(--stepper-tile-edge);
+  color: var(--stepper-ink);
+}
+
+.stepper__button--back[data-hidden] {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.stepper__button[hidden] {
+  display: none;
+}
+
+.stepper__button--next:not([hidden]) {
+  animation: stepper-appear 0.5s var(--ease-out) both;
+}
+
+@keyframes stepper-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+.stepper__button--next {
+  margin-left: auto;
+  background: var(--stepper-solid);
+  color: var(--stepper-solid-ink);
+}
+
+.stepper__button--next:not(:disabled):hover {
+  background: var(--btn-primary-hover);
+}
+
+.stepper__button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.stepper__button:not(:disabled):active {
+  transform: scale(0.97);
+}
+
+.stepper__button:focus-visible,
+.stepper__segment:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stepper__footer-wrap {
+    transition-duration: 0.01ms;
+  }
+}

@@ -5,12 +5,14 @@ import GlideSelect from "./motion/GlideSelect";
 import { isLocale, locales, type Locale } from "@/lib/i18n";
 import { localePath } from "@/lib/site";
 
-// GlideSelect parses colors in JS, so it cannot take CSS variables: keep in sync with
-// --color-text / --color-accent in globals.css; surface and highlight are the navy popover variants.
-const SURFACE = "#0d1a3d";
-const HIGHLIGHT = "#1b2f6b";
-const TEXT = "#f3f6ff";
-const ACCENT = "#93c5fd";
+// GlideSelect writes these into CSS custom properties, so CSS variables work: the chip follows the theme from the
+// first paint instead of waiting for JavaScript to learn which theme is active.
+const COLORS = {
+  surface: "var(--select-surface)",
+  highlight: "var(--select-highlight)",
+  text: "var(--color-text)",
+  accent: "var(--color-accent)",
+} as const;
 
 interface LanguageSelectProps {
   locale: Locale;
@@ -35,10 +37,10 @@ export function LanguageSelect({ locale, label, names, path = "" }: LanguageSele
         }}
         align="right"
         size="lg"
-        surfaceColor={SURFACE}
-        highlightColor={HIGHLIGHT}
-        textColor={TEXT}
-        accentColor={ACCENT}
+        surfaceColor={COLORS.surface}
+        highlightColor={COLORS.highlight}
+        textColor={COLORS.text}
+        accentColor={COLORS.accent}
         menuWidth={176}
       />
       {/* No-JS fallback: the select needs JavaScript, so expose plain links. */}

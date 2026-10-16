@@ -7,15 +7,13 @@ export interface Profile {
   headline: Localized;
   summary: Localized;
   supportingLine: Localized;
-  /** Longer professional summary, shown as the subtitle of the full CV page. */
+  /** Longer professional summary, shown as the subtitle of the capabilities page. */
   cvSummary: Localized;
   location: Localized;
   languages: Localized<string[]>;
   focusAreas: Localized<string[]>;
-  currentEmployer: string;
   email: string;
   linkedinUrl: string;
-  cvUrl: string;
 }
 
 export interface Skill {
@@ -29,23 +27,15 @@ export interface SkillGroup {
   skills: Skill[];
 }
 
-export interface Experience {
-  id: string;
-  employer: string;
-  role: Localized;
-  startDate: string; // ISO month, YYYY-MM
-  endDate: string | null; // null = present
-  bullets: Localized<string[]>;
-  technologies: string[];
-}
-
-export interface Contribution {
+export interface Capability {
   id: string;
   title: Localized;
-  employer: string;
-  description: Localized;
-  relatedExperienceId: string;
-  caseStudyUrl?: string;
+  /** One sentence shown on the home page. */
+  summary: Localized;
+  /** What the capability covers, shown on the full page. */
+  points: Localized<string[]>;
+  /** Related technologies; may be empty. */
+  technologies: string[];
 }
 
 export interface Education {

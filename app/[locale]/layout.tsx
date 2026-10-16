@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import { PageBackground } from "@/components/motion/PageBackground";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { ui } from "@/content/ui";
@@ -58,8 +59,14 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       data-scroll-behavior="smooth"
+      // The theme script sets data-theme before React hydrates.
+      suppressHydrationWarning
       className={`${jakarta.variable} [--font-body:var(--font-heading)]`}
     >
+      <head>
+        {/* Blocking inline script at the very top of <head>: sets data-theme before anything is painted. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
       <body>
         <a className="skip-link print:hidden" href="#main">
           {ui[locale].skipLink}

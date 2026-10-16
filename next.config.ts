@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   env: { NEXT_PUBLIC_BUILD_YEAR: String(new Date().getFullYear()) },
   cacheComponents: true,
   partialPrefetching: true,
+  // The CV PDF is read from disk by /api/cv at request time, so it must be part of that route's serverless bundle.
+  outputFileTracingIncludes: { "/api/cv": ["./private/cv/**"] },
   turbopack: {
     rules: {
       "*.css": {

@@ -4,10 +4,8 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   BookOpen01Icon,
-  Briefcase01Icon,
   Certificate01Icon,
   CodeIcon,
-  File01Icon,
   GraduationScrollIcon,
   Layers01Icon,
   Mail01Icon,
@@ -34,12 +32,10 @@ const NAV_PILL_INK = "#ffffff";
 const ICONS: Record<string, ReactNode> = {
   profile: <HugeiconsIcon icon={UserIcon} size={24} strokeWidth={1.75} />,
   skills: <HugeiconsIcon icon={CodeIcon} size={24} strokeWidth={1.75} />,
-  experience: <HugeiconsIcon icon={Briefcase01Icon} size={24} strokeWidth={1.75} />,
-  contributions: <HugeiconsIcon icon={Layers01Icon} size={24} strokeWidth={1.75} />,
+  capabilities: <HugeiconsIcon icon={Layers01Icon} size={24} strokeWidth={1.75} />,
   education: <HugeiconsIcon icon={GraduationScrollIcon} size={24} strokeWidth={1.75} />,
   credentials: <HugeiconsIcon icon={Certificate01Icon} size={24} strokeWidth={1.75} />,
   contact: <HugeiconsIcon icon={Mail01Icon} size={24} strokeWidth={1.75} />,
-  cv: <HugeiconsIcon icon={File01Icon} size={24} strokeWidth={1.75} />,
   blog: <HugeiconsIcon icon={BookOpen01Icon} size={24} strokeWidth={1.75} />,
 };
 
@@ -94,7 +90,11 @@ export function SiteNav({ links, navLabel }: SiteNavProps) {
     "--gn-y": "var(--site-gn-y)",
     "--gn-font": "var(--site-gn-font)",
     // Brighter inactive labels and a navy frame: the stock dark theme is too faint on the animated background.
-    "--gn-muted": "rgb(243 246 255 / 0.82)",
+    "--gn-muted": "var(--nav-ink-muted)",
+    "--gn-ink": "var(--color-text)",
+    "--gn-frame-edge": "var(--nav-frame-edge)",
+    "--gn-frame-highlight": "var(--nav-frame-highlight)",
+    "--gn-frame-shadow": "var(--nav-frame-shadow)",
     "--gn-frame": "var(--nav-surface)",
   } as CSSProperties;
   // 6 icons at 48px fit a 320px screen; a 7th (credentials on /cv) needs tighter padding.
@@ -135,6 +135,7 @@ export function SiteNav({ links, navLabel }: SiteNavProps) {
             lockUntil.current = Date.now() + 900;
             setActive(links[index].id);
           }}
+          // Colors come from CSS variables (set per theme in globals.css), so the bar is right from the first paint.
           theme="dark"
           color={NAV_PILL}
           activeTextColor={NAV_PILL_INK}

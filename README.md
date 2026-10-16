@@ -1,6 +1,6 @@
 # boviedos.dev
 
-Personal professional website of Brandon Oviedo Sánchez. Next.js App Router, React, TypeScript and Tailwind CSS, in English and Spanish. Home (hero, CV experience tabs, blog cards, contact), a full CV page (`/cv`), blog landing pages (`/blog/professional`, `/blog/personal`) and privacy/terms pages.
+Personal professional website of Brandon Oviedo Sánchez. Next.js App Router, React, TypeScript and Tailwind CSS, in English and Spanish. Home (hero, capabilities overview, blog cards, contact), a full capabilities page (`/cv`), blog landing pages (`/blog/professional`, `/blog/personal`) and privacy/terms pages.
 
 ## Requirements
 

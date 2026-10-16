@@ -15,16 +15,16 @@ export interface LegalDocument {
 }
 
 /** ISO date of the last review of both documents; shown on the pages. */
-export const legalUpdated = "2026-10-13";
+export const legalUpdated = "2026-10-16";
 
 // Spanish copy is a draft translation pending owner review. These texts describe how the site works today
-// (no cookies, analytics, forms or accounts): update them if that changes. They are not legal advice.
+// (no cookies, analytics or accounts; one form: the CV download): update them if that changes. They are not legal advice.
 export const legalDocuments: Record<LegalPageId, Localized<LegalDocument>> = {
   privacy: {
     en: {
       title: "Privacy Notice",
       intro:
-        "This site is the personal portfolio and CV of Brandon Oviedo Sánchez. This notice explains what information the site handles and how.",
+        "This site is the personal portfolio of Brandon Oviedo Sánchez. This notice explains what information the site handles and how.",
       sections: [
         {
           heading: "Who is responsible",
@@ -35,8 +35,10 @@ export const legalDocuments: Record<LegalPageId, Localized<LegalDocument>> = {
         {
           heading: "What the site collects",
           paragraphs: [
-            "The site has no accounts, forms, comments, advertising or analytics tools, and it does not ask you for personal information.",
-            "It does not set cookies or use similar technologies to track you.",
+            "The site has no accounts, comments, advertising or analytics tools. Its only form is the CV download form, which asks for the name of your company, your email address and an optional comment.",
+            "I use those details only to reply to you and to know who is interested in my work. The CV request is emailed to me through Resend and I keep it for as long as it is useful for that purpose; you can ask me to delete it at any time.",
+            "The form uses Cloudflare Turnstile to check that you are a person. Turnstile may process technical signals such as your IP address and browser details, under Cloudflare’s own privacy policy. It only loads when you reach the verification step, and it does not use advertising cookies.",
+            "The site does not set cookies and has no tracking. It saves your theme choice (dark, light or auto) in your browser’s local storage so it is remembered on your next visit; that value stays on your device and is not sent anywhere.",
           ],
         },
         {
@@ -74,7 +76,7 @@ export const legalDocuments: Record<LegalPageId, Localized<LegalDocument>> = {
     es: {
       title: "Aviso de privacidad",
       intro:
-        "Este sitio es el portafolio y CV personal de Brandon Oviedo Sánchez. Este aviso explica qué información maneja el sitio y cómo.",
+        "Este sitio es el portafolio personal de Brandon Oviedo Sánchez. Este aviso explica qué información maneja el sitio y cómo.",
       sections: [
         {
           heading: "Quién es el responsable",
@@ -85,8 +87,10 @@ export const legalDocuments: Record<LegalPageId, Localized<LegalDocument>> = {
         {
           heading: "Qué recopila el sitio",
           paragraphs: [
-            "El sitio no tiene cuentas, formularios, comentarios, publicidad ni herramientas de analítica, y no te pide información personal.",
-            "No usa cookies ni tecnologías similares para rastrearte.",
+            "El sitio no tiene cuentas, comentarios, publicidad ni herramientas de analítica. Su único formulario es el de descarga del CV, que pide el nombre de tu empresa, tu correo y un comentario opcional.",
+            "Uso esos datos solo para responderte y saber quién está interesado en mi trabajo. La solicitud del CV me llega por correo a través de Resend y la conservo mientras sea útil para ese fin; puedes pedirme que la elimine cuando quieras.",
+            "El formulario usa Cloudflare Turnstile para comprobar que eres una persona. Turnstile puede procesar señales técnicas como tu dirección IP y datos del navegador, según la política de privacidad de Cloudflare. Solo se carga cuando llegas al paso de verificación y no usa cookies de publicidad.",
+            "El sitio no usa cookies y no tiene rastreo. Guarda tu elección de tema (oscuro, claro o automático) en el almacenamiento local de tu navegador para recordarla en tu próxima visita; ese valor se queda en tu dispositivo y no se envía a ningún lado.",
           ],
         },
         {

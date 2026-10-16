@@ -1,22 +1,20 @@
 import type { Locale } from "@/lib/i18n";
 import {
-  contributions,
   credentials,
   education,
-  experiences,
   profile,
   publications,
   skillGroups,
 } from "./profile";
+import { capabilities } from "./capabilities";
 import type { Credential, Localized } from "./types";
 
 export * from "./types";
 export { legalDocuments, legalPages, legalUpdated, type LegalPageId } from "./legal";
 export { blogCategories, getPosts, type BlogCategory, type BlogCategoryId } from "./blog";
+export { capabilities } from "./capabilities";
 export {
-  contributions,
   education,
-  experiences,
   profile,
   publications,
   skillGroups,
@@ -58,40 +56,18 @@ function isValidCredential(c: Credential) {
 function validateContent() {
   assert(profile.email.includes("@"), "profile.email is malformed");
   assert(isHttpsUrl(profile.linkedinUrl), "profile.linkedinUrl must be https");
-  assert(profile.cvUrl.startsWith("/"), "profile.cvUrl must be a site path");
   assertLocalized(profile.headline, "profile.headline");
   assertLocalized(profile.summary, "profile.summary");
   assertLocalized(profile.cvSummary, "profile.cvSummary");
 
   const ids = new Set<string>();
-  for (const e of experiences) {
-    assert(Boolean(e.id && e.employer), "every experience needs an id and employer");
-    assert(!ids.has(e.id), `duplicate experience id ${e.id}`);
-    ids.add(e.id);
-    assert(ISO_MONTH.test(e.startDate), `${e.id}.startDate must be YYYY-MM`);
-    assert(
-      e.endDate === null || ISO_MONTH.test(e.endDate),
-      `${e.id}.endDate must be YYYY-MM or null`,
-    );
-    assertLocalized(e.role, `${e.id}.role`);
-    assertLocalized(e.bullets, `${e.id}.bullets`);
-  }
-  const order = experiences.map((e) => e.startDate);
-  assert(
-    order.every((d, i) => i === 0 || order[i - 1] >= d),
-    "experiences must be in reverse chronological order",
-  );
-
-  for (const c of contributions) {
-    assert(
-      ids.has(c.relatedExperienceId),
-      `contribution ${c.id} references unknown experience ${c.relatedExperienceId}`,
-    );
-    assert(
-      !c.caseStudyUrl || isHttpsUrl(c.caseStudyUrl),
-      `contribution ${c.id}.caseStudyUrl must be https`,
-    );
-    assertLocalized(c.description, `${c.id}.description`);
+  for (const c of capabilities) {
+    assert(Boolean(c.id), "every capability needs an id");
+    assert(!ids.has(c.id), `duplicate capability id ${c.id}`);
+    ids.add(c.id);
+    assertLocalized(c.title, `${c.id}.title`);
+    assertLocalized(c.summary, `${c.id}.summary`);
+    assertLocalized(c.points, `${c.id}.points`);
   }
 
   for (const ed of education) {
@@ -112,9 +88,8 @@ export const verifiedCredentials: Credential[] = credentials.filter(
 
 export const sectionIds = [
   "profile",
+  "capabilities",
   "skills",
-  "experience",
-  "contributions",
   "education",
   "credentials",
   "contact",
@@ -122,7 +97,7 @@ export const sectionIds = [
 export type SectionId = (typeof sectionIds)[number];
 
 /** Sections of the home page; the full CV lives at /cv (sectionIds). */
-export const homeSectionIds = ["profile", "cv", "blog", "contact"] as const;
+export const homeSectionIds = ["profile", "capabilities", "blog", "contact"] as const;
 export type HomeSectionId = (typeof homeSectionIds)[number];
 export type NavId = SectionId | HomeSectionId;
 

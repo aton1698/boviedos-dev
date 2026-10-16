@@ -36,6 +36,14 @@ Rules
 - The page background must contain only blues and near-black navy: no pinks, cyans, grays or white blobs.
 - Never put the tagline text in low contrast just for effect; WCAG 2.2 AA still applies.
 
+## Light theme
+The site has two themes, chosen in the footer (Dark, Light or Auto = follow the system; saved in localStorage, applied
+before the first paint by `lib/theme.ts`). Dark is the default and the reference. Light keeps the same blues on a cool
+white page: bg `#f3f7ff`, surface `#e6eeff`, text `#0a1330`, muted `#3a4766`, accent text Royal Blue `#1e40af`; the
+Electric Blue fills and the white text on them are unchanged. Every pair is >= 4.5:1 (body text 15:1 or more).
+New UI must use the tokens in `app/globals.css` (`--color-*`, `--tile-*`, `--nav-surface`, `--veil`), never raw hex, so
+both themes work; the few JS libraries that need hex read the resolved theme with `useResolvedTheme()`.
+
 ## Typography
 **Plus Jakarta Sans** only (Google Fonts, self-hosted via next/font). Weights: Bold 700, **Semibold 600 (primary)**,
 Medium 500, Regular 400, Light 300.
@@ -83,6 +91,6 @@ The header shows the mark ONLY (no name or subtitle; owner request). The link ke
 ## Implementation map
 - Tokens: `app/globals.css` (`--brand-*`, semantic `--color-*`; `.surface-dark` swaps tokens for dark bands).
 - Font: `app/[locale]/layout.tsx` (Plus Jakarta Sans, `--font-heading` and `--font-body` both point to it).
-- Components: `Logo`, `SectionHeading`, `SiteHeader`, `ProfileSection`, `CvDownload`, vendored motion components
+- Components: `Logo`, `SectionHeading`, `SiteHeader`, `ProfileSection`, vendored motion components
   configured with the palette above (JS color props: keep hex in sync with tokens).
 - Any new UI must be checked against this file before it is merged.

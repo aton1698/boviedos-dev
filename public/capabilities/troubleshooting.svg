@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1a46"/><stop offset="1" stop-color="#030816"/></linearGradient>
+<radialGradient id="halo" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#2563ff" stop-opacity="0.45"/><stop offset="1" stop-color="#2563ff" stop-opacity="0"/></radialGradient>
+<filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1200" height="800" fill="url(#bg)"/>
+<ellipse cx="600" cy="400" rx="430" ry="300" fill="url(#halo)"/>
+<path d="M0,142.5 L24,137.3 L48,132.4 L72,127.9 L96,123.8 L120,120.1 L144,117.0 L168,114.4 L192,112.3 L216,110.9 L240,110.2 L264,110.0 L288,110.5 L312,111.7 L336,113.4 L360,115.7 L384,118.7 L408,122.1 L432,126.0 L456,130.4 L480,135.1 L504,140.2 L528,145.5 L552,151.0 L576,156.6 L600,162.2 L624,167.8 L648,173.4 L672,178.7 L696,183.8 L720,188.6 L744,193.1 L768,197.1 L792,200.6 L816,203.7 L840,206.1 L864,208.0 L888,209.3 L912,209.9 L936,209.9 L960,209.3 L984,208.0 L1008,206.1 L1032,203.7 L1056,200.6 L1080,197.1 L1104,193.1 L1128,188.6 L1152,183.8 L1176,178.7 L1200,173.3" fill="none" stroke="#1e40af" stroke-width="2" opacity="0.35"/>
+<path d="M0,324.5 L24,324.0 L48,325.0 L72,327.4 L96,331.3 L120,336.4 L144,342.7 L168,350.1 L192,358.5 L216,367.7 L240,377.5 L264,387.7 L288,398.1 L312,408.6 L336,419.0 L360,428.9 L384,438.3 L408,447.0 L432,454.8 L456,461.5 L480,467.1 L504,471.4 L528,474.3 L552,475.8 L576,475.8 L600,474.5 L624,471.6 L648,467.5 L672,462.0 L696,455.4 L720,447.7 L744,439.1 L768,429.7 L792,419.8 L816,409.5 L840,399.0 L864,388.5 L888,378.3 L912,368.5 L936,359.2 L960,350.8 L984,343.3 L1008,336.8 L1032,331.6 L1056,327.7 L1080,325.2 L1104,324.1 L1128,324.4 L1152,326.2 L1176,329.4 L1200,333.9" fill="none" stroke="#2563ff" stroke-width="2" opacity="0.35"/>
+<path d="M0,583.8 L24,598.4 L48,614.1 L72,630.5 L96,647.2 L120,663.6 L144,679.4 L168,694.2 L192,707.5 L216,719.1 L240,728.5 L264,735.6 L288,740.1 L312,742.0 L336,741.1 L360,737.6 L384,731.4 L408,722.8 L432,712.0 L456,699.3 L480,685.1 L504,669.6 L528,653.3 L552,636.7 L576,620.1 L600,604.1 L624,589.1 L648,575.4 L672,563.4 L696,553.5 L720,545.8 L744,540.7 L768,538.2 L792,538.5 L816,541.4 L840,547.0 L864,555.0 L888,565.3 L912,577.6 L936,591.5 L960,606.8 L984,622.9 L1008,639.5 L1032,656.1 L1056,672.2 L1080,687.5 L1104,701.6 L1128,714.0 L1152,724.4 L1176,732.6 L1200,738.3" fill="none" stroke="#1e40af" stroke-width="2" opacity="0.35"/>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+<path d="M330,250 L710,250" stroke="#1e40af" stroke-width="3" />
+<path d="M330,300 L630,300" stroke="#1e40af" stroke-width="3" />
+<path d="M330,350 L750,350" stroke="#1e40af" stroke-width="3" />
+<path d="M330,400 L590,400" stroke="#2563ff" stroke-width="4" />
+<path d="M330,450 L690,450" stroke="#1e40af" stroke-width="3" />
+<path d="M330,500 L650,500" stroke="#1e40af" stroke-width="3" />
+<path d="M330,550 L730,550" stroke="#1e40af" stroke-width="3" />
+<circle cx="560" cy="390" r="120" stroke="#93c5fd" fill="rgba(3,8,22,0.55)" stroke-width="5" filter="url(#glow)"/>
+<path d="M645,475 L760,590" stroke="#93c5fd" stroke-width="14" />
+<path d="M645,475 L760,590" stroke="#2563ff" stroke-width="6" />
+<path d="M470,340 L650,340" stroke="#93c5fd" stroke-width="4" />
+<path d="M470,390 L600,390" stroke="#2563ff" stroke-width="8" />
+<path d="M470,440 L640,440" stroke="#93c5fd" stroke-width="4" />
+<circle cx="650" cy="390" r="8" fill="#2563ff" stroke="none"/>
+<text x="860" y="330" font-family="Plus Jakarta Sans, Arial, sans-serif" font-weight="600" font-size="38" fill="#93c5fd" opacity="0.85" stroke="none">fix()</text>
+<path d="M850 400 q60 -30 120 0 t120 0" stroke="#2563ff" stroke-width="3"/>
+<path d="M920 470 l22 24 l44 -52" stroke="#93c5fd" stroke-width="6"/>
+<circle cx="942" cy="470" r="46" stroke="#2563ff" stroke-width="3"/>
+</g>
+</svg>
